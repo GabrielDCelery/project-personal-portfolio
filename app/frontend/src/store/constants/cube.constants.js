@@ -1,0 +1,2 @@
+export const SET_ROTATION = 'SET_ROTATION';
+export const TOGGLE_LIGHTING = 'TOGGLE_LIGHTING';
