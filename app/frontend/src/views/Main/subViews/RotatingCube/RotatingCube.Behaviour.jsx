@@ -23,9 +23,9 @@ export default ToWrapComponent => {
       });
     };
 
-    let interval = null;
-
     useEffect(() => {
+      let interval = null;
+      
       (async () => {
         await delay(100);
         autoRotate();
