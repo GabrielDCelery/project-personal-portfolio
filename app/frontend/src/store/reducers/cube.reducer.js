@@ -6,10 +6,10 @@ import {
   STOP_ANIMATION
 } from '../constants';
 
-const ANIMATION_TIME_ROTATE = 3000;
+const ANIMATION_TIME_ROTATE = 2000;
 const initialState = {
-  rotateX: [0, 0],
-  rotateY: [0, 0],
+  rotateX: 0,
+  rotateY: 0,
   bInAnimationMode: false,
   animationDurationInMs: ANIMATION_TIME_ROTATE,
   bLightingOn: false,

@@ -25,7 +25,7 @@ export default ({
       >
         <StyledCube
           style={{
-            transitionProperty: 'transform',
+            //transitionProperty: 'transform',
             transitionDuration: `${stateAnimationDurationInMs}ms`,
             transform: `rotateX(${stateCubeRotateX}deg) rotateY(${stateCubeRotateY}deg)`
           }}

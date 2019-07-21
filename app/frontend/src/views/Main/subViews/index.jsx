@@ -1,1 +1,2 @@
-export * from './RotatingCube';
+//export * from './RotatingCube';
+export * from './Cube';

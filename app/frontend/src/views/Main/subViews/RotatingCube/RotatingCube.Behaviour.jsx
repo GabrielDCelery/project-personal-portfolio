@@ -19,13 +19,12 @@ export default ToWrapComponent => {
       stateAnimationDurationInMs
     } = props;
 
-
     const setRandomTargetPosition = useCallback(
       async () => {
         if (stateIsInAnimationMode) {
           return;
         }
-        
+
         await services.delay(ANIMATION_DELAY_FIX);
 
         return actionRotateToPosition({

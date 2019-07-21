@@ -18,7 +18,7 @@ const rotateToPosition = ({ rotateX, rotateY, animationDurationInMs }) => {
     });
 
     await services.delay(animationDurationInMs);
-    dispatch({ type: STOP_ANIMATION })
+    dispatch({ type: STOP_ANIMATION });
   };
 }
 
