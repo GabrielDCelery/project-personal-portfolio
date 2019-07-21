@@ -1,47 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import {
   CubeStoreDecorator
 } from 'components';
+import services from 'services';
 
+const ANIMATION_DELAY_FIX = 10;
 const MAX = 180;
 const MIN = -180;
-const ANIMATION_MILISECONDS = 3000;
-const delay = delay => new Promise(accept => setTimeout(accept, delay));
+
+//const newX = -10
+//const newY = 75
 
 export default ToWrapComponent => {
   let WrapperComponent = props => {
     const {
-      stateRotateX,
-      stateRotateY,
-      actionSetCubeRotation
+      actionRotateToPosition,
+      stateIsInAnimationMode,
+      stateAnimationDurationInMs
     } = props;
 
-    const autoRotate = () => {
-      actionSetCubeRotation({
-        rotateX: Math.floor(Math.random() * (MAX - MIN + 1) + MIN),
-        rotateY: Math.floor(Math.random() * (MAX - MIN + 1) + MIN)
-      });
-    };
 
-    useEffect(() => {
-      let interval = null;
-      
-      (async () => {
-        await delay(100);
-        autoRotate();
-        interval = setInterval(autoRotate, ANIMATION_MILISECONDS + 100);
-      })();
+    const setRandomTargetPosition = useCallback(
+      async () => {
+        if (stateIsInAnimationMode) {
+          return;
+        }
+        
+        await services.delay(ANIMATION_DELAY_FIX);
 
-      return () => { clearInterval(interval) };
-    }, []);
+        return actionRotateToPosition({
+          rotateX: Math.floor(Math.random() * (MAX - MIN + 1) + MIN),
+          rotateY: Math.floor(Math.random() * (MAX - MIN + 1) + MIN),
+          animationDurationInMs: stateAnimationDurationInMs
+        });
+      },
+      [
+        actionRotateToPosition,
+        stateIsInAnimationMode,
+        stateAnimationDurationInMs
+      ]
+    );
 
     return (
       <ToWrapComponent
         {...props}
         {...{
-          stateRotateX,
-          stateRotateY,
-          ANIMATION_MILISECONDS
+          setRandomTargetPosition
         }}
       />
     )

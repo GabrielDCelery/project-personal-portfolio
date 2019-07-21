@@ -1,23 +1,46 @@
 import {
-  SET_ROTATION,
-  TOGGLE_LIGHTING
+  TOGGLE_LIGHTING,
+  TOGGLE_AUTOROTATE,
+  ROTATE_TO_POSITION,
+  START_ANIMATION,
+  STOP_ANIMATION
 } from '../constants';
 
+const ANIMATION_TIME_ROTATE = 3000;
 const initialState = {
-  rotateX: 0,
-  rotateY: 0,
-  bLightingOn: false
+  rotateX: [0, 0],
+  rotateY: [0, 0],
+  bInAnimationMode: false,
+  animationDurationInMs: ANIMATION_TIME_ROTATE,
+  bLightingOn: false,
+  bAutoRotateOn: true
 };
 
-export default (state = initialState, { type, rotateX, rotateY, bLightingOn }) => {
+export default (state = initialState, {
+  type,
+  rotateX,
+  rotateY,
+  animationDurationInMs,
+  bLightingOn,
+  bAutoRotateOn
+}) => {
   switch (type) {
-    case SET_ROTATION:
+    case START_ANIMATION:
       return {
         ...state,
-        ...{
-          rotateX,
-          rotateY
-        }
+        ...{ bInAnimationMode: true }
+      }
+
+    case STOP_ANIMATION:
+      return {
+        ...state,
+        ...{ bInAnimationMode: false }
+      };
+
+    case ROTATE_TO_POSITION:
+      return {
+        ...state,
+        ...{ rotateX, rotateY, animationDurationInMs }
       };
 
     case TOGGLE_LIGHTING:
@@ -25,6 +48,14 @@ export default (state = initialState, { type, rotateX, rotateY, bLightingOn }) =
         ...state,
         ...{
           bLightingOn
+        }
+      };
+
+    case TOGGLE_AUTOROTATE:
+      return {
+        ...state,
+        ...{
+          bAutoRotateOn
         }
       };
 

@@ -1,15 +1,24 @@
 import {
-  SET_ROTATION,
-  TOGGLE_LIGHTING
+  TOGGLE_LIGHTING,
+  TOGGLE_AUTOROTATE,
+  ROTATE_TO_POSITION,
+  START_ANIMATION,
+  STOP_ANIMATION
 } from '../constants';
+import services from 'services';
 
-const setRotation = ({ rotateX, rotateY }) => {
+const rotateToPosition = ({ rotateX, rotateY, animationDurationInMs }) => {
   return async dispatch => {
+    dispatch({ type: START_ANIMATION });
     dispatch({
-      type: SET_ROTATION,
+      type: ROTATE_TO_POSITION,
       rotateX: rotateX,
-      rotateY: rotateY
+      rotateY: rotateY,
+      animationDurationInMs: animationDurationInMs
     });
+
+    await services.delay(animationDurationInMs);
+    dispatch({ type: STOP_ANIMATION })
   };
 }
 
@@ -22,7 +31,17 @@ const toggleLighting = bLightingOn => {
   };
 }
 
+const toggleAutoRotate = bAutoRotateOn => {
+  return async dispatch => {
+    dispatch({
+      type: TOGGLE_AUTOROTATE,
+      bAutoRotateOn: bAutoRotateOn
+    });
+  };
+}
+
 export default {
-  setRotation,
-  toggleLighting
+  rotateToPosition,
+  toggleLighting,
+  toggleAutoRotate
 };

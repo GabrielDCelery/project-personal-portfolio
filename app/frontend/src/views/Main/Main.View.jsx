@@ -1,7 +1,6 @@
 import React from 'react';
 import {
-  Grid,
-  Button
+  Grid
 } from '@material-ui/core';
 import { RotatingCube } from './subViews';
 

@@ -2,10 +2,11 @@ import React from 'react';
 import { Side } from './subViews';
 
 export default ({
-  stateRotateX,
-  stateRotateY,
+  stateCubeRotateX,
+  stateCubeRotateY,
+  stateAnimationDurationInMs,
   actionToggleCubeLighting,
-  ANIMATION_MILISECONDS,
+  setRandomTargetPosition,
   StyledCubeContainer,
   StyledCube,
   StyledCubeSideFront,
@@ -20,12 +21,13 @@ export default ({
       <StyledCubeContainer
         onMouseEnter={() => { actionToggleCubeLighting(true) }}
         onMouseLeave={() => { actionToggleCubeLighting(false) }}
+        onClick={() => { setRandomTargetPosition() }}
       >
         <StyledCube
           style={{
             transitionProperty: 'transform',
-            transitionDuration: `${ANIMATION_MILISECONDS}ms`,
-            transform: `rotateX(${stateRotateX}deg) rotateY(${stateRotateY}deg)`
+            transitionDuration: `${stateAnimationDurationInMs}ms`,
+            transform: `rotateX(${stateCubeRotateX}deg) rotateY(${stateCubeRotateY}deg)`
           }}
         >
           <StyledCubeSideFront><Side /></StyledCubeSideFront>

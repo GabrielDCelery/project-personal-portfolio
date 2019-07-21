@@ -4,15 +4,19 @@ import store from 'store';
 
 const mapStateToProps = state => {
   return {
-    stateRotateX: state.cube.rotateX,
-    stateRotateY: state.cube.rotateY,
-    stateLightingOn: state.cube.bLightingOn
+    stateCubeRotateX: state.cube.rotateX,
+    stateCubeRotateY: state.cube.rotateY,
+    stateAnimationDurationInMs: state.cube.animationDurationInMs,
+    stateLightingOn: state.cube.bLightingOn,
+    stateIsAutoRotateOn: state.cube.bAutoRotateOn,
+    stateIsInAnimationMode: state.cube.bInAnimationMode
   }
 }
 
 const mapActionsToProps = {
-  actionSetCubeRotation: store.actions.cube.setRotation,
-  actionToggleCubeLighting: store.actions.cube.toggleLighting
+  actionToggleCubeLighting: store.actions.cube.toggleLighting,
+  actionToggleCubeAutoRotate: store.actions.cube.toggleAutoRotate,
+  actionRotateToPosition: store.actions.cube.rotateToPosition
 };
 
 export const CubeStoreDecorator = ToWrapComponent => {
