@@ -3,59 +3,58 @@ import styled from 'styled-components';
 import {
   AppBar,
   Drawer,
+  IconButton,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  IconButton
+  ListItemText
 } from '@material-ui/core';
-
-const DRAWER_WIDTH = 240;
+import config from 'config';
 
 const StyledAppBar = styled(AppBar)`
-  margin-left: ${DRAWER_WIDTH}px;
+  margin-left: ${config.styles.layout.navbar.width};
   @media (min-width:600px) {
-    width: calc(100% - ${DRAWER_WIDTH}px) !important;
+    width: calc(100% - ${config.styles.layout.navbar.width}) !important;
   }
 `;
 
 const StyledDrawerContainer = styled.nav`
   @media (min-width:600px) {
-    width: ${DRAWER_WIDTH}px;
+    width: ${config.styles.layout.navbar.width};
     flex-shrink: 0;
   }
 `;
 
 const StyledDrawer = styled(Drawer)`
   & .MuiPaper-root {
-    width: ${DRAWER_WIDTH}px;
-    background-color: #082431 !important;
+    width: ${config.styles.layout.navbar.width};
+    background-color: ${config.styles.colors.navbar.background.default} !important;
   }
 `;
 
 const StyledListItemIcon = styled(ListItemIcon)`
-  color: #aaa !important;
+  color: ${config.styles.colors.navbar.text.default} !important;
   transition: all 0.5s ease-in-out;
 `;
 
 const StyledListItemText = styled(ListItemText)`
-  color: #aaa !important;
+  color: ${config.styles.colors.navbar.text.default} !important;
   transition: all 0.5s ease-in-out;
 `;
 
 const StyledListItem = styled(ListItem)`
-  border-top: 1px solid #0d3346 !important;
-  border-bottom: 1px solid #0d3346 !important;
-  background-color: #082431 !important;
+  border-top: 1px solid ${config.styles.colors.navbar.border.default} !important;
+  border-bottom: 1px solid ${config.styles.colors.navbar.border.default} !important;
+  background-color: ${config.styles.colors.navbar.background.default} !important;
   transition: all 0.5s ease-in-out !important;
   &:hover {
-    background-color: #2c9fda !important;
-    border-color: #46B9F4 !important;
+    background-color: ${config.styles.colors.navbar.background.hover} !important;
+    border-color: ${config.styles.colors.navbar.border.hover} !important;
   },
   &:hover ${StyledListItemIcon} {
-    color: #fff !important;
+    color: ${config.styles.colors.navbar.text.hover} !important;
   },
   &:hover ${StyledListItemText} {
-    color: #fff !important;
+    color: ${config.styles.colors.navbar.text.hover} !important;
   }
 `;
 
@@ -66,7 +65,7 @@ const StyledIconButton = styled(IconButton)`
   }
 `;
 
-export default ToWrapComponent => {
+export default function NavBarStyles(ToWrapComponent) {
   let WrapperComponent = props => {
     return (
       <ToWrapComponent

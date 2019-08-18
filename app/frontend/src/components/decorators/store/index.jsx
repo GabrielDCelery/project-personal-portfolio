@@ -1,1 +1,1 @@
-export * from './CubeStoreDecorator';
+export * from './WorkHistoryStoreDecorator';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   CssBaseline,
   Hidden,
@@ -6,69 +6,48 @@ import {
   Toolbar
 } from '@material-ui/core';
 import {
-  GetApp as GetAppIcon,
-  Work as WorkIcon,
   Email as EmailIcon,
-  Rowing as RowingIcon,
   FlightTakeoff as FlightTakeoffIcon,
-  Menu as MenuIcon
+  GetApp as GetAppIcon,
+  Menu as MenuIcon,
+  Rowing as RowingIcon,
+  Work as WorkIcon
 } from '@material-ui/icons';
 
-export default ({
-  container,
+export default function NavBarView({
+  handleDrawerToggle,
+  isMobileOpen,
   StyledAppBar,
-  StyledDrawerContainer,
   StyledDrawer,
+  StyledDrawerContainer,
+  StyledIconButton,
   StyledListItem,
   StyledListItemIcon,
-  StyledListItemText,
-  StyledIconButton,
-  actionToggleCubeLighting
-}) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  function handleDrawerToggle() {
-    setMobileOpen(!mobileOpen);
-  }
-
+  StyledListItemText
+}) {
   const drawer = (
     <List>
-      <StyledListItem button
-        onMouseEnter={() => { actionToggleCubeLighting(true) }}
-        onMouseLeave={() => { actionToggleCubeLighting(false) }}
-      >
+      <StyledListItem button>
         <StyledListItemIcon><WorkIcon /></StyledListItemIcon>
         <StyledListItemText primary="Work History" />
       </StyledListItem>
 
-      <StyledListItem button
-        onMouseEnter={() => { actionToggleCubeLighting(true) }}
-        onMouseLeave={() => { actionToggleCubeLighting(false) }}
-      >
+      <StyledListItem button>
         <StyledListItemIcon><FlightTakeoffIcon /></StyledListItemIcon>
         <StyledListItemText primary="Unique Achievments" />
       </StyledListItem>
 
-      <StyledListItem button
-        onMouseEnter={() => { actionToggleCubeLighting(true) }}
-        onMouseLeave={() => { actionToggleCubeLighting(false) }}
-      >
+      <StyledListItem button >
         <StyledListItemIcon><RowingIcon /></StyledListItemIcon>
         <StyledListItemText primary="Skills" />
       </StyledListItem>
 
-      <StyledListItem button
-        onMouseEnter={() => { actionToggleCubeLighting(true) }}
-        onMouseLeave={() => { actionToggleCubeLighting(false) }}
-      >
+      <StyledListItem button >
         <StyledListItemIcon><GetAppIcon /></StyledListItemIcon>
         <StyledListItemText primary="Download Resume" />
       </StyledListItem>
 
-      <StyledListItem button
-        onMouseEnter={() => { actionToggleCubeLighting(true) }}
-        onMouseLeave={() => { actionToggleCubeLighting(false) }}
-      >
+      <StyledListItem button>
         <StyledListItemIcon><EmailIcon /></StyledListItemIcon>
         <StyledListItemText primary="Contact" />
       </StyledListItem>
@@ -95,10 +74,9 @@ export default ({
       <StyledDrawerContainer>
         <Hidden smUp implementation="css">
           <StyledDrawer
-            container={container}
             variant="temporary"
             anchor={"left"}
-            open={mobileOpen}
+            open={isMobileOpen}
             onClose={handleDrawerToggle}
             ModalProps={{
               keepMounted: true
@@ -116,7 +94,6 @@ export default ({
           </StyledDrawer>
         </Hidden>
       </StyledDrawerContainer>
-
     </React.Fragment>
   );
 }

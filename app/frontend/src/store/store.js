@@ -1,16 +1,19 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import {
+  applyMiddleware,
+  combineReducers,
+  createStore
+} from 'redux';
 //import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import reducers from './reducers';
-//import default_state from './default_state';
+import {
+  workHistoryReducer
+} from './workHistory';
 
 const combinedReducers = combineReducers({
-  cube: reducers.cube
+  workHistory: workHistoryReducer
 });
 
-const combinedDefaultState = {
-  //cube: default_state.cube
-};
+const combinedDefaultState = {};
 
 //const loggerMiddleware = createLogger();
 
@@ -18,8 +21,8 @@ const store = createStore(
   combinedReducers,
   combinedDefaultState,
   applyMiddleware(
-    thunkMiddleware/*,
-    loggerMiddleware*/
+    thunkMiddleware
+    /*  loggerMiddleware*/
   )
 );
 

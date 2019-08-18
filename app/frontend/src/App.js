@@ -2,36 +2,36 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import {
   RouterDecorator,
-  StoreDecorator
+  StoreDecorator,
+  ThemeDecorator
 } from 'components';
 import {
-  Main,
-  NavBar
+  NavBar,
+  WorkHistory
 } from 'views';
-import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
 const ViewWithNavbar = ToWrapComponent => {
   return props => (
-    <React.Fragment>
-      <div style={{ display: 'flex' }}>
-        <NavBar />
-        <div style={{ flexGrow: 1 }} >
-          <ToWrapComponent {...props} />
-        </div>
+    <div style={{ display: 'flex' }}>
+      <NavBar />
+      <div style={{ flexGrow: 1 }} >
+        <ToWrapComponent {...props} />
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 
 let App = () => {
   return (
     <React.Fragment>
-      <Route exact={true} path='/' render={ViewWithNavbar(Main)} />
+      <Route exact={true} path='/' render={ViewWithNavbar(WorkHistory)} />
     </React.Fragment>
   );
 }
 
 App = RouterDecorator(App);
 App = StoreDecorator(App);
+App = ThemeDecorator(App);
 
 export default App;
