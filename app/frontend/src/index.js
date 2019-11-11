@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+/*
+
+import AppBehaviour from './App.Behaviour';
+import AppStyles from './App.Styles';
+import AppView from './App.View';
+
+const App = AppBehaviour(AppStyles(AppView));
+*/
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

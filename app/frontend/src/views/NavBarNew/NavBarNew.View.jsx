@@ -12,7 +12,8 @@ import {
   Menu as MenuIcon,
   Rowing as RowingIcon,
   Work as WorkIcon,
-  InsertEmoticon as InsertEmoticonIcon
+  InsertEmoticon as InsertEmoticonIcon,
+  Build as BuildIcon
 } from '@material-ui/icons';
 
 export default function NavBarView({
@@ -63,7 +64,7 @@ export default function NavBarView({
           <StyledListItem button onClick={() => {}}>
             <StledListItemGutter />
             <StyledListItemIcon>
-              <RowingIcon fontSize="large" />
+              <BuildIcon fontSize="large" />
             </StyledListItemIcon>
             <StyledListItemText primary="SKILLS" />
             <StledListItemGutter />
