@@ -1,16 +1,8 @@
 import React from 'react';
 import { CssBaseline } from '@material-ui/core';
 import {
-  Home as HomeIcon,
-  NoteAdd as NoteAddIcon,
-  TabletMac as TabletMacIcon
-} from '@material-ui/icons';
-import {
   Email as EmailIcon,
-  FlightTakeoff as FlightTakeoffIcon,
   GetApp as GetAppIcon,
-  Menu as MenuIcon,
-  Rowing as RowingIcon,
   Work as WorkIcon,
   InsertEmoticon as InsertEmoticonIcon,
   Build as BuildIcon
@@ -23,8 +15,8 @@ export default function NavBarView({
   StyledListItemIcon,
   StyledListItemText,
   StledListItemGutter,
-  stateActivePage,
-  handleNavToPage
+  getter,
+  handler
 }) {
   return (
     <React.Fragment>
@@ -33,10 +25,8 @@ export default function NavBarView({
         <StyledDrawer variant="permanent" anchor="left">
           <StyledListItem
             button
-            className={`${stateActivePage === '/' ? 'active' : ''}`}
-            onClick={() => {
-              handleNavToPage('/');
-            }}
+            className={`${getter('activePage') === '/' ? 'active' : ''}`}
+            onClick={() => handler('navToPage')('/')}
           >
             <StledListItemGutter />
             <StyledListItemIcon>
@@ -48,10 +38,10 @@ export default function NavBarView({
 
           <StyledListItem
             button
-            className={`${stateActivePage === '/addNewMatter' ? 'active' : ''}`}
-            onClick={() => {
-              handleNavToPage('/addNewMatter');
-            }}
+            className={`${
+              getter('activePage') === '/addNewMatter' ? 'active' : ''
+            }`}
+            onClick={() => handler('navToPage')('/')}
           >
             <StledListItemGutter />
             <StyledListItemIcon>

@@ -75,13 +75,13 @@ const StyledListItem = styled(ListItem)`
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    border-right: 8px solid transparent;
+    border-right: 6px solid transparent;
   }
 
   &:hover,
   &.active {
     background-color: transparent !important;
-    border-right: 8px solid ${config.styles.colors.navbar.text.hover};
+    border-right: 6px solid ${config.styles.colors.navbar.text.hover};
   }
 
   &:hover ${StyledListItemIcon}, &.active ${StyledListItemIcon} {

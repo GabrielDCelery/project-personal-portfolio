@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { RouterDecorator, StoreDecorator, ThemeDecorator } from 'components';
 import { NavBarNew, WorkHistory } from 'views';
 import './App.css';
 
@@ -15,7 +14,7 @@ const ViewWithNavbar = ToWrapComponent => {
   );
 };
 
-let App = () => {
+const AppView = () => {
   return (
     <React.Fragment>
       <Route exact={true} path="/" render={ViewWithNavbar(WorkHistory)} />
@@ -23,8 +22,4 @@ let App = () => {
   );
 };
 
-App = RouterDecorator(App);
-App = StoreDecorator(App);
-App = ThemeDecorator(App);
-
-export default App;
+export default AppView;
