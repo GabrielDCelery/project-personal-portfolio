@@ -1,78 +1,95 @@
-import React from "react";
-//import Paper from "@material-ui/core/Paper";
+import React from 'react';
 import {
-  Button,
-  Container,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
   Paper,
-  Step,
-  StepContent,
-  StepLabel,
-  Stepper,
-  Toolbar,
   Typography
-} from "@material-ui/core";
+} from '@material-ui/core';
 import {
-  Heading,
-  StepIcon
-} from './components';
+  ComponentLeftAlignedContainer,
+  ComponentVerticalGutter
+} from 'components';
+import styled from 'styled-components';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-export default function WorkHistoryView({
-  actionSetActiveWorkHistoryStep,
-  stateWorkHistoryActiveStepIndex,
-  stateWorkHistoryPlaces
-}) {
+const StyledTypography = styled.div`
+  width: 100%;
+  background: #082431;
+  padding: 1rem !important;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+`;
+
+const StyledTypography2 = styled.div`
+  width: 100%;
+  background: #082431;
+  padding: 1rem !important;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+`;
+
+export default function WorkHistoryView({ getter, handler }) {
   return (
     <React.Fragment>
-      <Container maxWidth="xl">
-        <Typography variant="h3" gutterBottom>WORK HISTORY</Typography>
-        <Stepper
-          nonLinear={true}
-          activeStep={stateWorkHistoryActiveStepIndex}
-          orientation="vertical"
+      <ComponentVerticalGutter />
+      <ComponentLeftAlignedContainer maxWidth="xl">
+        <ExpansionPanel
+          expanded={getter('isPanelOpen')('panel1')}
+          onChange={() => {
+            handler('setExpandedPanel')('panel1');
+          }}
         >
-          {stateWorkHistoryPlaces.map(({ company, content, date, type }, index) => (
-            <Step key={index}>
-              <StepLabel StepIconComponent={() => (
-                <StepIcon
-                  isActive={stateWorkHistoryActiveStepIndex === index}
-                  onClick={() => { actionSetActiveWorkHistoryStep(index) }}
-                />
-              )}>
-                <Toolbar>
-                  <Typography component="p"><strong>{date}</strong></Typography>
-                  <Typography component="div" style={{ flexGrow: 1 }}></Typography>
-                  <Typography component="p"><strong>{company}</strong></Typography>
-                </Toolbar>
-              </StepLabel>
-              <StepContent>
-                <div style={{ padding: '1em' }}>
-                  <Paper>
-                    <Typography variant="h6" style={{
-                      background: '#2c9fda',
-                      padding: '0.5em',
-                      textAlign: 'right',
-                      border: '1px solid #000 !important'
-                    }}>Insurance Broker Custom Dashboard</Typography>
-                    <Heading>Project Description</Heading>
-                    <div style={{ padding: '1em' }}>
-                      <p>One of our clients approached us with a request to automate their insurance renewal process. At the time their handlers were sending excel spreadsheets to the insurers and manage the entire process via emails.</p>
-                      <p>In order to accomodate their request we had to build a custom dashboard</p>
-                    </div>
-                    <Heading>Key Responsibilites</Heading>
-                    <div style={{ padding: '1em' }}>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et quam mattis, dignissim arcu a, tempus magna. Phasellus ullamcorper dolor nec consequat dignissim. Proin finibus condimentum viverra. Nulla ornare dui et convallis pulvinar. Donec semper euismod lacinia. Maecenas non dui nec arcu facilisis facilisis eget nec libero. In dapibus venenatis neque non varius. Ut ac ultricies magna. Fusce tempus vitae nibh ut maximus. Cras vel erat in ante pulvinar tincidunt.</p>
-                    </div>
-                    <Heading>Technologies Used</Heading>
-                    <div style={{ padding: '1em' }}>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et quam mattis, dignissim arcu a, tempus magna. Phasellus ullamcorper dolor nec consequat dignissim. Proin finibus condimentum viverra. Nulla ornare dui et convallis pulvinar. Donec semper euismod lacinia. Maecenas non dui nec arcu facilisis facilisis eget nec libero. In dapibus venenatis neque non varius. Ut ac ultricies magna. Fusce tempus vitae nibh ut maximus. Cras vel erat in ante pulvinar tincidunt.</p>
-                    </div>
-                  </Paper>
-                </div>
-              </StepContent>
-            </Step>
-          ))}
-        </Stepper>
-      </Container>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon style={{ color: '#fff' }} />}
+            style={{ backgroundColor: '#275a71' }}
+          >
+            <Typography
+              style={{
+                fontWeight: 'bold',
+                flexBasis: '33.33%',
+                flexShrink: 0,
+                color: '#fff'
+              }}
+            >
+              AUTOLOGYX LLC
+            </Typography>
+            <Typography style={{ color: '#ddd', fontWeight: 'bold' }}>
+              2018 April. - Present
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <StyledTypography>Project Description</StyledTypography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+
+        <ExpansionPanel
+          expanded={getter('isPanelOpen')('panel2')}
+          onChange={() => {
+            handler('setExpandedPanel')('panel2');
+          }}
+        >
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon style={{ color: '#fff' }} />}
+            style={{ backgroundColor: '#275a71' }}
+          >
+            <Typography
+              style={{
+                fontWeight: 'bold',
+                flexBasis: '33.33%',
+                flexShrink: 0,
+                color: '#fff'
+              }}
+            >
+              ARKENFORD LLC
+            </Typography>
+            <Typography style={{ color: '#ddd', fontWeight: 'bold' }}>
+              2016 April. - 2018 April
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>b</ExpansionPanelDetails>
+        </ExpansionPanel>
+      </ComponentLeftAlignedContainer>
     </React.Fragment>
   );
 }
