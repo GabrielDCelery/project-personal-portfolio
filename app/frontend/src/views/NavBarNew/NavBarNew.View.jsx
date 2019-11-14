@@ -7,6 +7,15 @@ import {
   InsertEmoticon as InsertEmoticonIcon,
   Build as BuildIcon
 } from '@material-ui/icons';
+import config from 'config';
+
+const NavBarIcons = {
+  EmailIcon,
+  GetAppIcon,
+  WorkIcon,
+  InsertEmoticonIcon,
+  BuildIcon
+};
 
 export default function NavBarView({
   StyledDrawer,
@@ -23,60 +32,26 @@ export default function NavBarView({
       <CssBaseline />
       <StyledDrawerContainer>
         <StyledDrawer variant="permanent" anchor="left">
-          <StyledListItem
-            button
-            className={`${getter('activePage') === '/' ? 'active' : ''}`}
-            onClick={() => handler('navToPage')('/')}
-          >
-            <StledListItemGutter />
-            <StyledListItemIcon>
-              <WorkIcon fontSize="large" />
-            </StyledListItemIcon>
-            <StyledListItemText primary="WORK HISTORY" />
-            <StledListItemGutter />
-          </StyledListItem>
+          {config.routes.map(({ path, icon, label }, index) => {
+            const Icon = NavBarIcons[icon];
 
-          <StyledListItem
-            button
-            className={`${
-              getter('activePage') === '/addNewMatter' ? 'active' : ''
-            }`}
-            onClick={() => handler('navToPage')('/')}
-          >
-            <StledListItemGutter />
-            <StyledListItemIcon>
-              <InsertEmoticonIcon fontSize="large" />
-            </StyledListItemIcon>
-            <StyledListItemText primary="UNIQUE ACHIEVMENTS" />
-            <StledListItemGutter />
-          </StyledListItem>
-
-          <StyledListItem button onClick={() => {}}>
-            <StledListItemGutter />
-            <StyledListItemIcon>
-              <BuildIcon fontSize="large" />
-            </StyledListItemIcon>
-            <StyledListItemText primary="SKILLS" />
-            <StledListItemGutter />
-          </StyledListItem>
-
-          <StyledListItem button onClick={() => {}}>
-            <StledListItemGutter />
-            <StyledListItemIcon>
-              <GetAppIcon fontSize="large" />
-            </StyledListItemIcon>
-            <StyledListItemText primary="DOWNLOAD RESUME" />
-            <StledListItemGutter />
-          </StyledListItem>
-
-          <StyledListItem button onClick={() => {}}>
-            <StledListItemGutter />
-            <StyledListItemIcon>
-              <EmailIcon fontSize="large" />
-            </StyledListItemIcon>
-            <StyledListItemText primary="CONTACT ME" />
-            <StledListItemGutter />
-          </StyledListItem>
+            return (
+              <React.Fragment key={`navbar-item-${index}`}>
+                <StyledListItem
+                  button
+                  className={`${getter('isActivePage')(path) ? 'active' : ''}`}
+                  onClick={() => handler('navToPage')(path)}
+                >
+                  <StledListItemGutter />
+                  <StyledListItemIcon>
+                    <Icon fontSize="large" />
+                  </StyledListItemIcon>
+                  <StyledListItemText primary={label} />
+                  <StledListItemGutter />
+                </StyledListItem>
+              </React.Fragment>
+            );
+          })}
         </StyledDrawer>
       </StyledDrawerContainer>
     </React.Fragment>

@@ -7,7 +7,12 @@ export default function NavBarBehaviour(ToWrapComponent) {
     const { location, history } = props;
 
     const getters = {
-      activePage: location.pathname
+      isActivePage: useCallback(
+        pathName => {
+          return pathName === location.pathname;
+        },
+        [location]
+      )
     };
 
     const getter = (...paths) => {
