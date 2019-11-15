@@ -4,8 +4,8 @@ import store from 'store';
 
 export const StoreDecorator = ToWrapComponent => {
   return props => (
-    <Provider store={store}>
+    <Provider store={store.store}>
       <ToWrapComponent {...props} />
     </Provider>
   );
-}
+};

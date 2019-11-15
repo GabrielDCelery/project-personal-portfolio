@@ -1,18 +1,24 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import _ from 'lodash';
+import { CompetitionStoreDecorator } from 'components';
 
 export default function AchievmentsBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
-    const [expandedPanel, setExpandedPanel] = useState('panel1');
+    const {
+      actionGetCompetitionItems,
+      actionToggleCompetitionItem,
+      stateCompetitionItems,
+      stateCompetitionOpenItems
+    } = props;
 
     const getters = {
-      expandedPanel,
       isPanelOpen: useCallback(
-        panelName => {
-          return panelName === expandedPanel;
+        panelId => {
+          return stateCompetitionOpenItems.includes(panelId);
         },
-        [expandedPanel]
-      )
+        [stateCompetitionOpenItems]
+      ),
+      items: stateCompetitionItems
     };
 
     const getter = (...paths) => {
@@ -21,13 +27,10 @@ export default function AchievmentsBehaviour(ToWrapComponent) {
 
     const handlers = {
       setExpandedPanel: useCallback(
-        panelName => {
-          const newExpandedPanel =
-            panelName === expandedPanel ? null : panelName;
-
-          setExpandedPanel(newExpandedPanel);
+        panelId => {
+          actionToggleCompetitionItem(panelId);
         },
-        [expandedPanel, setExpandedPanel]
+        [actionToggleCompetitionItem]
       )
     };
 
@@ -35,8 +38,14 @@ export default function AchievmentsBehaviour(ToWrapComponent) {
       return _.get(handlers, paths);
     };
 
+    useEffect(() => {
+      actionGetCompetitionItems();
+    }, [actionGetCompetitionItems]);
+
     return <ToWrapComponent {...{ getter, handler }} />;
   };
+
+  WrapperComponent = CompetitionStoreDecorator(WrapperComponent);
 
   return WrapperComponent;
 }

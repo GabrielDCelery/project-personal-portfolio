@@ -1,15 +1,11 @@
-import {
-  applyMiddleware,
-  combineReducers,
-  createStore
-} from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 //import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import {
-  workHistoryReducer
-} from './workHistory';
+import { workHistoryReducer } from './workHistory';
+import { competitionsReducer } from './competitions';
 
 const combinedReducers = combineReducers({
+  competitions: competitionsReducer,
   workHistory: workHistoryReducer
 });
 

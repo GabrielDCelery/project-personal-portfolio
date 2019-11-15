@@ -6,9 +6,9 @@ export default [
     page: 'WorkHistory'
   },
   {
-    path: '/achievments',
+    path: '/competitions',
     icon: 'EmojiEventsIcon',
-    label: 'UNIQUE ACHIEVMENTS',
+    label: 'COMPETITIONS',
     page: 'Achievments'
   },
   {

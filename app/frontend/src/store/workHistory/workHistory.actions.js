@@ -4,7 +4,6 @@ import {
   GO_TO_NEXT_STEP
 } from './workHistory.constants';
 
-
 export const actionGoToNexWorkHistoryStep = () => {
   return async dispatch => {
     dispatch({
