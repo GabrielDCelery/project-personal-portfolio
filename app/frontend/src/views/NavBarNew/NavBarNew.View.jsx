@@ -5,7 +5,8 @@ import {
   GetApp as GetAppIcon,
   Work as WorkIcon,
   InsertEmoticon as InsertEmoticonIcon,
-  Build as BuildIcon
+  Build as BuildIcon,
+  EmojiEvents as EmojiEventsIcon
 } from '@material-ui/icons';
 import config from 'config';
 
@@ -14,7 +15,8 @@ const NavBarIcons = {
   GetAppIcon,
   WorkIcon,
   InsertEmoticonIcon,
-  BuildIcon
+  BuildIcon,
+  EmojiEventsIcon
 };
 
 export default function NavBarView({

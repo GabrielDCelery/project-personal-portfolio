@@ -7,7 +7,7 @@ export default [
   },
   {
     path: '/achievments',
-    icon: 'InsertEmoticonIcon',
+    icon: 'EmojiEventsIcon',
     label: 'UNIQUE ACHIEVMENTS',
     page: 'Achievments'
   },

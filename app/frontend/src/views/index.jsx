@@ -5,4 +5,4 @@ export * from './NavBar';
 export * from './NavBarNew';
 export * from './Resume';
 export * from './Skills';
-export * from './WorkHistory';
+export * from './WorkHistoryOld';
