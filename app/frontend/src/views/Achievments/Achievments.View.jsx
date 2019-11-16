@@ -1,23 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
+  Button,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
-  //Paper,
-  Typography,
-  Grid
+  Grid,
+  Link,
+  Typography
 } from '@material-ui/core';
+import {
+  ExpandMore as ExpandMoreIcon,
+  GitHub as GitHubIcon
+} from '@material-ui/icons';
 import {
   ComponentLeftAlignedContainer,
   ComponentVerticalGutter
 } from 'components';
-import styled from 'styled-components';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import unleashTheGeekPreviewImage from 'assets/achievments/unleash_the_geek_001.jpg';
 import halitePreviewImage from 'assets/achievments/halite3_001.jpg';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 
 //import { SizeMe } from 'react-sizeme';
 
@@ -26,15 +27,7 @@ const previewImageSrcMap = {
   halitePreviewImage
 };
 
-const StyledTypography = styled.div`
-  width: 100%;
-  background: #082431;
-  padding: 12px 24px !important;
-  color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-`;
-
-export default function AchievmentsView({ getter, handler }) {
+export default function AchievmentsView({ StyledTypography, getter, handler }) {
   return (
     <React.Fragment>
       <ComponentVerticalGutter height="2em" />
