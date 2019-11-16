@@ -1,70 +1,85 @@
 import React from 'react';
+import { CssBaseline, Hidden, Toolbar } from '@material-ui/core';
 import {
-  CssBaseline,
-  Hidden,
-  List,
-  Toolbar
-} from '@material-ui/core';
-import {
+  Build as BuildIcon,
   Email as EmailIcon,
-  FlightTakeoff as FlightTakeoffIcon,
+  EmojiEvents as EmojiEventsIcon,
   GetApp as GetAppIcon,
+  InsertEmoticon as InsertEmoticonIcon,
   Menu as MenuIcon,
-  Rowing as RowingIcon,
   Work as WorkIcon
 } from '@material-ui/icons';
 
+import config from 'config';
+
+const NavBarIcons = {
+  BuildIcon,
+  EmailIcon,
+  EmojiEventsIcon,
+  GetAppIcon,
+  InsertEmoticonIcon,
+  WorkIcon
+};
+
+const renderDrawrContent = ({
+  StyledListItem,
+  StyledListItemGutter,
+  StyledListItemIcon,
+  StyledListItemText,
+  getter,
+  handler
+}) => {
+  return (
+    <React.Fragment>
+      {config.routes.map(({ path, icon, label }, index) => {
+        const Icon = NavBarIcons[icon];
+
+        return (
+          <React.Fragment key={`navbar-item-${index}`}>
+            <StyledListItem
+              button
+              className={`${getter('isActivePage')(path) ? 'active' : ''}`}
+              onClick={() => handler('navToPage')(path)}
+            >
+              <StyledListItemGutter />
+              <StyledListItemIcon>
+                <Icon fontSize="large" />
+              </StyledListItemIcon>
+              <StyledListItemText primary={label} />
+              <StyledListItemGutter />
+            </StyledListItem>
+          </React.Fragment>
+        );
+      })}
+    </React.Fragment>
+  );
+};
+
 export default function NavBarView({
-  handleDrawerToggle,
-  isMobileOpen,
   StyledAppBar,
   StyledDrawer,
   StyledDrawerContainer,
   StyledIconButton,
   StyledListItem,
+  StyledListItemGutter,
   StyledListItemIcon,
-  StyledListItemText
+  StyledListItemText,
+  getter,
+  handler
 }) {
-  const drawer = (
-    <List>
-      <StyledListItem button>
-        <StyledListItemIcon><WorkIcon /></StyledListItemIcon>
-        <StyledListItemText primary="Work History" />
-      </StyledListItem>
-
-      <StyledListItem button>
-        <StyledListItemIcon><FlightTakeoffIcon /></StyledListItemIcon>
-        <StyledListItemText primary="Unique Achievments" />
-      </StyledListItem>
-
-      <StyledListItem button >
-        <StyledListItemIcon><RowingIcon /></StyledListItemIcon>
-        <StyledListItemText primary="Skills" />
-      </StyledListItem>
-
-      <StyledListItem button >
-        <StyledListItemIcon><GetAppIcon /></StyledListItemIcon>
-        <StyledListItemText primary="Download Resume" />
-      </StyledListItem>
-
-      <StyledListItem button>
-        <StyledListItemIcon><EmailIcon /></StyledListItemIcon>
-        <StyledListItemText primary="Contact" />
-      </StyledListItem>
-    </List>
-  );
-
   return (
     <React.Fragment>
       <CssBaseline />
-      <Hidden smUp implementation="css">
-        <StyledAppBar position="fixed">
+      <Hidden smUp>
+        <StyledAppBar position="fixed" color="secondary">
           <Toolbar>
             <StyledIconButton
               color="inherit"
               aria-label="Open drawer"
               edge="start"
-              onClick={handleDrawerToggle}
+              onClick={() => {
+                handler('handleDrawerToggle')();
+              }}
             >
               <MenuIcon />
             </StyledIconButton>
@@ -72,25 +87,39 @@ export default function NavBarView({
         </StyledAppBar>
       </Hidden>
       <StyledDrawerContainer>
-        <Hidden smUp implementation="css">
+        <Hidden smUp>
           <StyledDrawer
             variant="temporary"
-            anchor={"left"}
-            open={isMobileOpen}
-            onClose={handleDrawerToggle}
+            anchor="left"
+            open={getter('isMobileOpen')}
+            onClose={() => {
+              handler('handleDrawerToggle')();
+            }}
             ModalProps={{
               keepMounted: true
             }}
           >
-            {drawer}
+            {renderDrawrContent({
+              StyledListItemGutter,
+              StyledListItem,
+              StyledListItemIcon,
+              StyledListItemText,
+              getter,
+              handler
+            })}
           </StyledDrawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
-          <StyledDrawer
-            variant="permanent"
-            open
-          >
-            {drawer}
+
+        <Hidden xsDown>
+          <StyledDrawer variant="permanent" anchor="left">
+            {renderDrawrContent({
+              StyledListItemGutter,
+              StyledListItem,
+              StyledListItemIcon,
+              StyledListItemText,
+              getter,
+              handler
+            })}
           </StyledDrawer>
         </Hidden>
       </StyledDrawerContainer>

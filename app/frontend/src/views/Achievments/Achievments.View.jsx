@@ -19,7 +19,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
-import { SizeMe } from 'react-sizeme';
+//import { SizeMe } from 'react-sizeme';
 
 const previewImageSrcMap = {
   unleashTheGeekPreviewImage,
@@ -37,7 +37,7 @@ const StyledTypography = styled.div`
 export default function AchievmentsView({ getter, handler }) {
   return (
     <React.Fragment>
-      <ComponentVerticalGutter />
+      <ComponentVerticalGutter height="2em" />
       <ComponentLeftAlignedContainer maxWidth="xl">
         {getter('items').map(
           (

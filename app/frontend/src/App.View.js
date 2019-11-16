@@ -3,11 +3,13 @@ import { Route, Redirect } from 'react-router-dom';
 import {
   Achievments,
   Contact,
-  NavBarNew,
+  NavBar,
   Resume,
   Skills,
   WorkHistory
 } from 'views';
+import { Hidden } from '@material-ui/core';
+import { ComponentVerticalGutter } from 'components';
 import './App.css';
 import config from 'config';
 
@@ -22,8 +24,11 @@ const Pages = {
 const ViewWithNavbar = ToWrapComponent => {
   return props => (
     <div style={{ display: 'flex' }}>
-      <NavBarNew />
+      <NavBar />
       <div style={{ flexGrow: 1 }}>
+        <Hidden smUp>
+          <ComponentVerticalGutter height="4em" />
+        </Hidden>
         <ToWrapComponent {...props} />
       </div>
     </div>

@@ -1,23 +1,46 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { WithRouterDecorator } from 'components';
+import _ from 'lodash';
 
 export default function NavBarBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
+    const { location, history } = props;
     const [isMobileOpen, setMobileOpen] = useState(false);
 
-    const handleDrawerToggle = () => {
-      setMobileOpen(!isMobileOpen);
-    }
+    const getters = {
+      isActivePage: useCallback(
+        pathName => {
+          return pathName === location.pathname;
+        },
+        [location]
+      ),
+      isMobileOpen
+    };
 
-    return (
-      <ToWrapComponent
-        {...props}
-        {...{
-          isMobileOpen,
-          handleDrawerToggle
-        }}
-      />
-    )
-  }
+    const getter = (...paths) => {
+      return _.get(getters, paths);
+    };
+
+    const handlers = {
+      navToPage: useCallback(
+        setTo => {
+          history.push(setTo);
+        },
+        [history]
+      ),
+      handleDrawerToggle: useCallback(() => {
+        setMobileOpen(!isMobileOpen);
+      }, [isMobileOpen, setMobileOpen])
+    };
+
+    const handler = (...paths) => {
+      return _.get(handlers, paths);
+    };
+
+    return <ToWrapComponent {...{ getter, handler }} />;
+  };
+
+  WrapperComponent = WithRouterDecorator(WrapperComponent);
 
   return WrapperComponent;
 }
