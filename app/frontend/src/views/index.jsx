@@ -4,4 +4,4 @@ export * from './Main';
 export * from './NavBar';
 export * from './Resume';
 export * from './Skills';
-export * from './WorkHistoryOld';
+export * from './WorkHistory';
