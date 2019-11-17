@@ -4,6 +4,7 @@ class WorkHistory {
       {
         companyName: 'AUTOLOGYX LLC',
         position: 'Full Stack Developer',
+        workedFromTo: 'Apr. 2018 - Present',
         aboutTheCompany:
           'Autologyx provides process automation for complex operations in the compliance and legal sector.',
         workSummary:
@@ -16,6 +17,7 @@ class WorkHistory {
       {
         companyName: 'ARKENFORD LLC',
         position: 'Junior Web Developer',
+        workedFromTo: 'Apr. 2016 - Apr. 2018',
         aboutTheCompany:
           'Autologyx provides process automation for complex operations in the compliance and legal sector.',
         workSummary:

@@ -47,11 +47,12 @@ export default function WorkHistoryView({ getter, handler }) {
         {getter('items').map(
           (
             {
-              companyName,
-              position,
               aboutTheCompany,
+              companyName,
+              keyResponsibilities,
+              position,
               workSummary,
-              keyResponsibilities
+              workedFromTo
             },
             index
           ) => {
@@ -81,14 +82,15 @@ export default function WorkHistoryView({ getter, handler }) {
                       width="100%"
                       flexWrap="wrap"
                     >
-                      <Box>
+                      <Box flexGrow={1}>
                         <Typography variant="h5">{companyName}</Typography>
                       </Box>
-                      <Box flexGrow={1} />
-                      <Box>
+                      <Box flexGrow={1}>
                         <Typography variant="h6">{position}</Typography>
                       </Box>
-                      <Box flexGrow={1} />
+                      <Box flexGrow={1}>
+                        <Typography variant="h6">{workedFromTo}</Typography>
+                      </Box>
                     </Box>
                   </ExpansionPanelSummary>
 

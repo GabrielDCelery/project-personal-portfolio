@@ -70,14 +70,13 @@ export default function AchievmentsView({ getter, handler }) {
                       width="100%"
                       flexWrap="wrap"
                     >
-                      <Box>
+                      <Box flexGrow={1} style={{ flexBasis: 0 }}>
                         <Typography variant="h5">{name}</Typography>
                       </Box>
-                      <Box flexGrow={1} />
-                      <Box>
+                      <Box flexGrow={1} style={{ flexBasis: 0 }}>
                         <Typography variant="h6">{type}</Typography>
                       </Box>
-                      <Box flexGrow={1} />
+                      <Box flexGrow={1} style={{ flexBasis: 0 }} />
                     </Box>
                   </ExpansionPanelSummary>
 
