@@ -1,24 +1,23 @@
 import React from 'react';
 import {
+  //Container,
   Button,
   ExpansionPanel,
   ExpansionPanelDetails,
-  ExpansionPanelSummary,
+  Box,
   Grid,
   Link,
-  Typography
+  Typography,
+  ExpansionPanelSummary
 } from '@material-ui/core';
 import {
   ExpandMore as ExpandMoreIcon,
   GitHub as GitHubIcon
 } from '@material-ui/icons';
-import {
-  ComponentLeftAlignedContainer,
-  ComponentVerticalGutter
-} from 'components';
+import { ComponentLeftAlignedContainer } from 'components';
 import unleashTheGeekPreviewImage from 'assets/achievments/unleash_the_geek_001.jpg';
 import halitePreviewImage from 'assets/achievments/halite3_001.jpg';
-
+import config from 'config';
 //import { SizeMe } from 'react-sizeme';
 
 const previewImageSrcMap = {
@@ -26,10 +25,10 @@ const previewImageSrcMap = {
   halitePreviewImage
 };
 
-export default function AchievmentsView({ StyledTypography, getter, handler }) {
+export default function AchievmentsView({ getter, handler }) {
   return (
     <React.Fragment>
-      <ComponentVerticalGutter height="2em" />
+      <Box height="2em" />
       <ComponentLeftAlignedContainer maxWidth="xl">
         {getter('items').map(
           (
@@ -54,34 +53,50 @@ export default function AchievmentsView({ StyledTypography, getter, handler }) {
                   }}
                 >
                   <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon style={{ color: '#fff' }} />}
-                    style={{ backgroundColor: '#275a71' }}
+                    expandIcon={
+                      <ExpandMoreIcon
+                        style={{ color: config.styles.colors.darkBgText }}
+                      />
+                    }
+                    style={{
+                      backgroundColor: config.styles.colors.primary,
+                      padding: '0 2em'
+                    }}
                   >
-                    <Typography
-                      style={{
-                        fontWeight: 'bold',
-                        flexBasis: '33.33%',
-                        flexShrink: 0,
-                        color: '#fff'
-                      }}
+                    <Box
+                      color={config.styles.colors.darkBgText}
+                      display="flex"
+                      flexDirection="row"
+                      width="100%"
+                      flexWrap="wrap"
                     >
-                      {name}
-                    </Typography>
-                    <Typography style={{ color: '#ddd', fontWeight: 'bold' }}>
-                      {type}
-                    </Typography>
+                      <Box>
+                        <Typography variant="h6">{name}</Typography>
+                      </Box>
+                      <Box flexGrow={1} />
+                      <Box>
+                        <Typography variant="h6">{type}</Typography>
+                      </Box>
+                      <Box flexGrow={1} />
+                    </Box>
                   </ExpansionPanelSummary>
 
                   <ExpansionPanelDetails style={{ padding: 0 }}>
-                    <div style={{ width: '100%' }}>
-                      <StyledTypography>RESULTS</StyledTypography>
+                    <Box width="100%">
+                      <Box
+                        bgcolor={config.styles.colors.secondary}
+                        color={config.styles.colors.darkBgText}
+                        px="2em"
+                        py="1em"
+                        width="100%"
+                      >
+                        <Typography variant="h6">RESULTS</Typography>
+                      </Box>
 
-                      <div style={{ padding: 0 }}>
+                      <Box p="0">
                         <Grid container>
                           <Grid item md={6} sm={12}>
-                            <div
-                              style={{ padding: '1em', textAlign: 'center' }}
-                            >
+                            <Box p="1em" textAlign="center">
                               <Link
                                 href={reportUrl}
                                 target="_blank"
@@ -96,13 +111,11 @@ export default function AchievmentsView({ StyledTypography, getter, handler }) {
                                   {`Final Place ${finalPlace} out of ${numOfCompetitors}`}
                                 </Button>
                               </Link>
-                            </div>
+                            </Box>
                           </Grid>
 
                           <Grid item md={6} sm={12}>
-                            <div
-                              style={{ padding: '1em', textAlign: 'center' }}
-                            >
+                            <Box p="1em" textAlign="center">
                               <Link
                                 href={codeUrl}
                                 target="_blank"
@@ -118,25 +131,41 @@ export default function AchievmentsView({ StyledTypography, getter, handler }) {
                                   <GitHubIcon style={{ marginLeft: '10px' }} />
                                 </Button>
                               </Link>
-                            </div>
+                            </Box>
                           </Grid>
                         </Grid>
-                      </div>
+                      </Box>
 
-                      <StyledTypography>DESCRIPTION</StyledTypography>
-                      <div style={{ padding: '1em' }}>
-                        <p>{description}</p>
-                      </div>
+                      <Box
+                        bgcolor={config.styles.colors.secondary}
+                        color={config.styles.colors.darkBgText}
+                        px="2em"
+                        py="1em"
+                        width="100%"
+                      >
+                        <Typography variant="h6">DESCRIPTION</Typography>
+                      </Box>
+                      <Box p="2em">
+                        <Typography paragraph={true}>{description}</Typography>
+                      </Box>
 
-                      <StyledTypography>SCREENSHOT</StyledTypography>
-                      <div style={{ padding: 0 }}>
+                      <Box
+                        bgcolor={config.styles.colors.secondary}
+                        color={config.styles.colors.darkBgText}
+                        px="2em"
+                        py="1em"
+                        width="100%"
+                      >
+                        <Typography variant="h6">SCREENSHOT</Typography>
+                      </Box>
+                      <Box p="0">
                         <img
                           src={previewImageSrcMap[previewImage]}
                           alt="Unleash the Geek preview"
                           style={{ width: '100%' }}
                         />
-                      </div>
-                    </div>
+                      </Box>
+                    </Box>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
               </React.Fragment>

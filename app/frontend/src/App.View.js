@@ -8,8 +8,7 @@ import {
   Skills,
   WorkHistory
 } from 'views';
-import { Hidden } from '@material-ui/core';
-import { ComponentVerticalGutter } from 'components';
+import { Box, Hidden } from '@material-ui/core';
 import './App.css';
 import config from 'config';
 
@@ -27,7 +26,7 @@ const ViewWithNavbar = ToWrapComponent => {
       <NavBar />
       <div style={{ flexGrow: 1 }}>
         <Hidden smUp>
-          <ComponentVerticalGutter height="4em" />
+          <Box height="4em" />
         </Hidden>
         <ToWrapComponent {...props} />
       </div>

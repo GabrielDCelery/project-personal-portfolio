@@ -5,6 +5,7 @@ export default {
     tertiary: '#801245',
     dark: '#333',
     backgroundHighlight: '#F3F8FA',
+    darkBgText: '#eee',
     icons: {
       error: '#D41C36'
     },
