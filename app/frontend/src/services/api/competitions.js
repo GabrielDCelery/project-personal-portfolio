@@ -3,7 +3,7 @@ class Competitions {
     return [
       {
         name: 'HALITE 3',
-        type: 'ARTIFICIAL INTELLIGENCE CHALLENGE',
+        type: 'Artificial Intelligence Challenge',
         reportUrl: 'https://2018.halite.io/user/?user_id=7606',
         codeUrl: 'https://github.com/GabrielDCelery/competition-halite-iii',
         description:
@@ -14,7 +14,7 @@ class Competitions {
       },
       {
         name: 'UNLEASH THE GEEK',
-        type: 'ARTIFICIAL INTELLIGENCE CHALLENGE',
+        type: 'Artificial Intelligence Challenge',
         reportUrl:
           'https://www.codingame.com/challengereport/2267122999d7bcac925c923b59faa97cf2624883',
         codeUrl:

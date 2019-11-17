@@ -64,11 +64,11 @@ export default function WorkHistoryView({ getter, handler }) {
               flexWrap="wrap"
             >
               <Box>
-                <Typography variant="h6">AUTOLOGYX LLC</Typography>
+                <Typography variant="h5">AUTOLOGYX LLC</Typography>
               </Box>
               <Box flexGrow={1} />
               <Box>
-                <Typography variant="h6">FULL STACK DEVELOPER</Typography>
+                <Typography variant="h6">Full Stack Developer</Typography>
               </Box>
               <Box flexGrow={1} />
             </Box>
@@ -83,7 +83,7 @@ export default function WorkHistoryView({ getter, handler }) {
                 py="1em"
                 width="100%"
               >
-                <Typography variant="h6">ABOUT THE COMPANY</Typography>
+                <Typography variant="h6">About the company</Typography>
               </Box>
               <Box p="2em">
                 <Typography paragraph={true}>
@@ -99,7 +99,7 @@ export default function WorkHistoryView({ getter, handler }) {
                 py="1em"
                 width="100%"
               >
-                <Typography variant="h6">WORK SUMMARY</Typography>
+                <Typography variant="h6">Work summary</Typography>
               </Box>
               <Box p="2em">
                 <Typography paragraph={true}>
@@ -117,7 +117,7 @@ export default function WorkHistoryView({ getter, handler }) {
                 py="1em"
                 width="100%"
               >
-                <Typography variant="h6">KEY RESPONSIBILITIES</Typography>
+                <Typography variant="h6">Key responsibilities</Typography>
               </Box>
               <StyledList>
                 <ul>
@@ -139,7 +139,7 @@ export default function WorkHistoryView({ getter, handler }) {
                 py="1em"
                 width="100%"
               >
-                <Typography variant="h6">PROJECTS SAMPLE</Typography>
+                <Typography variant="h6">Projects sample</Typography>
               </Box>
 
               <div style={{ padding: 0 }}></div>
@@ -160,7 +160,7 @@ export default function WorkHistoryView({ getter, handler }) {
                   >
                     <Box>
                       <Typography variant="h6">
-                        INSURANCE RENEWAL DASHBOARD
+                        Insurance Renewal Dashboard
                       </Typography>
                     </Box>
                     <Box flexGrow={1} />
@@ -175,7 +175,7 @@ export default function WorkHistoryView({ getter, handler }) {
                     py="1em"
                     width="100%"
                   >
-                    <Typography variant="h6">GOAL</Typography>
+                    <Typography variant="h6">Goal</Typography>
                   </Box>
                 </ExpansionPanelDetails>
               </ExpansionPanel>

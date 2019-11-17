@@ -71,7 +71,7 @@ export default function AchievmentsView({ getter, handler }) {
                       flexWrap="wrap"
                     >
                       <Box>
-                        <Typography variant="h6">{name}</Typography>
+                        <Typography variant="h5">{name}</Typography>
                       </Box>
                       <Box flexGrow={1} />
                       <Box>
@@ -90,7 +90,7 @@ export default function AchievmentsView({ getter, handler }) {
                         py="1em"
                         width="100%"
                       >
-                        <Typography variant="h6">RESULTS</Typography>
+                        <Typography variant="h6">Results</Typography>
                       </Box>
 
                       <Box p="0">
@@ -143,7 +143,7 @@ export default function AchievmentsView({ getter, handler }) {
                         py="1em"
                         width="100%"
                       >
-                        <Typography variant="h6">DESCRIPTION</Typography>
+                        <Typography variant="h6">Description</Typography>
                       </Box>
                       <Box p="2em">
                         <Typography paragraph={true}>{description}</Typography>
@@ -156,7 +156,7 @@ export default function AchievmentsView({ getter, handler }) {
                         py="1em"
                         width="100%"
                       >
-                        <Typography variant="h6">SCREENSHOT</Typography>
+                        <Typography variant="h6">Screenshot</Typography>
                       </Box>
                       <Box p="0">
                         <img
@@ -173,6 +173,7 @@ export default function AchievmentsView({ getter, handler }) {
           }
         )}
       </ComponentLeftAlignedContainer>
+      <Box height="2em" />
     </React.Fragment>
   );
 }
