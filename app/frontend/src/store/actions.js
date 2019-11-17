@@ -2,8 +2,14 @@ import {
   actionGetCompetitionItems,
   actionToggleCompetitionItem
 } from './competitions';
+import {
+  actionGetWorkHistoryItems,
+  actionToggleWorkHistoryItem
+} from './workHistory';
 
 export default {
   actionGetCompetitionItems,
-  actionToggleCompetitionItem
+  actionToggleCompetitionItem,
+  actionGetWorkHistoryItems,
+  actionToggleWorkHistoryItem
 };

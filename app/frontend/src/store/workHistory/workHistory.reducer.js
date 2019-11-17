@@ -1,58 +1,33 @@
 import {
-  SET_ACTIVE_STEP,
-  GO_TO_NEXT_STEP,
-  GO_TO_PREVIOUS_STEP
+  SET_WORK_HISTORY_ITEMS,
+  TOGGLE_OPEN_WORK_HISTORY_ITEM
 } from './workHistory.constants';
 
 const initialState = {
-  activeStepIndex: 0,
-  places: [
-    {
-      type: 'office',
-      date: '2018 April. - Present',
-      company: 'AUTOLOGYX LTD.',
-      content:
-        "For each ad campaign that you create, you can control how much you're willing to spend on clicks and conversions, which networks and geographical locations you want your ads to show on, and more."
-    },
-    {
-      type: 'office',
-      date: '2016 April. - 2018 April',
-      company: 'ARKENFORD LTD.',
-      content:
-        'An ad group contains one or more ads which target a shared set of keywords.'
-    }
-  ]
+  openItems: [],
+  items: []
 };
 
 export const workHistoryReducer = (
   state = initialState,
-  { type, activeStepIndex }
+  { type, items, itemToToggle }
 ) => {
   switch (type) {
-    case SET_ACTIVE_STEP:
+    case SET_WORK_HISTORY_ITEMS:
       return {
         ...state,
-        ...{
-          activeStepIndex:
-            state.activeStepIndex === activeStepIndex ? null : activeStepIndex
-        }
+        items,
+        openItems: items.slice(0, 2).map((item, index) => index)
       };
 
-    case GO_TO_NEXT_STEP:
+    case TOGGLE_OPEN_WORK_HISTORY_ITEM:
       return {
         ...state,
-        ...{
-          activeStepIndex: state.activeStepIndex + 1
-        }
-      };
-
-    case GO_TO_PREVIOUS_STEP:
-      return {
-        ...state,
-        ...{
-          activeStepIndex:
-            state.activeStepIndex - 1 < 0 ? 0 : state.activeStepIndex - 1
-        }
+        openItems: state.openItems.includes(itemToToggle)
+          ? state.openItems.filter(openItem => {
+              return openItem !== itemToToggle;
+            })
+          : [...state.openItems, itemToToggle]
       };
 
     default:

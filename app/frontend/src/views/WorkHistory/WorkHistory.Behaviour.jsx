@@ -1,18 +1,24 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import _ from 'lodash';
+import { WorkHistoryStoreDecorator } from 'components';
 
 export default function WorkHistoryBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
-    const [expandedPanel, setExpandedPanel] = useState('panel1');
+    const {
+      actionGetWorkHistoryItems,
+      actionToggleWorkHistoryItem,
+      stateWorkHistoryItems,
+      stateWorkHistoryOpenItems
+    } = props;
 
     const getters = {
-      expandedPanel,
       isPanelOpen: useCallback(
-        panelName => {
-          return panelName === expandedPanel;
+        panelId => {
+          return stateWorkHistoryOpenItems.includes(panelId);
         },
-        [expandedPanel]
-      )
+        [stateWorkHistoryOpenItems]
+      ),
+      items: stateWorkHistoryItems
     };
 
     const getter = (...paths) => {
@@ -21,13 +27,10 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
 
     const handlers = {
       setExpandedPanel: useCallback(
-        panelName => {
-          const newExpandedPanel =
-            panelName === expandedPanel ? null : panelName;
-
-          setExpandedPanel(newExpandedPanel);
+        panelId => {
+          actionToggleWorkHistoryItem(panelId);
         },
-        [expandedPanel, setExpandedPanel]
+        [actionToggleWorkHistoryItem]
       )
     };
 
@@ -35,8 +38,14 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
       return _.get(handlers, paths);
     };
 
+    useEffect(() => {
+      actionGetWorkHistoryItems();
+    }, [actionGetWorkHistoryItems]);
+
     return <ToWrapComponent {...{ getter, handler }} />;
   };
+
+  WrapperComponent = WorkHistoryStoreDecorator(WrapperComponent);
 
   return WrapperComponent;
 }

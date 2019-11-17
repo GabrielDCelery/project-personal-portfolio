@@ -1,30 +1,25 @@
 import {
-  SET_ACTIVE_STEP,
-  GO_TO_PREVIOUS_STEP,
-  GO_TO_NEXT_STEP
+  SET_WORK_HISTORY_ITEMS,
+  TOGGLE_OPEN_WORK_HISTORY_ITEM
 } from './workHistory.constants';
+import services from 'services';
 
-export const actionGoToNexWorkHistoryStep = () => {
+export const actionGetWorkHistoryItems = () => {
   return async dispatch => {
+    const items = await services.api.workHistory.getList();
+
     dispatch({
-      type: GO_TO_NEXT_STEP
+      type: SET_WORK_HISTORY_ITEMS,
+      items
     });
   };
 };
 
-export const actionGoToPreviousWorkHistoryStep = () => {
+export const actionToggleWorkHistoryItem = itemToToggle => {
   return async dispatch => {
     dispatch({
-      type: GO_TO_PREVIOUS_STEP
-    });
-  };
-};
-
-export const actionSetActiveWorkHistoryStep = activeStepIndex => {
-  return async dispatch => {
-    dispatch({
-      type: SET_ACTIVE_STEP,
-      activeStepIndex
+      type: TOGGLE_OPEN_WORK_HISTORY_ITEM,
+      itemToToggle
     });
   };
 };

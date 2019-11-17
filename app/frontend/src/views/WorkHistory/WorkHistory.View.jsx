@@ -44,144 +44,165 @@ export default function WorkHistoryView({ getter, handler }) {
     <React.Fragment>
       <Box height="2em" />
       <ComponentLeftAlignedContainer maxWidth="xl">
-        <ExpansionPanel expanded={true}>
-          <ExpansionPanelSummary
-            expandIcon={
-              <ExpandMoreIcon
-                style={{ color: config.styles.colors.darkBgText }}
-              />
-            }
-            style={{
-              backgroundColor: config.styles.colors.primary,
-              padding: '0 2em'
-            }}
-          >
-            <Box
-              color={config.styles.colors.darkBgText}
-              display="flex"
-              flexDirection="row"
-              width="100%"
-              flexWrap="wrap"
-            >
-              <Box>
-                <Typography variant="h5">AUTOLOGYX LLC</Typography>
-              </Box>
-              <Box flexGrow={1} />
-              <Box>
-                <Typography variant="h6">Full Stack Developer</Typography>
-              </Box>
-              <Box flexGrow={1} />
-            </Box>
-          </ExpansionPanelSummary>
-
-          <ExpansionPanelDetails style={{ padding: 0 }}>
-            <Box width="100%">
-              <Box
-                bgcolor={config.styles.colors.secondary}
-                color={config.styles.colors.darkBgText}
-                px="2em"
-                py="1em"
-                width="100%"
-              >
-                <Typography variant="h6">About the company</Typography>
-              </Box>
-              <Box p="2em">
-                <Typography paragraph={true}>
-                  Autologyx provides process automation for complex operations
-                  in the compliance and legal sector.
-                </Typography>
-              </Box>
-
-              <Box
-                bgcolor={config.styles.colors.secondary}
-                color={config.styles.colors.darkBgText}
-                px="2em"
-                py="1em"
-                width="100%"
-              >
-                <Typography variant="h6">Work summary</Typography>
-              </Box>
-              <Box p="2em">
-                <Typography paragraph={true}>
-                  My role included maintaining the company’s internal
-                  administrative web applications and public websites. Provided
-                  support to the company’s clientele in both green-and
-                  brownfield projects from tender through to completion.
-                </Typography>
-              </Box>
-
-              <Box
-                bgcolor={config.styles.colors.secondary}
-                color={config.styles.colors.darkBgText}
-                px="2em"
-                py="1em"
-                width="100%"
-              >
-                <Typography variant="h6">Key responsibilities</Typography>
-              </Box>
-              <StyledList>
-                <ul>
-                  <li>
-                    Created new- and extended existing modules to automate tasks
-                    and scheduled processes
-                  </li>
-                  <li>
-                    Built RESTful APIs for applications collecting and
-                    processing survey data
-                  </li>
-                </ul>
-              </StyledList>
-
-              <Box
-                bgcolor={config.styles.colors.secondary}
-                color={config.styles.colors.darkBgText}
-                px="2em"
-                py="1em"
-                width="100%"
-              >
-                <Typography variant="h6">Projects sample</Typography>
-              </Box>
-
-              <div style={{ padding: 0 }}></div>
-
-              <ExpansionPanel expanded={true} style={{ margin: 0 }}>
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  style={{
-                    backgroundColor: '#eddbb4',
-                    padding: '0 2em'
+        {getter('items').map(
+          (
+            {
+              companyName,
+              position,
+              aboutTheCompany,
+              workSummary,
+              keyResponsibilities
+            },
+            index
+          ) => {
+            return (
+              <React.Fragment key={`workHistory-item-${index}`}>
+                <ExpansionPanel
+                  expanded={getter('isPanelOpen')(index)}
+                  onChange={() => {
+                    handler('setExpandedPanel')(index);
                   }}
                 >
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    width="100%"
-                    flexWrap="wrap"
+                  <ExpansionPanelSummary
+                    expandIcon={
+                      <ExpandMoreIcon
+                        style={{ color: config.styles.colors.darkBgText }}
+                      />
+                    }
+                    style={{
+                      backgroundColor: config.styles.colors.primary,
+                      padding: '0 2em'
+                    }}
                   >
-                    <Box>
-                      <Typography variant="h6">
-                        Insurance Renewal Dashboard
-                      </Typography>
+                    <Box
+                      color={config.styles.colors.darkBgText}
+                      display="flex"
+                      flexDirection="row"
+                      width="100%"
+                      flexWrap="wrap"
+                    >
+                      <Box>
+                        <Typography variant="h5">{companyName}</Typography>
+                      </Box>
+                      <Box flexGrow={1} />
+                      <Box>
+                        <Typography variant="h6">{position}</Typography>
+                      </Box>
+                      <Box flexGrow={1} />
                     </Box>
-                    <Box flexGrow={1} />
-                  </Box>
-                </ExpansionPanelSummary>
+                  </ExpansionPanelSummary>
 
-                <ExpansionPanelDetails style={{ padding: 0 }}>
-                  <Box
-                    bgcolor={'#5c5746'}
-                    color={config.styles.colors.darkBgText}
-                    px="2em"
-                    py="1em"
-                    width="100%"
-                  >
-                    <Typography variant="h6">Goal</Typography>
-                  </Box>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-            </Box>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+                  <ExpansionPanelDetails style={{ padding: 0 }}>
+                    <Box width="100%">
+                      <Box
+                        bgcolor={config.styles.colors.secondary}
+                        color={config.styles.colors.darkBgText}
+                        px="2em"
+                        py="1em"
+                        width="100%"
+                      >
+                        <Typography variant="h6">About the company</Typography>
+                      </Box>
+                      <Box p="2em">
+                        <Typography paragraph={true}>
+                          {aboutTheCompany}
+                        </Typography>
+                      </Box>
+
+                      <Box
+                        bgcolor={config.styles.colors.secondary}
+                        color={config.styles.colors.darkBgText}
+                        px="2em"
+                        py="1em"
+                        width="100%"
+                      >
+                        <Typography variant="h6">Work summary</Typography>
+                      </Box>
+                      <Box p="2em">
+                        <Typography paragraph={true}>{workSummary}</Typography>
+                      </Box>
+
+                      <Box
+                        bgcolor={config.styles.colors.secondary}
+                        color={config.styles.colors.darkBgText}
+                        px="2em"
+                        py="1em"
+                        width="100%"
+                      >
+                        <Typography variant="h6">
+                          Key responsibilities
+                        </Typography>
+                      </Box>
+                      <StyledList>
+                        <ul>
+                          {keyResponsibilities.map(
+                            (keyResponsibility, index) => {
+                              return (
+                                <React.Fragment
+                                  key={`key-responsibility-${index}`}
+                                >
+                                  <li>{keyResponsibility}</li>
+                                </React.Fragment>
+                              );
+                            }
+                          )}
+                        </ul>
+                      </StyledList>
+
+                      <Box
+                        bgcolor={config.styles.colors.secondary}
+                        color={config.styles.colors.darkBgText}
+                        px="2em"
+                        py="1em"
+                        width="100%"
+                      >
+                        <Typography variant="h6">Projects sample</Typography>
+                      </Box>
+
+                      <div style={{ padding: 0 }}></div>
+
+                      <ExpansionPanel expanded={true} style={{ margin: 0 }}>
+                        <ExpansionPanelSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          style={{
+                            backgroundColor: '#eddbb4',
+                            padding: '0 2em'
+                          }}
+                        >
+                          <Box
+                            display="flex"
+                            flexDirection="row"
+                            width="100%"
+                            flexWrap="wrap"
+                          >
+                            <Box>
+                              <Typography variant="h6">
+                                Insurance Renewal Dashboard
+                              </Typography>
+                            </Box>
+                            <Box flexGrow={1} />
+                          </Box>
+                        </ExpansionPanelSummary>
+
+                        <ExpansionPanelDetails style={{ padding: 0 }}>
+                          <Box
+                            bgcolor={'#5c5746'}
+                            color={config.styles.colors.darkBgText}
+                            px="2em"
+                            py="1em"
+                            width="100%"
+                          >
+                            <Typography variant="h6">Goal</Typography>
+                          </Box>
+                        </ExpansionPanelDetails>
+                      </ExpansionPanel>
+                    </Box>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </React.Fragment>
+            );
+          }
+        )}
       </ComponentLeftAlignedContainer>
     </React.Fragment>
   );

@@ -1,6 +1,6 @@
 import {
   SET_COMPETITION_ITEMS,
-  TOGGLE_OPEN_ITEM
+  TOGGLE_OPEN_COMPETITION_ITEM
 } from './competitions.constants';
 
 const initialState = {
@@ -20,7 +20,7 @@ export const competitionsReducer = (
         openItems: items.slice(0, 2).map((item, index) => index)
       };
 
-    case TOGGLE_OPEN_ITEM:
+    case TOGGLE_OPEN_COMPETITION_ITEM:
       return {
         ...state,
         openItems: state.openItems.includes(itemToToggle)
