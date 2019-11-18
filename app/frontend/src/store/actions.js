@@ -4,12 +4,14 @@ import {
 } from './competitions';
 import {
   actionGetWorkHistoryItems,
-  actionToggleWorkHistoryItem
+  actionToggleWorkHistoryItem,
+  actionToggleWorkHistoryProjectItem
 } from './workHistory';
 
 export default {
   actionGetCompetitionItems,
   actionToggleCompetitionItem,
   actionGetWorkHistoryItems,
-  actionToggleWorkHistoryItem
+  actionToggleWorkHistoryItem,
+  actionToggleWorkHistoryProjectItem
 };

@@ -7,16 +7,24 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
     const {
       actionGetWorkHistoryItems,
       actionToggleWorkHistoryItem,
+      actionToggleWorkHistoryProjectItem,
       stateWorkHistoryItems,
-      stateWorkHistoryOpenItems
+      stateWorkHistoryOpenItems,
+      stateWorkHistoryProjectOpenItems
     } = props;
 
     const getters = {
-      isPanelOpen: useCallback(
+      isWorkHistoryPanelOpen: useCallback(
         panelId => {
           return stateWorkHistoryOpenItems.includes(panelId);
         },
         [stateWorkHistoryOpenItems]
+      ),
+      isProjectPanelOpen: useCallback(
+        panelId => {
+          return stateWorkHistoryProjectOpenItems.includes(panelId);
+        },
+        [stateWorkHistoryProjectOpenItems]
       ),
       items: stateWorkHistoryItems
     };
@@ -26,11 +34,17 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
     };
 
     const handlers = {
-      setExpandedPanel: useCallback(
+      setExpandedWorkItemPanel: useCallback(
         panelId => {
           actionToggleWorkHistoryItem(panelId);
         },
         [actionToggleWorkHistoryItem]
+      ),
+      setExpandedProjectPanel: useCallback(
+        panelId => {
+          actionToggleWorkHistoryProjectItem(panelId);
+        },
+        [actionToggleWorkHistoryProjectItem]
       )
     };
 

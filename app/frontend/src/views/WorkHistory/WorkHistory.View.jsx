@@ -6,7 +6,11 @@ import {
   ExpansionPanelSummary,
   Typography
 } from '@material-ui/core';
-import { ComponentLeftAlignedContainer } from 'components';
+import {
+  ComponentExpansionPanelHeading,
+  ComponentLeftAlignedContainer,
+  ComponentParagraphHeading
+} from 'components';
 import styled from 'styled-components';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import config from 'config';
@@ -52,16 +56,19 @@ export default function WorkHistoryView({ getter, handler }) {
               keyResponsibilities,
               position,
               workSummary,
-              workedFromTo
+              workedFromTo,
+              projects
             },
-            index
+            workHistoryItemIndex
           ) => {
             return (
-              <React.Fragment key={`workHistory-item-${index}`}>
+              <React.Fragment key={`workHistory-item-${workHistoryItemIndex}`}>
                 <ExpansionPanel
-                  expanded={getter('isPanelOpen')(index)}
+                  expanded={getter('isWorkHistoryPanelOpen')(
+                    workHistoryItemIndex
+                  )}
                   onChange={() => {
-                    handler('setExpandedPanel')(index);
+                    handler('setExpandedWorkItemPanel')(workHistoryItemIndex);
                   }}
                 >
                   <ExpansionPanelSummary
@@ -75,66 +82,42 @@ export default function WorkHistoryView({ getter, handler }) {
                       padding: '0 2em'
                     }}
                   >
-                    <Box
-                      color={config.styles.colors.darkBgText}
-                      display="flex"
-                      flexDirection="row"
-                      width="100%"
-                      flexWrap="wrap"
-                    >
-                      <Box flexGrow={1}>
-                        <Typography variant="h5">{companyName}</Typography>
-                      </Box>
-                      <Box flexGrow={1}>
-                        <Typography variant="h6">{position}</Typography>
-                      </Box>
-                      <Box flexGrow={1}>
-                        <Typography variant="h6">{workedFromTo}</Typography>
-                      </Box>
-                    </Box>
+                    <ComponentExpansionPanelHeading
+                      labelFirst={companyName}
+                      labelSecond={position}
+                      labelThird={workedFromTo}
+                      labelColor={config.styles.colors.darkBgText}
+                      bgColor={config.styles.colors.primary}
+                    />
                   </ExpansionPanelSummary>
 
                   <ExpansionPanelDetails style={{ padding: 0 }}>
                     <Box width="100%">
-                      <Box
-                        bgcolor={config.styles.colors.secondary}
-                        color={config.styles.colors.darkBgText}
-                        px="2em"
-                        py="1em"
-                        width="100%"
-                      >
-                        <Typography variant="h6">About the company</Typography>
-                      </Box>
+                      <ComponentParagraphHeading
+                        label="About the company"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
                       <Box p="2em">
                         <Typography paragraph={true}>
                           {aboutTheCompany}
                         </Typography>
                       </Box>
 
-                      <Box
-                        bgcolor={config.styles.colors.secondary}
-                        color={config.styles.colors.darkBgText}
-                        px="2em"
-                        py="1em"
-                        width="100%"
-                      >
-                        <Typography variant="h6">Work summary</Typography>
-                      </Box>
+                      <ComponentParagraphHeading
+                        label="Work summary"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
                       <Box p="2em">
                         <Typography paragraph={true}>{workSummary}</Typography>
                       </Box>
 
-                      <Box
-                        bgcolor={config.styles.colors.secondary}
-                        color={config.styles.colors.darkBgText}
-                        px="2em"
-                        py="1em"
-                        width="100%"
-                      >
-                        <Typography variant="h6">
-                          Key responsibilities
-                        </Typography>
-                      </Box>
+                      <ComponentParagraphHeading
+                        label="Key responsibilities"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
                       <StyledList>
                         <ul>
                           {keyResponsibilities.map(
@@ -151,53 +134,53 @@ export default function WorkHistoryView({ getter, handler }) {
                         </ul>
                       </StyledList>
 
-                      <Box
-                        bgcolor={config.styles.colors.secondary}
-                        color={config.styles.colors.darkBgText}
-                        px="2em"
-                        py="1em"
-                        width="100%"
-                      >
-                        <Typography variant="h6">Projects sample</Typography>
-                      </Box>
+                      <ComponentParagraphHeading
+                        label="Project samples"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
 
                       <div style={{ padding: 0 }}></div>
 
-                      <ExpansionPanel expanded={true} style={{ margin: 0 }}>
-                        <ExpansionPanelSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          style={{
-                            backgroundColor: '#eddbb4',
-                            padding: '0 2em'
-                          }}
-                        >
-                          <Box
-                            display="flex"
-                            flexDirection="row"
-                            width="100%"
-                            flexWrap="wrap"
-                          >
-                            <Box>
-                              <Typography variant="h6">
-                                Insurance Renewal Dashboard
-                              </Typography>
-                            </Box>
-                            <Box flexGrow={1} />
-                          </Box>
-                        </ExpansionPanelSummary>
+                      {projects.map(({ title, summary }, projectItemIndex) => {
+                        return (
+                          <React.Fragment key={`project-${projectItemIndex}`}>
+                            <ExpansionPanel
+                              expanded={true}
+                              style={{ margin: 0 }}
+                            >
+                              <ExpansionPanelSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                style={{
+                                  backgroundColor: '#eddbb4',
+                                  padding: '0 2em'
+                                }}
+                              >
+                                <ComponentExpansionPanelHeading
+                                  labelFirst={title}
+                                  labelColor={config.styles.colors.lightBgText}
+                                  bgColor={config.styles.colors.tertiary}
+                                />
+                              </ExpansionPanelSummary>
 
-                        <ExpansionPanelDetails style={{ padding: 0 }}>
-                          <Box
-                            bgcolor={'#5c5746'}
-                            color={config.styles.colors.darkBgText}
-                            px="2em"
-                            py="1em"
-                            width="100%"
-                          >
-                            <Typography variant="h6">Goal</Typography>
-                          </Box>
-                        </ExpansionPanelDetails>
-                      </ExpansionPanel>
+                              <ExpansionPanelDetails style={{ padding: 0 }}>
+                                <Box width="100%">
+                                  <ComponentParagraphHeading
+                                    label="Summary"
+                                    bgColor={config.styles.colors.quaternary}
+                                    labelColor={config.styles.colors.darkBgText}
+                                  />
+                                  <Box p="2em">
+                                    <Typography paragraph={true}>
+                                      foobar
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                          </React.Fragment>
+                        );
+                      })}
                     </Box>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>

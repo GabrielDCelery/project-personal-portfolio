@@ -14,7 +14,11 @@ import {
   ExpandMore as ExpandMoreIcon,
   GitHub as GitHubIcon
 } from '@material-ui/icons';
-import { ComponentLeftAlignedContainer } from 'components';
+import {
+  ComponentExpansionPanelHeading,
+  ComponentLeftAlignedContainer,
+  ComponentParagraphHeading
+} from 'components';
 import unleashTheGeekPreviewImage from 'assets/achievments/unleash_the_geek_001.jpg';
 import halitePreviewImage from 'assets/achievments/halite3_001.jpg';
 import config from 'config';
@@ -63,34 +67,21 @@ export default function AchievmentsView({ getter, handler }) {
                       padding: '0 2em'
                     }}
                   >
-                    <Box
-                      color={config.styles.colors.darkBgText}
-                      display="flex"
-                      flexDirection="row"
-                      width="100%"
-                      flexWrap="wrap"
-                    >
-                      <Box flexGrow={1} style={{ flexBasis: 0 }}>
-                        <Typography variant="h5">{name}</Typography>
-                      </Box>
-                      <Box flexGrow={1} style={{ flexBasis: 0 }}>
-                        <Typography variant="h6">{type}</Typography>
-                      </Box>
-                      <Box flexGrow={1} style={{ flexBasis: 0 }} />
-                    </Box>
+                    <ComponentExpansionPanelHeading
+                      labelFirst={name}
+                      labelSecond={type}
+                      labelColor={config.styles.colors.darkBgText}
+                      bgColor={config.styles.colors.primary}
+                    />
                   </ExpansionPanelSummary>
 
                   <ExpansionPanelDetails style={{ padding: 0 }}>
                     <Box width="100%">
-                      <Box
-                        bgcolor={config.styles.colors.secondary}
-                        color={config.styles.colors.darkBgText}
-                        px="2em"
-                        py="1em"
-                        width="100%"
-                      >
-                        <Typography variant="h6">Results</Typography>
-                      </Box>
+                      <ComponentParagraphHeading
+                        label="Results"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
 
                       <Box p="0">
                         <Grid container>
@@ -135,28 +126,20 @@ export default function AchievmentsView({ getter, handler }) {
                         </Grid>
                       </Box>
 
-                      <Box
-                        bgcolor={config.styles.colors.secondary}
-                        color={config.styles.colors.darkBgText}
-                        px="2em"
-                        py="1em"
-                        width="100%"
-                      >
-                        <Typography variant="h6">Description</Typography>
-                      </Box>
+                      <ComponentParagraphHeading
+                        label="Description"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
                       <Box p="2em">
                         <Typography paragraph={true}>{description}</Typography>
                       </Box>
 
-                      <Box
-                        bgcolor={config.styles.colors.secondary}
-                        color={config.styles.colors.darkBgText}
-                        px="2em"
-                        py="1em"
-                        width="100%"
-                      >
-                        <Typography variant="h6">Screenshot</Typography>
-                      </Box>
+                      <ComponentParagraphHeading
+                        label="Screenshot"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
                       <Box p="0">
                         <img
                           src={previewImageSrcMap[previewImage]}

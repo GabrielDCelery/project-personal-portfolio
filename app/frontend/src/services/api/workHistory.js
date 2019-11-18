@@ -12,6 +12,16 @@ class WorkHistory {
         keyResponsibilities: [
           'Created new- and extended existing modules to automate tasks and scheduled processes',
           'Built RESTful APIs for applications collecting and processing survey data'
+        ],
+        projects: [
+          {
+            title: 'INSURANCE RENEWAL DASHBOARD',
+            summary: 'blah blah blah'
+          },
+          {
+            title: 'INSURANCE RENEWAL DASHBOARD',
+            summary: 'blah blah blah'
+          }
         ]
       },
       {
@@ -25,6 +35,12 @@ class WorkHistory {
         keyResponsibilities: [
           'Created new- and extended existing modules to automate tasks and scheduled processes',
           'Built RESTful APIs for applications collecting and processing survey data'
+        ],
+        projects: [
+          {
+            title: 'INSURANCE RENEWAL DASHBOARD',
+            summary: 'blah blah blah'
+          }
         ]
       }
     ];

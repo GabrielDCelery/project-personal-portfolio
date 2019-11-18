@@ -2,9 +2,11 @@ export default {
   colors: {
     primary: '#275a71',
     secondary: '#082431',
-    tertiary: '#801245',
+    tertiary: '#eddbb4',
+    quaternary: '#5c5746',
     dark: '#333',
     backgroundHighlight: '#F3F8FA',
+    lightBgText: '#222',
     darkBgText: '#eee',
     icons: {
       error: '#D41C36'
@@ -21,6 +23,11 @@ export default {
       border: {
         default: '#0d3346',
         hover: '#46B9F4'
+      }
+    },
+    paragraphs: {
+      title: {
+        primary: ''
       }
     }
   },
