@@ -4,7 +4,20 @@ import { Box, Typography } from '@material-ui/core';
 import config from 'config';
 
 export const ComponentExpansionPanelHeading = props => {
-  const { labelFirst, labelSecond, labelThird, bgColor, labelColor } = props;
+  const {
+    labelFirst,
+    labelSecond,
+    labelThird,
+    bgColor,
+    labelColor,
+    fontSize
+  } = props;
+
+  const style = {};
+
+  if (fontSize) {
+    style['fontSize'] = fontSize;
+  }
 
   return (
     <Box
@@ -17,19 +30,25 @@ export const ComponentExpansionPanelHeading = props => {
     >
       {labelFirst ? (
         <Box flexGrow={1} style={{ flexBasis: 0 }}>
-          <Typography variant="h6">{labelFirst}</Typography>
+          <Typography paragraph={true} style={{ margin: 0, ...style }}>
+            {labelFirst}
+          </Typography>
         </Box>
       ) : null}
 
       {labelSecond ? (
         <Box flexGrow={1} style={{ flexBasis: 0 }}>
-          <Typography variant="h6">{labelSecond}</Typography>
+          <Typography paragraph={true} style={{ margin: 0, ...style }}>
+            {labelSecond}
+          </Typography>
         </Box>
       ) : null}
 
       {labelThird ? (
         <Box flexGrow={1} style={{ flexBasis: 0 }}>
-          <Typography variant="h6">{labelThird}</Typography>
+          <Typography paragraph={true} style={{ margin: 0, ...style }}>
+            {labelThird}
+          </Typography>
         </Box>
       ) : null}
     </Box>

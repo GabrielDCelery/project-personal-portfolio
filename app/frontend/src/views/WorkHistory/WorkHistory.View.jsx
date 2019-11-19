@@ -9,7 +9,8 @@ import {
 import {
   ComponentExpansionPanelHeading,
   ComponentLeftAlignedContainer,
-  ComponentParagraphHeading
+  ComponentParagraphHeading,
+  ComponentParagraphBody
 } from 'components';
 import styled from 'styled-components';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -88,6 +89,7 @@ export default function WorkHistoryView({ getter, handler }) {
                       labelThird={workedFromTo}
                       labelColor={config.styles.colors.darkBgText}
                       bgColor={config.styles.colors.primary}
+                      fontSize="1.3rem"
                     />
                   </ExpansionPanelSummary>
 
@@ -98,41 +100,24 @@ export default function WorkHistoryView({ getter, handler }) {
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
-                      <Box p="2em">
-                        <Typography paragraph={true}>
-                          {aboutTheCompany}
-                        </Typography>
-                      </Box>
+                      <ComponentParagraphBody paragraphs={aboutTheCompany} />
 
                       <ComponentParagraphHeading
                         label="Work summary"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
-                      <Box p="2em">
-                        <Typography paragraph={true}>{workSummary}</Typography>
-                      </Box>
+
+                      <ComponentParagraphBody paragraphs={workSummary} />
 
                       <ComponentParagraphHeading
                         label="Key responsibilities"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
-                      <StyledList>
-                        <ul>
-                          {keyResponsibilities.map(
-                            (keyResponsibility, index) => {
-                              return (
-                                <React.Fragment
-                                  key={`key-responsibility-${index}`}
-                                >
-                                  <li>{keyResponsibility}</li>
-                                </React.Fragment>
-                              );
-                            }
-                          )}
-                        </ul>
-                      </StyledList>
+                      <ComponentParagraphBody
+                        paragraphs={keyResponsibilities}
+                      />
 
                       <ComponentParagraphHeading
                         label="Project samples"
@@ -142,45 +127,64 @@ export default function WorkHistoryView({ getter, handler }) {
 
                       <div style={{ padding: 0 }}></div>
 
-                      {projects.map(({ title, summary }, projectItemIndex) => {
-                        return (
-                          <React.Fragment key={`project-${projectItemIndex}`}>
-                            <ExpansionPanel
-                              expanded={true}
-                              style={{ margin: 0 }}
-                            >
-                              <ExpansionPanelSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                style={{
-                                  backgroundColor: '#eddbb4',
-                                  padding: '0 2em'
-                                }}
+                      {projects.map(
+                        ({ title, summary, tasks }, projectItemIndex) => {
+                          return (
+                            <React.Fragment key={`project-${projectItemIndex}`}>
+                              <ExpansionPanel
+                                expanded={true}
+                                style={{ margin: 0 }}
                               >
-                                <ComponentExpansionPanelHeading
-                                  labelFirst={title}
-                                  labelColor={config.styles.colors.lightBgText}
-                                  bgColor={config.styles.colors.tertiary}
-                                />
-                              </ExpansionPanelSummary>
-
-                              <ExpansionPanelDetails style={{ padding: 0 }}>
-                                <Box width="100%">
-                                  <ComponentParagraphHeading
-                                    label="Summary"
-                                    bgColor={config.styles.colors.quaternary}
-                                    labelColor={config.styles.colors.darkBgText}
+                                <ExpansionPanelSummary
+                                  expandIcon={<ExpandMoreIcon />}
+                                  style={{
+                                    backgroundColor: '#eddbb4',
+                                    padding: '0 2em'
+                                  }}
+                                >
+                                  <ComponentExpansionPanelHeading
+                                    labelFirst={title}
+                                    labelColor={
+                                      config.styles.colors.lightBgText
+                                    }
+                                    bgColor={config.styles.colors.tertiary}
+                                    fontSize="0.9rem"
                                   />
-                                  <Box p="2em">
-                                    <Typography paragraph={true}>
-                                      foobar
-                                    </Typography>
+                                </ExpansionPanelSummary>
+
+                                <ExpansionPanelDetails style={{ padding: 0 }}>
+                                  <Box width="100%">
+                                    <ComponentParagraphHeading
+                                      label="Summary"
+                                      bgColor={config.styles.colors.quaternary}
+                                      labelColor={
+                                        config.styles.colors.darkBgText
+                                      }
+                                      fontSize="0.9rem"
+                                    />
+                                    <ComponentParagraphBody
+                                      paragraphs={summary}
+                                    />
+
+                                    <ComponentParagraphHeading
+                                      label="Key tasks"
+                                      bgColor={config.styles.colors.quaternary}
+                                      labelColor={
+                                        config.styles.colors.darkBgText
+                                      }
+                                      fontSize="0.9rem"
+                                    />
+
+                                    <ComponentParagraphBody
+                                      paragraphs={tasks}
+                                    />
                                   </Box>
-                                </Box>
-                              </ExpansionPanelDetails>
-                            </ExpansionPanel>
-                          </React.Fragment>
-                        );
-                      })}
+                                </ExpansionPanelDetails>
+                              </ExpansionPanel>
+                            </React.Fragment>
+                          );
+                        }
+                      )}
                     </Box>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>

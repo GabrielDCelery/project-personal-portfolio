@@ -72,6 +72,7 @@ export default function AchievmentsView({ getter, handler }) {
                       labelSecond={type}
                       labelColor={config.styles.colors.darkBgText}
                       bgColor={config.styles.colors.primary}
+                      fontSize="1.3rem"
                     />
                   </ExpansionPanelSummary>
 

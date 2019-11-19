@@ -5,22 +5,83 @@ class WorkHistory {
         companyName: 'AUTOLOGYX LLC',
         position: 'Full Stack Developer',
         workedFromTo: 'Apr. 2018 - Present',
-        aboutTheCompany:
-          'Autologyx provides process automation for complex operations in the compliance and legal sector.',
-        workSummary:
-          'My role included maintaining the company’s internal administrative web applications and public websites. Provided support to the company’s clientele in both green-and brownfield projects from tender through to completion.',
+        aboutTheCompany: [
+          {
+            type: 'paragraph',
+            content:
+              'Autologyx provides process automation for complex operations in the compliance and legal sector.'
+          }
+        ],
+        workSummary: [
+          {
+            type: 'paragraph',
+            content:
+              'My role included maintaining the company’s internal administrative web applications and public websites. Provided support to the company’s clientele in both green-and brownfield projects from tender through to completion.'
+          }
+        ],
         keyResponsibilities: [
-          'Created new- and extended existing modules to automate tasks and scheduled processes',
-          'Built RESTful APIs for applications collecting and processing survey data'
+          {
+            type: 'list',
+            content: [
+              'Created new- and extended existing modules to automate tasks and scheduled processes',
+              'Built RESTful APIs for applications collecting and processing survey data'
+            ]
+          }
         ],
         projects: [
           {
             title: 'INSURANCE RENEWAL DASHBOARD',
-            summary: 'blah blah blah'
+            summary: [
+              {
+                type: 'paragraph',
+                content: 'blah blah blah'
+              }
+            ],
+            tasks: [
+              {
+                type: 'list',
+                content: [
+                  'Created new- and extended existing modules to automate tasks and scheduled processes',
+                  'Built RESTful APIs for applications collecting and processing survey data'
+                ]
+              }
+            ]
           },
           {
-            title: 'INSURANCE RENEWAL DASHBOARD',
-            summary: 'blah blah blah'
+            title: 'LEGAL MATTER PLAYBOOK',
+            summary: [
+              {
+                type: 'paragraph',
+                content: 'blah blah blah'
+              }
+            ],
+            tasks: [
+              {
+                type: 'list',
+                content: [
+                  'Created new- and extended existing modules to automate tasks and scheduled processes',
+                  'Built RESTful APIs for applications collecting and processing survey data'
+                ]
+              }
+            ]
+          },
+          {
+            title: 'FORM BUILDER APPLICATION',
+            summary: [
+              {
+                type: 'paragraph',
+                content: 'blah blah blah'
+              }
+            ],
+            tasks: [
+              {
+                type: 'list',
+                content: [
+                  'Created new- and extended existing modules to automate tasks and scheduled processes',
+                  'Built RESTful APIs for applications collecting and processing survey data'
+                ]
+              }
+            ]
           }
         ]
       },
@@ -28,18 +89,47 @@ class WorkHistory {
         companyName: 'ARKENFORD LLC',
         position: 'Junior Web Developer',
         workedFromTo: 'Apr. 2016 - Apr. 2018',
-        aboutTheCompany:
-          'Autologyx provides process automation for complex operations in the compliance and legal sector.',
-        workSummary:
-          'My role included maintaining the company’s internal administrative web applications and public websites. Provided support to the company’s clientele in both green-and brownfield projects from tender through to completion.',
+        aboutTheCompany: [
+          {
+            type: 'paragraph',
+            content:
+              'Autologyx provides process automation for complex operations in the compliance and legal sector.'
+          }
+        ],
+        workSummary: [
+          {
+            type: 'paragraph',
+            content:
+              'My role included maintaining the company’s internal administrative web applications and public websites. Provided support to the company’s clientele in both green-and brownfield projects from tender through to completion.'
+          }
+        ],
         keyResponsibilities: [
-          'Created new- and extended existing modules to automate tasks and scheduled processes',
-          'Built RESTful APIs for applications collecting and processing survey data'
+          {
+            type: 'list',
+            content: [
+              'Created new- and extended existing modules to automate tasks and scheduled processes',
+              'Built RESTful APIs for applications collecting and processing survey data'
+            ]
+          }
         ],
         projects: [
           {
-            title: 'INSURANCE RENEWAL DASHBOARD',
-            summary: 'blah blah blah'
+            title: 'LEGAL MATTER PLAYBOOK',
+            summary: [
+              {
+                type: 'paragraph',
+                content: 'blah blah blah'
+              }
+            ],
+            tasks: [
+              {
+                type: 'list',
+                content: [
+                  'Created new- and extended existing modules to automate tasks and scheduled processes',
+                  'Built RESTful APIs for applications collecting and processing survey data'
+                ]
+              }
+            ]
           }
         ]
       }

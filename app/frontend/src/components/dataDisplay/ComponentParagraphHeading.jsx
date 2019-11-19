@@ -4,7 +4,13 @@ import { Box, Typography } from '@material-ui/core';
 import config from 'config';
 
 export const ComponentParagraphHeading = props => {
-  const { label, bgColor, labelColor } = props;
+  const { label, bgColor, labelColor, fontSize } = props;
+
+  const style = {};
+
+  if (fontSize) {
+    style['fontSize'] = fontSize;
+  }
 
   return (
     <Box
@@ -14,7 +20,7 @@ export const ComponentParagraphHeading = props => {
       py="1em"
       width="100%"
     >
-      <Typography paragraph={true} style={{ margin: 0 }}>
+      <Typography paragraph={true} style={{ margin: 0, ...style }}>
         {(label || '').toUpperCase()}
       </Typography>
     </Box>
