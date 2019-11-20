@@ -26,7 +26,7 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
         },
         [stateWorkHistoryProjectOpenItems]
       ),
-      items: stateWorkHistoryItems
+      workHistoryItems: stateWorkHistoryItems
     };
 
     const getter = (...paths) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import {
   Achievments,
   Contact,
@@ -11,6 +11,7 @@ import {
 import { Box, Hidden } from '@material-ui/core';
 import './App.css';
 import config from 'config';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const Pages = {
   Achievments,
@@ -34,21 +35,30 @@ const ViewWithNavbar = ToWrapComponent => {
   );
 };
 
-const AppView = () => {
+const AppView = ({ location }) => {
   return (
     <React.Fragment>
-      <Route exact path="/">
+      <Route exact={true} path="/">
         <Redirect to={`${config.routes[0].path}`} />
       </Route>
-      {config.routes.map(({ page, path }, index) => {
-        const Page = Pages[page];
+      <TransitionGroup>
+        <CSSTransition key={location.key} timeout={300} classNames="fade">
+          <Switch location={location}>
+            {config.routes.map(({ page, path }, index) => {
+              const Page = Pages[page];
 
-        return (
-          <React.Fragment key={`route-${index}`}>
-            <Route exact={true} path={path} render={ViewWithNavbar(Page)} />
-          </React.Fragment>
-        );
-      })}
+              return (
+                <Route
+                  key={`route-${index}`}
+                  exact={true}
+                  path={path}
+                  render={ViewWithNavbar(Page)}
+                />
+              );
+            })}
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </React.Fragment>
   );
 };

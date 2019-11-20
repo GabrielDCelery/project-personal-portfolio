@@ -21,8 +21,12 @@ const StyledList = styled.div`
       content: '';
       height: 0.9em;
       width: 0.9em;
-      border: 0.2em solid #5c5746;
-      background: #eddbb4;
+      border: ${({ styledListBorderColor }) => {
+        return `0.2em solid ${styledListBorderColor || '#5c5746'};`;
+      }}
+      background: ${({ styleListColor }) => {
+        return `${styleListColor || '#eddbb4'};`;
+      }};
       display: block;
       position: absolute;
       transform: rotate(45deg);
@@ -32,13 +36,21 @@ const StyledList = styled.div`
   }
 `;
 
-const renderContent = ({ type, content }) => {
+const renderContent = ({
+  type,
+  content,
+  styleListColor,
+  styledListBorderColor
+}) => {
   switch (type) {
     case 'paragraph':
       return <Typography paragraph={true}>{content}</Typography>;
     case 'list':
       return (
-        <StyledList>
+        <StyledList
+          styleListColor={styleListColor}
+          styledListBorderColor={styledListBorderColor}
+        >
           <ul>
             {content.map((value, index) => {
               return (
@@ -56,14 +68,19 @@ const renderContent = ({ type, content }) => {
 };
 
 export const ComponentParagraphBody = props => {
-  const { paragraphs } = props;
+  const { paragraphs, styleListColor, styledListBorderColor } = props;
 
   return (
     <Box p="2em">
       {paragraphs.map(({ type, content }, index) => {
         return (
           <React.Fragment key={`paragraph-${index}`}>
-            {renderContent({ type, content })}
+            {renderContent({
+              type,
+              content,
+              styleListColor,
+              styledListBorderColor
+            })}
           </React.Fragment>
         );
       })}

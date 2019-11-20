@@ -3,11 +3,13 @@ export default {
     primary: '#275a71',
     secondary: '#082431',
     tertiary: '#eddbb4',
-    quaternary: '#5c5746',
+    quaternary: '#6e6959',
     dark: '#333',
     backgroundHighlight: '#F3F8FA',
     lightBgText: '#222',
     darkBgText: '#eee',
+    lightBlue: '#b4c7ed',
+    lightBlueBorder: '#46465c',
     icons: {
       error: '#D41C36'
     },

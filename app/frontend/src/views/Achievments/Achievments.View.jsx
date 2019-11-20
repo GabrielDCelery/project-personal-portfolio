@@ -156,7 +156,7 @@ export default function AchievmentsView({ getter, handler }) {
           }
         )}
       </ComponentLeftAlignedContainer>
-      <Box height="2em" />
+      <Box height="4em" />
     </React.Fragment>
   );
 }

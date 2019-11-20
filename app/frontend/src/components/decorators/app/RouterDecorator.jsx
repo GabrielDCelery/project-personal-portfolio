@@ -7,4 +7,4 @@ export const RouterDecorator = ToWrapComponent => {
       <ToWrapComponent {...props} />
     </Router>
   );
-}
+};
