@@ -19,7 +19,7 @@ export const workHistoryReducer = (
       return {
         ...state,
         items,
-        openItems: items.slice(0, 2).map((item, index) => index)
+        openItems: items.slice(0, 1).map((item, index) => index)
       };
 
     case TOGGLE_OPEN_WORK_HISTORY_ITEM:

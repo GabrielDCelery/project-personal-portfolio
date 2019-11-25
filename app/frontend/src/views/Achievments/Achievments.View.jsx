@@ -17,7 +17,8 @@ import {
 import {
   ComponentExpansionPanelHeading,
   ComponentLeftAlignedContainer,
-  ComponentParagraphHeading
+  ComponentParagraphHeading,
+  AchievmentCard
 } from 'components';
 import unleashTheGeekPreviewImage from 'assets/achievments/unleash_the_geek_001.jpg';
 import halitePreviewImage from 'assets/achievments/halite3_001.jpg';
@@ -33,6 +34,41 @@ export default function AchievmentsView({ getter, handler }) {
   return (
     <React.Fragment>
       <Box height="2em" />
+      <ComponentLeftAlignedContainer maxWidth="xl">
+        <Grid container spacing={4}>
+          {getter('items').map(
+            (
+              {
+                name,
+                type,
+                codeUrl,
+                reportUrl,
+                description,
+                finalPlace,
+                numOfCompetitors,
+                previewImage
+              },
+              index
+            ) => {
+              return (
+                <React.Fragment key={`competition-item-${index}`}>
+                  <Grid item sm={12} md={4}>
+                    <AchievmentCard
+                      title={name}
+                      subTitle={type}
+                      description={description}
+                      previewImage={previewImage}
+                    />
+                  </Grid>
+                </React.Fragment>
+              );
+            }
+          )}
+        </Grid>
+      </ComponentLeftAlignedContainer>
+
+      <Box height="10em" />
+
       <ComponentLeftAlignedContainer maxWidth="xl">
         {getter('items').map(
           (

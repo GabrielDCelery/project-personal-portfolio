@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography, Link, Button } from '@material-ui/core';
 //import config from 'config';
 
 const StyledList = styled.div`
@@ -40,11 +40,22 @@ const renderContent = ({
   type,
   content,
   styleListColor,
-  styledListBorderColor
+  styledListBorderColor,
+  url
 }) => {
   switch (type) {
     case 'paragraph':
       return <Typography paragraph={true}>{content}</Typography>;
+    case 'buttonLink':
+      return (
+        <Box p="1em" textAlign="center">
+          <Link href={url} target="_blank" underline="none">
+            <Button fullWidth variant="outlined" color="primary" size="large">
+              {content}
+            </Button>
+          </Link>
+        </Box>
+      );
     case 'list':
       return (
         <StyledList

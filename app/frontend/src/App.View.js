@@ -42,7 +42,7 @@ const AppView = ({ location }) => {
         <Redirect to={`${config.routes[0].path}`} />
       </Route>
       <TransitionGroup>
-        <CSSTransition key={location.key} timeout={300} classNames="fade">
+        <CSSTransition /*key={location.key} */ timeout={300} classNames="fade">
           <Switch location={location}>
             {config.routes.map(({ page, path }, index) => {
               const Page = Pages[page];
