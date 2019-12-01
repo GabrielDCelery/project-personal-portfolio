@@ -10,6 +10,7 @@
     "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-3d-cube": "^1.0.5",
+    "react-animate-height": "^2.0.17",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-hexgrid": "^1.0.3",
