@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import _ from 'lodash';
+import { SkillsStoreDecorator } from 'components';
 
 export default function SkillsBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
+    const { actionGetSkillsItems, stateFilteredSkillsItems } = props;
+    console.log(stateFilteredSkillsItems);
     const getters = {};
 
     const getter = (...paths) => {
@@ -15,8 +18,14 @@ export default function SkillsBehaviour(ToWrapComponent) {
       return _.get(handlers, paths);
     };
 
+    useEffect(() => {
+      actionGetSkillsItems();
+    }, [actionGetSkillsItems]);
+
     return <ToWrapComponent {...{ getter, handler }} />;
   };
+
+  WrapperComponent = SkillsStoreDecorator(WrapperComponent);
 
   return WrapperComponent;
 }

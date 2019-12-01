@@ -3,9 +3,11 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { workHistoryReducer } from './workHistory';
 import { competitionsReducer } from './competitions';
+import { skillsReducer } from './skills';
 
 const combinedReducers = combineReducers({
   competitions: competitionsReducer,
+  skills: skillsReducer,
   workHistory: workHistoryReducer
 });
 

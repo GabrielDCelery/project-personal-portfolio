@@ -7,11 +7,17 @@ import {
   actionToggleWorkHistoryItem,
   actionToggleWorkHistoryProjectItem
 } from './workHistory';
+import {
+  actionGetSkillsItems,
+  actionSetSkillsVisibilityFilter
+} from './skills';
 
 export default {
   actionGetCompetitionItems,
-  actionToggleCompetitionItem,
+  actionGetSkillsItems,
   actionGetWorkHistoryItems,
+  actionSetSkillsVisibilityFilter,
+  actionToggleCompetitionItem,
   actionToggleWorkHistoryItem,
   actionToggleWorkHistoryProjectItem
 };

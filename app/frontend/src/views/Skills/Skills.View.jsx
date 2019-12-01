@@ -27,26 +27,29 @@ const StyledHexGrid = styled(HexGrid)`
 
 const StyledHexagon = styled(Hexagon)`
   g {
-    fill: #eddbb4;
-    fill-opacity: 0.6;
-    transition: all 1s;
+    fill: ${({ bgColor, width }) => {
+      return '#eddbb4';
+    }};
+    fill-opacity: 0.8;
+    transition: all 0.3s;
   }
 
   g:hover {
-    fill: #6e6959;
+    fill: #eddbb4;
+    fill-opacity: 1;
   }
 
   g text {
-    font-size: 0.22em;
-    fill: white;
+    font-size: 0.15em;
+    fill: #000;
     fill-opacity: 0.7;
-    transition: fill-opacity 0.5s;
+    transition: fill-opacity 0.3s;
   }
 
   g polygon {
     stroke: #6e6959;
     stroke-width: 0.2;
-    transition: fill-opacity 0.5s;
+    transition: fill-opacity 0.3s;
   }
 `;
 
@@ -82,7 +85,16 @@ export default function SkillsView({ getter, handler }) {
                 >
                   <StyledHexagon q={0} r={0} s={0} />
                   {/* Using pattern (defined below) to fill the hexagon */}
-                  <StyledHexagon q={0} r={-1} s={1} fill="pat-1" />
+                  <StyledHexagon
+                    q={0}
+                    r={-1}
+                    s={0}
+                    bgColor="#eddbb4"
+                    width={width / 150}
+                  >
+                    <Text>PostgreSQL</Text>
+                  </StyledHexagon>
+
                   <StyledHexagon q={0} r={1} s={-1} />
                   <StyledHexagon q={1} r={-1} s={0}>
                     <Text>MySQL</Text>
@@ -91,7 +103,7 @@ export default function SkillsView({ getter, handler }) {
                     <Text>NodeJs</Text>
                   </StyledHexagon>
                   {/* Pattern and text */}
-                  <StyledHexagon q={-1} r={1} s={0} fill="pat-2">
+                  <StyledHexagon q={-1} r={1} s={0}>
                     <Text>ReactJs</Text>
                   </StyledHexagon>
                   <StyledHexagon q={-1} r={0} s={1} />
@@ -99,16 +111,6 @@ export default function SkillsView({ getter, handler }) {
                   <Path start={new Hex(1, 0, -1)} end={new Hex(-2, 0, 1)} />
                 </Layout>
                 {/* You can define multiple patterns and switch between them with "fill" prop on Hexagon */}
-                <Pattern
-                  id="pat-1"
-                  link="http://lorempixel.com/400/400/cats/1/"
-                  size={{ x: width / 150, y: width / 150 }}
-                />
-                <Pattern
-                  id="pat-2"
-                  link="http://lorempixel.com/400/400/cats/2/"
-                  size={{ x: width / 150, y: width / 150 }}
-                />
               </StyledHexGrid>
             </React.Fragment>
           ) : (
