@@ -9,7 +9,10 @@ import {
 const mapStateToProps = state => {
   return {
     stateSkillsItems: state.skills.items,
-    stateFilteredSkillsItems: selectorGetFilteredSkillsToShowForHexMap(state)
+    stateSkillsVisibilityFilter: state.skills.visibilityFilter,
+    stateFilteredSkillsItemsForHexMap: selectorGetFilteredSkillsToShowForHexMap(
+      state
+    )
   };
 };
 

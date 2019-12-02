@@ -2,24 +2,30 @@ import React, { useState } from 'react';
 import { Box, Grid } from '@material-ui/core';
 import { ComponentLeftAlignedContainer, SkillCard } from 'components';
 import mysql from 'assets/mysql.svg';
-import nodejs from 'assets/nodejs.svg';
+//import nodejs from 'assets/nodejs.svg';
 import react from 'assets/react.svg';
 import config from 'config';
 import nodejsbw from 'assets/nodejsbw.svg';
-import {
-  GridGenerator,
-  HexGrid,
-  Layout,
-  Path,
-  Hexagon,
-  Text,
-  Pattern,
-  Hex
-} from 'react-hexgrid';
+import { HexGrid, Layout, Hexagon, Text } from 'react-hexgrid';
 //import './Skills.css';
 import { SizeMe } from 'react-sizeme';
 import styled from 'styled-components';
 import AnimateHeight from 'react-animate-height';
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+import Color from 'color';
+
+import {
+  Avatar,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Link,
+  Typography,
+  TextField
+} from '@material-ui/core';
 
 const StyledHexGrid = styled(HexGrid)`
   position: relative;
@@ -28,19 +34,17 @@ const StyledHexGrid = styled(HexGrid)`
 const StyledHexagon = styled(Hexagon)`
   g {
     fill: ${({ bgColor, width }) => {
-      return '#eddbb4';
+      return bgColor;
     }};
-    fill-opacity: 0.8;
+    /*fill-opacity: 0.9;*/
     transition: all 0.3s;
   }
 
   g:hover {
-    fill: #eddbb4;
-    fill-opacity: 1;
   }
 
   g text {
-    font-size: 0.15em;
+    font-size: 0.1em;
     fill: #000;
     fill-opacity: 0.7;
     transition: fill-opacity 0.3s;
@@ -59,6 +63,48 @@ export default function SkillsView({ getter, handler }) {
     <React.Fragment>
       <Box height="2em" />
       <ComponentLeftAlignedContainer>
+        <Card>
+          <CardContent
+            style={{
+              backgroundColor: config.styles.colors.primary,
+              color: '#fff'
+            }}
+          >
+            <div style={{ display: 'flex' }}>
+              <Avatar
+                aria-label="recipe"
+                style={{
+                  backgroundColor: config.styles.colors.secondary,
+                  marginRight: '1em'
+                }}
+              >
+                <SearchIcon />
+              </Avatar>
+
+              <InputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                style={{
+                  color: '#fff',
+                  backgroundColor: Color(config.styles.colors.primary)
+                    .lighten(0.2)
+                    .hex(),
+                  borderRadius: '5px',
+                  paddingLeft: '1em'
+                }}
+                value={getter('stateSkillsVisibilityFilter')}
+                onChange={event => {
+                  handler('actionSetSkillsVisibilityFilter')(
+                    event.target.value
+                  );
+                }}
+              />
+
+              <Typography component="div" style={{ flexGrow: 1 }}></Typography>
+            </div>
+          </CardContent>
+        </Card>
+
         <SizeMe>
           {({ size }) => {
             setWidth(size.width);
@@ -67,48 +113,34 @@ export default function SkillsView({ getter, handler }) {
         </SizeMe>
         <AnimateHeight
           duration={500}
-          height={(2 / 3) * width || 0} // see props documentation below
+          height={width || 0} // see props documentation below
         >
           {width ? (
             <React.Fragment>
-              <StyledHexGrid
-                width={width}
-                height={(2 / 3) * width}
-                viewBox="-50 -50 100 100"
-              >
+              <StyledHexGrid width={width} height={width || 0}>
                 {/* Main grid with bit hexagons, all manual */}
                 <Layout
-                  size={{ x: width / 150, y: width / 150 }}
+                  size={{ x: width / 180, y: width / 180 }}
                   flat={true}
                   spacing={1.1}
                   origin={{ x: 0, y: 0 }}
                 >
-                  <StyledHexagon q={0} r={0} s={0} />
-                  {/* Using pattern (defined below) to fill the hexagon */}
-                  <StyledHexagon
-                    q={0}
-                    r={-1}
-                    s={0}
-                    bgColor="#eddbb4"
-                    width={width / 150}
-                  >
-                    <Text>PostgreSQL</Text>
-                  </StyledHexagon>
-
-                  <StyledHexagon q={0} r={1} s={-1} />
-                  <StyledHexagon q={1} r={-1} s={0}>
-                    <Text>MySQL</Text>
-                  </StyledHexagon>
-                  <StyledHexagon q={1} r={0} s={-1}>
-                    <Text>NodeJs</Text>
-                  </StyledHexagon>
-                  {/* Pattern and text */}
-                  <StyledHexagon q={-1} r={1} s={0}>
-                    <Text>ReactJs</Text>
-                  </StyledHexagon>
-                  <StyledHexagon q={-1} r={0} s={1} />
-                  <StyledHexagon q={-2} r={0} s={1} />
-                  <Path start={new Hex(1, 0, -1)} end={new Hex(-2, 0, 1)} />
+                  {getter('stateFilteredSkillsItemsForHexMap').map(
+                    ({ label, hexX, hexY, bgColor }, index) => {
+                      return (
+                        <React.Fragment key={`hex-${index}`}>
+                          <StyledHexagon
+                            q={hexX}
+                            r={hexY}
+                            s={0}
+                            bgColor={bgColor}
+                          >
+                            <Text>{label}</Text>
+                          </StyledHexagon>
+                        </React.Fragment>
+                      );
+                    }
+                  )}
                 </Layout>
                 {/* You can define multiple patterns and switch between them with "fill" prop on Hexagon */}
               </StyledHexGrid>

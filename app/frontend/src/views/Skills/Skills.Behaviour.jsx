@@ -3,14 +3,25 @@ import _ from 'lodash';
 
 export default function SkillsBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
-    const { actionGetSkillsItems /*, stateFilteredSkillsItems*/ } = props;
-    const getters = {};
+    const {
+      actionGetSkillsItems,
+      actionSetSkillsVisibilityFilter,
+      stateFilteredSkillsItemsForHexMap,
+      stateSkillsVisibilityFilter
+    } = props;
+
+    const getters = {
+      stateFilteredSkillsItemsForHexMap,
+      stateSkillsVisibilityFilter
+    };
 
     const getter = (...paths) => {
       return _.get(getters, paths);
     };
 
-    const handlers = {};
+    const handlers = {
+      actionSetSkillsVisibilityFilter
+    };
 
     const handler = (...paths) => {
       return _.get(handlers, paths);
