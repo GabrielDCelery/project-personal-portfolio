@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import store from 'store';
-
-const {
-  actions: { actionGetCompetitionItems, actionToggleCompetitionItem }
-} = store;
+import { actionGetCompetitionItems, actionToggleCompetitionItem } from 'store';
 
 const mapStateToProps = state => {
   return {
@@ -18,9 +14,10 @@ const mapActionsToProps = {
   actionToggleCompetitionItem
 };
 
-export const CompetitionStoreDecorator = ToWrapComponent => {
-  return connect(
-    mapStateToProps,
-    mapActionsToProps
-  )(props => <ToWrapComponent {...props} />);
-};
+export default function AchievmentsStore(ToWrapComponent) {
+  let WrapperComponent = props => {
+    return <ToWrapComponent {...props} />;
+  };
+
+  return connect(mapStateToProps, mapActionsToProps)(WrapperComponent);
+}

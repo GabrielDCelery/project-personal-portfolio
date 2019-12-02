@@ -1,7 +1,4 @@
-import {
-  SET_SKILLS_ITEMS,
-  SET_SKILLS_VISIBILITY_FILTER
-} from './skills.constants';
+import { SET_SKILLS_ITEMS, SET_SKILLS_VISIBILITY_FILTER } from '../constants';
 
 const initialState = {
   items: [],

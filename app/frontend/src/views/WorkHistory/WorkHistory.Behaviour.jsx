@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
 import _ from 'lodash';
-import { WorkHistoryStoreDecorator } from 'components';
 
 export default function WorkHistoryBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
@@ -58,8 +57,6 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
 
     return <ToWrapComponent {...{ getter, handler }} />;
   };
-
-  WrapperComponent = WorkHistoryStoreDecorator(WrapperComponent);
 
   return WrapperComponent;
 }

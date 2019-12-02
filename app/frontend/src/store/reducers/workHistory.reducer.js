@@ -2,7 +2,7 @@ import {
   SET_WORK_HISTORY_ITEMS,
   TOGGLE_OPEN_WORK_HISTORY_ITEM,
   TOGGLE_OPEN_WORK_HISTORY_PROJECT_ITEM
-} from './workHistory.constants';
+} from '../constants';
 
 const initialState = {
   items: [],

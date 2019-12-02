@@ -1,7 +1,7 @@
 import {
   SET_COMPETITION_ITEMS,
   TOGGLE_OPEN_COMPETITION_ITEM
-} from './competitions.constants';
+} from '../constants';
 
 const initialState = {
   openItems: [],

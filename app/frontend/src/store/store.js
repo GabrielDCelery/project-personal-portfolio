@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 //import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import { workHistoryReducer } from './workHistory';
-import { competitionsReducer } from './competitions';
-import { skillsReducer } from './skills';
+import {
+  competitionsReducer,
+  skillsReducer,
+  workHistoryReducer
+} from './reducers';
 
 const combinedReducers = combineReducers({
   competitions: competitionsReducer,
@@ -15,7 +17,7 @@ const combinedDefaultState = {};
 
 //const loggerMiddleware = createLogger();
 
-const store = createStore(
+export const store = createStore(
   combinedReducers,
   combinedDefaultState,
   applyMiddleware(
@@ -23,5 +25,3 @@ const store = createStore(
     /*  loggerMiddleware*/
   )
 );
-
-export default store;

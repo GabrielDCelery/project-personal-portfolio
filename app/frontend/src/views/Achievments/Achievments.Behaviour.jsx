@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
 import _ from 'lodash';
-import { CompetitionStoreDecorator } from 'components';
 
 export default function AchievmentsBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
@@ -44,8 +43,6 @@ export default function AchievmentsBehaviour(ToWrapComponent) {
 
     return <ToWrapComponent {...{ getter, handler }} />;
   };
-
-  WrapperComponent = CompetitionStoreDecorator(WrapperComponent);
 
   return WrapperComponent;
 }

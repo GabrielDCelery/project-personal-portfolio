@@ -1,14 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import store from 'store';
-
-const {
-  actions: {
-    actionGetWorkHistoryItems,
-    actionToggleWorkHistoryItem,
-    actionToggleWorkHistoryProjectItem
-  }
-} = store;
+import {
+  actionGetWorkHistoryItems,
+  actionToggleWorkHistoryItem,
+  actionToggleWorkHistoryProjectItem
+} from 'store';
 
 const mapStateToProps = state => {
   return {
@@ -24,9 +20,10 @@ const mapActionsToProps = {
   actionToggleWorkHistoryProjectItem
 };
 
-export const WorkHistoryStoreDecorator = ToWrapComponent => {
-  return connect(
-    mapStateToProps,
-    mapActionsToProps
-  )(props => <ToWrapComponent {...props} />);
-};
+export default function WorkHistoryStore(ToWrapComponent) {
+  let WrapperComponent = props => {
+    return <ToWrapComponent {...props} />;
+  };
+
+  return connect(mapStateToProps, mapActionsToProps)(WrapperComponent);
+}
