@@ -50,7 +50,8 @@ export default function WorkHistoryView({ getter, handler }) {
                     }
                     style={{
                       backgroundColor: config.styles.colors.primary,
-                      padding: '0 2em'
+                      padding: '0 2em',
+                      borderBottom: '3px solid #000'
                     }}
                   >
                     <ComponentExpansionPanelHeading

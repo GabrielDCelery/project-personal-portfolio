@@ -70,7 +70,11 @@ export const AchievmentCard = props => {
   return (
     <Card>
       <CardHeader
-        style={{ backgroundColor: bgcolor, color: labelcolor }}
+        style={{
+          backgroundColor: bgcolor,
+          color: labelcolor,
+          borderBottom: '3px solid #000'
+        }}
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
             {_.first(title)}

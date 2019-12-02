@@ -24,7 +24,10 @@ import {
   CardMedia,
   Link,
   Typography,
-  TextField
+  TextField,
+  List,
+  ListItem,
+  ListItemText
 } from '@material-ui/core';
 
 const StyledHexGrid = styled(HexGrid)`
@@ -41,20 +44,51 @@ const StyledHexagon = styled(Hexagon)`
   }
 
   g:hover {
+    fill: ${({ bgColor, width }) => {
+      return Color(bgColor)
+        .lighten(0.3)
+        .hex();
+    }}
+    cursor: pointer;
   }
 
   g text {
     font-size: 0.1em;
-    fill: #000;
-    fill-opacity: 0.7;
-    transition: fill-opacity 0.3s;
+    fill:${({ bgColor, width }) => {
+      const lightTextColor = '#fff';
+      const darkTextColor = '#000';
+
+      return Color(bgColor).contrast(Color(lightTextColor)) <
+        Color(bgColor).contrast(Color(darkTextColor))
+        ? Color(bgColor)
+            .darken(0.7)
+            .hex()
+        : Color(bgColor)
+            .lighten(0.7)
+            .hex();
+    }};
+    //fill-opacity: 0.7;
+    //transition: fill-opacity 0.3s;
   }
 
   g polygon {
-    stroke: #6e6959;
+    stroke: ${({ bgColor, width }) => {
+      return Color(bgColor)
+        .darken(0.2)
+        .hex();
+    }};
     stroke-width: 0.2;
-    transition: fill-opacity 0.3s;
+    //transition: fill-opacity 0.3s;
   }
+`;
+
+const StyledVerticalGradientBox = styled(Box)`
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    ${config.styles.colors.tertiary} 0%,
+    ${config.styles.colors.primary} 100%
+  );
 `;
 
 export default function SkillsView({ getter, handler }) {
@@ -67,7 +101,8 @@ export default function SkillsView({ getter, handler }) {
           <CardContent
             style={{
               backgroundColor: config.styles.colors.primary,
-              color: '#fff'
+              color: '#fff',
+              borderBottom: '3px solid #000'
             }}
           >
             <div style={{ display: 'flex' }}>
@@ -103,6 +138,33 @@ export default function SkillsView({ getter, handler }) {
               <Typography component="div" style={{ flexGrow: 1 }}></Typography>
             </div>
           </CardContent>
+
+          <CardContent style={{ padding: 0 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={3}>
+                <StyledVerticalGradientBox />
+              </Grid>
+              <Grid item xs={9}>
+                <List dense={true}>
+                  <ListItem>
+                    <ListItemText primary="Have been using it on a daily basis or several projects for the past 2 years" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Several projects for atleast the past 2 years" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Atleast one project within the past 2 years" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Single-line item" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Played around with it, hasn't used it in a commercial project" />
+                  </ListItem>
+                </List>
+              </Grid>
+            </Grid>
+          </CardContent>
         </Card>
 
         <SizeMe>
@@ -120,7 +182,7 @@ export default function SkillsView({ getter, handler }) {
               <StyledHexGrid width={width} height={width || 0}>
                 {/* Main grid with bit hexagons, all manual */}
                 <Layout
-                  size={{ x: width / 180, y: width / 180 }}
+                  size={{ x: width / 200, y: width / 200 }}
                   flat={true}
                   spacing={1.1}
                   origin={{ x: 0, y: 0 }}
