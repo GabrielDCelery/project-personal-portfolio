@@ -93,10 +93,11 @@ const StyledVerticalGradientBox = styled(Box)`
 
 export default function SkillsView({ getter, handler }) {
   const [width, setWidth] = useState(0);
+
   return (
     <React.Fragment>
       <Box height="2em" />
-      <ComponentLeftAlignedContainer>
+      <ComponentLeftAlignedContainer maxWidth="xl">
         <Card>
           <CardContent
             style={{
@@ -147,16 +148,16 @@ export default function SkillsView({ getter, handler }) {
               <Grid item xs={9}>
                 <List dense={true}>
                   <ListItem>
-                    <ListItemText primary="Have been using it on a daily basis or several projects for the past 2 years" />
+                    <ListItemText primary="Have been using it on a daily basis or several commercial projects for the past 2 years" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Several projects for atleast the past 2 years" />
+                    <ListItemText primary="Several commercial projects for atleast the past 2 years" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Atleast one project within the past 2 years" />
+                    <ListItemText primary="Atleast one commercial project within the past 2 years" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Single-line item" />
+                    <ListItemText primary="Has completed atleast one online course in the subject" />
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Played around with it, hasn't used it in a commercial project" />
@@ -170,85 +171,44 @@ export default function SkillsView({ getter, handler }) {
         <SizeMe>
           {({ size }) => {
             setWidth(size.width);
-            return <Box style={{ width: '100%' }}></Box>;
+            return <Box style={{ height: '1px', width: '100%' }}></Box>;
           }}
         </SizeMe>
-        <AnimateHeight
-          duration={500}
-          height={width || 0} // see props documentation below
-        >
-          {width ? (
-            <React.Fragment>
-              <StyledHexGrid width={width} height={width || 0}>
-                {/* Main grid with bit hexagons, all manual */}
-                <Layout
-                  size={{ x: width / 200, y: width / 200 }}
-                  flat={true}
-                  spacing={1.1}
-                  origin={{ x: 0, y: 0 }}
-                >
-                  {getter('stateFilteredSkillsItemsForHexMap').map(
-                    ({ label, hexX, hexY, bgColor }, index) => {
-                      return (
-                        <React.Fragment key={`hex-${index}`}>
-                          <StyledHexagon
-                            q={hexX}
-                            r={hexY}
-                            s={0}
-                            bgColor={bgColor}
-                          >
-                            <Text>{label}</Text>
-                          </StyledHexagon>
-                        </React.Fragment>
-                      );
-                    }
-                  )}
-                </Layout>
-                {/* You can define multiple patterns and switch between them with "fill" prop on Hexagon */}
-              </StyledHexGrid>
-            </React.Fragment>
-          ) : (
-            <React.Fragment></React.Fragment>
-          )}
-        </AnimateHeight>
+
+        {width ? (
+          <React.Fragment>
+            <StyledHexGrid width={width} height={width || 0}>
+              {/* Main grid with bit hexagons, all manual */}
+              <Layout
+                size={{ x: width / 200, y: width / 200 }}
+                flat={true}
+                spacing={1.1}
+                origin={{ x: 0, y: 0 }}
+              >
+                {getter('stateFilteredSkillsItemsForHexMap').map(
+                  ({ label, hexX, hexY, bgColor }, index) => {
+                    return (
+                      <React.Fragment key={`hex-${index}`}>
+                        <StyledHexagon
+                          q={hexX}
+                          r={hexY}
+                          s={0}
+                          bgColor={bgColor}
+                        >
+                          <Text>{label}</Text>
+                        </StyledHexagon>
+                      </React.Fragment>
+                    );
+                  }
+                )}
+              </Layout>
+              {/* You can define multiple patterns and switch between them with "fill" prop on Hexagon */}
+            </StyledHexGrid>
+          </React.Fragment>
+        ) : (
+          <React.Fragment></React.Fragment>
+        )}
       </ComponentLeftAlignedContainer>
-
-      {true ? null : (
-        <ComponentLeftAlignedContainer maxWidth="xl">
-          <Grid container spacing={4}>
-            <Grid item xs={12} sm={6} md={3}>
-              <SkillCard
-                iconSrc={mysql}
-                label="MySQL"
-                cardBgColor={config.styles.colors.tertiary}
-                iconBorderColor={config.styles.colors.quaternary}
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={3}>
-              <SkillCard
-                iconSrc={nodejsbw}
-                label="NodeJS"
-                cardBgColor={config.styles.colors.tertiary}
-                iconBorderColor={config.styles.colors.quaternary}
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={3}>
-              <SkillCard
-                iconSrc={react}
-                label="ReactJS"
-                cardBgColor={config.styles.colors.tertiary}
-                iconBorderColor={config.styles.colors.quaternary}
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={3}>
-              <SkillCard />
-            </Grid>
-          </Grid>
-        </ComponentLeftAlignedContainer>
-      )}
     </React.Fragment>
   );
 }

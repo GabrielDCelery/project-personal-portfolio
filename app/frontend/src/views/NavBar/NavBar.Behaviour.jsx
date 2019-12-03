@@ -25,8 +25,9 @@ export default function NavBarBehaviour(ToWrapComponent) {
       navToPage: useCallback(
         setTo => {
           history.push(setTo);
+          setMobileOpen(false);
         },
-        [history]
+        [history, setMobileOpen]
       ),
       handleDrawerToggle: useCallback(() => {
         setMobileOpen(!isMobileOpen);
