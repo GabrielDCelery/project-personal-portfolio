@@ -35,8 +35,11 @@ const AppView = ({ location }) => {
               <Redirect to={`${config.routes[0].path}`} />
             </Route>
             <TransitionGroup>
-              <CSSTransition key={location.key} timeout={300} classNames="fade">
-                <Switch location={location} style={{ position: 'relative' }}>
+              <CSSTransition
+                /*key={location.key}*/ timeout={300}
+                classNames="fade"
+              >
+                <Switch location={location}>
                   {config.routes.map(({ page, path }, index) => {
                     const Page = Pages[page];
 
@@ -46,13 +49,7 @@ const AppView = ({ location }) => {
                         exact={true}
                         path={path}
                         render={() => {
-                          return (
-                            <div
-                              style={{ position: 'absolute', top: 0, left: 0 }}
-                            >
-                              <Page />
-                            </div>
-                          );
+                          return <Page />;
                         }}
                       />
                     );
