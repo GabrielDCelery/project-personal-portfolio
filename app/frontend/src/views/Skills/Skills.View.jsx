@@ -1,99 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Grid } from '@material-ui/core';
-import { ComponentLeftAlignedContainer, SkillCard } from 'components';
-import mysql from 'assets/mysql.svg';
-//import nodejs from 'assets/nodejs.svg';
-import react from 'assets/react.svg';
+import { ComponentLeftAlignedContainer } from 'components';
 import config from 'config';
-import nodejsbw from 'assets/nodejsbw.svg';
-import { HexGrid, Layout, Hexagon, Text } from 'react-hexgrid';
-//import './Skills.css';
+import { Layout, Text } from 'react-hexgrid';
 import { SizeMe } from 'react-sizeme';
-import styled from 'styled-components';
-import AnimateHeight from 'react-animate-height';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Color from 'color';
+import AnimateHeight from 'react-animate-height';
 
 import {
   Avatar,
-  Button,
   Card,
   CardContent,
-  CardHeader,
-  CardMedia,
-  Link,
   Typography,
-  TextField,
   List,
   ListItem,
   ListItemText
 } from '@material-ui/core';
 
-const StyledHexGrid = styled(HexGrid)`
-  position: relative;
-`;
-
-const StyledHexagon = styled(Hexagon)`
-  g {
-    fill: ${({ bgColor, width }) => {
-      return bgColor;
-    }};
-    /*fill-opacity: 0.9;*/
-    transition: all 0.3s;
-  }
-
-  g:hover {
-    fill: ${({ bgColor, width }) => {
-      return Color(bgColor)
-        .lighten(0.3)
-        .hex();
-    }}
-    cursor: pointer;
-  }
-
-  g text {
-    font-size: 0.1em;
-    fill:${({ bgColor, width }) => {
-      const lightTextColor = '#fff';
-      const darkTextColor = '#000';
-
-      return Color(bgColor).contrast(Color(lightTextColor)) <
-        Color(bgColor).contrast(Color(darkTextColor))
-        ? Color(bgColor)
-            .darken(0.7)
-            .hex()
-        : Color(bgColor)
-            .lighten(0.7)
-            .hex();
-    }};
-    //fill-opacity: 0.7;
-    //transition: fill-opacity 0.3s;
-  }
-
-  g polygon {
-    stroke: ${({ bgColor, width }) => {
-      return Color(bgColor)
-        .darken(0.2)
-        .hex();
-    }};
-    stroke-width: 0.2;
-    //transition: fill-opacity 0.3s;
-  }
-`;
-
-const StyledVerticalGradientBox = styled(Box)`
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    ${config.styles.colors.tertiary} 0%,
-    ${config.styles.colors.primary} 100%
-  );
-`;
-
-export default function SkillsView({ getter, handler }) {
-  const [width, setWidth] = useState(0);
-
+export default function SkillsView({
+  StyledHexGrid,
+  StyledHexagon,
+  StyledVerticalGradientBox,
+  getter,
+  handler
+}) {
   return (
     <React.Fragment>
       <Box height="2em" />
@@ -170,44 +102,61 @@ export default function SkillsView({ getter, handler }) {
 
         <SizeMe>
           {({ size }) => {
-            setWidth(size.width);
+            handler('layout', 'hexGrid', 'setWidth')(size.width * 0.8);
             return <Box style={{ height: '1px', width: '100%' }}></Box>;
           }}
         </SizeMe>
 
-        {width ? (
-          <React.Fragment>
-            <StyledHexGrid width={width} height={width || 0}>
-              {/* Main grid with bit hexagons, all manual */}
-              <Layout
-                size={{ x: width / 200, y: width / 200 }}
-                flat={true}
-                spacing={1.1}
-                origin={{ x: 0, y: 0 }}
-              >
-                {getter('stateFilteredSkillsItemsForHexMap').map(
-                  ({ label, hexX, hexY, bgColor }, index) => {
-                    return (
-                      <React.Fragment key={`hex-${index}`}>
-                        <StyledHexagon
-                          q={hexX}
-                          r={hexY}
-                          s={0}
-                          bgColor={bgColor}
-                        >
-                          <Text>{label}</Text>
-                        </StyledHexagon>
-                      </React.Fragment>
-                    );
-                  }
-                )}
-              </Layout>
-              {/* You can define multiple patterns and switch between them with "fill" prop on Hexagon */}
-            </StyledHexGrid>
-          </React.Fragment>
-        ) : (
-          <React.Fragment></React.Fragment>
-        )}
+        <AnimateHeight
+          duration={500}
+          height={getter('layout', 'hexGrid', 'height')}
+        >
+          <div
+            style={{
+              width: getter('layout', 'hexGrid', 'width'),
+              margin: '0 auto'
+            }}
+          >
+            {getter('layout', 'hexGrid', 'width') ? (
+              <React.Fragment>
+                <StyledHexGrid
+                  width={getter('layout', 'hexGrid', 'width')}
+                  height={getter('layout', 'hexGrid', 'height')}
+                  viewBox="-50 -50 100 100"
+                >
+                  <Layout
+                    size={{
+                      x: getter('layout', 'hexCell', 'width'),
+                      y: getter('layout', 'hexCell', 'height')
+                    }}
+                    flat={true}
+                    spacing={1.1}
+                    origin={{ x: 0, y: 0 }}
+                  >
+                    {getter('stateFilteredSkillsItemsForHexMap').map(
+                      ({ label, hexX, hexY, bgColor }, index) => {
+                        return (
+                          <React.Fragment key={`hex-${index}`}>
+                            <StyledHexagon
+                              q={hexX}
+                              r={hexY}
+                              s={0}
+                              bgColor={bgColor}
+                            >
+                              <Text>{label}</Text>
+                            </StyledHexagon>
+                          </React.Fragment>
+                        );
+                      }
+                    )}
+                  </Layout>
+                </StyledHexGrid>
+              </React.Fragment>
+            ) : (
+              <React.Fragment></React.Fragment>
+            )}
+          </div>
+        </AnimateHeight>
       </ComponentLeftAlignedContainer>
     </React.Fragment>
   );
