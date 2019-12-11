@@ -1,0 +1,21 @@
+# Frontend build stage image
+
+FROM node:10 as temp_frontend_build
+
+WORKDIR /app 
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Frontend build final image
+
+FROM node:10 as final_frontend_build
+
+ARG APP_FRONTEND_CODE=/usr/src/app_personal_portfolio_frontend
+
+WORKDIR ${APP_FRONTEND_CODE}
+COPY --from=temp_frontend_build /app/build ./build
+COPY package*.json ./
+COPY server.js ./
+RUN npm install --only=production

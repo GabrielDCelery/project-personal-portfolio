@@ -1,0 +1,8 @@
+FROM node:10
+
+ARG APP_FRONTEND_CODE=/usr/src/app_personal_portfolio_frontend
+
+WORKDIR ${APP_FRONTEND_CODE}
+COPY package*.json ./
+RUN npm install
+COPY . .

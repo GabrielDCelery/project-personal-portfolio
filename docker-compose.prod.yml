@@ -1,0 +1,10 @@
+version: "3"
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile.prod
+      args:
+        APP_USER: node
+    image: app_frontend_prod
+    container_name: app_frontend_prod
+    command: npm run production
