@@ -1,0 +1,7 @@
+FROM alpine:3.7
+RUN apk update && \
+  apk upgrade && \
+  apk add bash && \
+  apk add openssl
+COPY create_dev_cert.sh /create_dev_cert.sh
+CMD bash create_dev_cert.sh
