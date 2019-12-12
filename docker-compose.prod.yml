@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   frontend:
     build:
@@ -8,3 +8,6 @@ services:
     image: app_frontend_prod
     container_name: app_frontend_prod
     command: npm run production
+  reverse_proxy:
+    volumes:
+      - ./app/reverse_proxy/nginx.prod.conf:/etc/nginx/nginx.conf
