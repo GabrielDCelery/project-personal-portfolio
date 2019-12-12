@@ -11,26 +11,16 @@ services:
   reverse_proxy:
     volumes:
       - ./app/reverse_proxy/nginx.prod.conf:/etc/nginx/nginx.conf
-      - web-root:/var/www/html
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
+      - /var/www/:/var/www/html
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /root/letsencrypt/lib:/var/lib/letsencrypt
   certbot:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
+      - /var/www/:/var/www/html
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /root/letsencrypt/lib:/var/lib/letsencrypt
     depends_on:
       - reverse_proxy
     command: certonly --webroot --webroot-path=/var/www/html --email gabriel.d.celery@gmail.com --agree-tos --no-eff-email --staging -d gabrielzeller.co.uk  -d www.gabrielzeller.co.uk
-
-volumes:
-  certbot-etc:
-  certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/
-      o: bind
