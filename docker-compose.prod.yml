@@ -32,5 +32,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ~/project-personal-portfolio/app/views/
+      device: /home/project-personal-portfolio/app/views/
       o: bind
