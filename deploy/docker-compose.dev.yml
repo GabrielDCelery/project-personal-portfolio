@@ -9,5 +9,6 @@ services:
     container_name: app_frontend_dev
     command: npm run development
   reverse_proxy:
+    container_name: app_reverse_proxy_dev
     volumes:
-      - ./app/reverse_proxy/nginx.dev.conf:/etc/nginx/nginx.conf
+      - ../app/reverse_proxy/nginx.dev.conf:/etc/nginx/nginx.conf

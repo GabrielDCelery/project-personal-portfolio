@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   frontend:
     build:
@@ -10,7 +10,7 @@ services:
     command: npm run production
   end_to_end_tests:
     build:
-      context: ./app/end_to_end_tests
+      context: ../app/end_to_end_tests
       dockerfile: Dockerfile
     image: app_end_to_end_tests
     container_name: app_end_to_end_tests
