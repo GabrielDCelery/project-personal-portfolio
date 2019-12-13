@@ -1,1 +1,0 @@
-docker exec -it app_certbot_prod echo "Validate and / or Create certificate"
