@@ -11,14 +11,3 @@ services:
   reverse_proxy:
     volumes:
       - ./app/reverse_proxy/nginx.dev.conf:/etc/nginx/nginx.conf
-      - ./app/certs:/etc/nginx/certs
-    depends_on:
-      - certbot
-  certbot:
-    build:
-      context: ./app/certbot
-      dockerfile: Dockerfile.dev
-    image: app_certbot_dev
-    container_name: app_certbot_dev
-    volumes:
-      - ./app/certs:/certs
