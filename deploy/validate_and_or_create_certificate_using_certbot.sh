@@ -1,0 +1,1 @@
+echo "Validate and / or Create certificate"
