@@ -1,2 +1,2 @@
 FROM certbot/certbot
-CMD ["sh", "-c", "certonly", "--webroot", "--webroot-path=/var/www/html", "--agree-tos", "-m gabriel.d.celery@gmail.com", "--no-eff-email", "--staging", "-d gabrielzeller.co.uk", "-d www.gabrielzeller.co.uk"]
+CMD ["certonly", "--webroot", "--webroot-path=/var/www/html", "--agree-tos", "-m gabriel.d.celery@gmail.com", "--no-eff-email", "--staging", "-d gabrielzeller.co.uk", "-d www.gabrielzeller.co.uk"]
