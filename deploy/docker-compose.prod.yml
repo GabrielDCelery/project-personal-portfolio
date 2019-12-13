@@ -24,4 +24,4 @@ services:
       - ~/letsencrypt/lib:/var/lib/letsencrypt
     depends_on:
       - reverse_proxy
-    command: certonly --webroot --webroot-path=/var/www/html --email gabriel.d.celery@gmail.com --agree-tos --no-eff-email --staging -d gabrielzeller.co.uk  -d www.gabrielzeller.co.uk
+    command: certonly --webroot --webroot-path=/var/www/html --email gabriel.d.celery@gmail.com --agree-tos --no-eff-email --force-renewal -d gabrielzeller.co.uk  -d www.gabrielzeller.co.uk
