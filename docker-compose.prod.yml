@@ -15,10 +15,7 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - /root/letsencrypt/lib:/var/lib/letsencrypt
   certbot:
-    build:
-      context: ./app/certbot
-      dockerfile: Dockerfile
-    image: app_certbot_prod
+    image: certbot/certbot
     container_name: app_certbot_prod
     volumes:
       - /var/www/:/var/www/html
@@ -26,3 +23,4 @@ services:
       - /root/letsencrypt/lib:/var/lib/letsencrypt
     depends_on:
       - reverse_proxy
+    command: certonly --webroot --webroot-path=/var/www/html --email gabriel.d.celery@gmail.com --agree-tos --no-eff-email --staging -d gabrielzeller.co.uk  -d www.gabrielzeller.co.uk
