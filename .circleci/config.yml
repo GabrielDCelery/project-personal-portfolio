@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run:
+          name: Check docker version and run hello world docker container
+          command: |
+            docker --version
+            docker run hello-world
+      - run:
+          name: Check docker-compose version
+          command: docker-compose --version
+      - run:
+          name: Done
+          command: echo "done"
