@@ -10,4 +10,4 @@ jobs:
           command: scp ./deploy/production.http.sh $DROPLET_USER@$DROPLET_IP:/home/$DROPLET_USER
       - run:
           name: Execute deploy script on droplet
-          command: ssh $DROPLET_USER@$DROPLET_IP "/home/$DROPLET_USER/production.http.sh"
+          command: ssh $DROPLET_USER@$DROPLET_IP "chmod u+x /home/$DROPLET_USER/production.http.sh; /home/$DROPLET_USER/production.http.sh"
