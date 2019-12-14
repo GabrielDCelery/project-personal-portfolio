@@ -6,18 +6,18 @@ jobs:
     steps:
       - checkout
       - run:
-        name: SSH into droplet
-        command: ssh -oStrictHostKeyChecking=no \
+          name: SSH into droplet
+          command: ssh -oStrictHostKeyChecking=no \
           -v $DROPLET_USER@$DROPLET_IP “./deploy_project.sh”
       - run:
-        name: Checkout repository
-        command: |
-          cd /var/www/
-          if [[ ! -d "/var/www/project-personal-portfolio" ]]; then
-            git clone git@github.com:GabrielDCelery/project-personal-portfolio.git
-          fi
-          cd project-personal-portfolio
-          git pull
+          name: Checkout repository
+          command: |
+            cd /var/www/
+            if [[ ! -d "/var/www/project-personal-portfolio" ]]; then
+              git clone git@github.com:GabrielDCelery/project-personal-portfolio.git
+            fi
+            cd project-personal-portfolio
+            git pull
       - run:
-        name: Deploy
-        command: make prod-http
+          name: Deploy
+          command: make prod-http
