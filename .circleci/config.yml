@@ -7,8 +7,7 @@ jobs:
       - checkout
       - run:
           name: SSH into droplet
-          command: ssh -oStrictHostKeyChecking=no \
-          -v $DROPLET_USER@$DROPLET_IP “./deploy_project.sh”
+          command: ssh $DROPLET_USER@$DROPLET_IP
       - run:
           name: Checkout repository
           command: |
