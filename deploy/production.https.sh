@@ -1,3 +1,5 @@
+docker stop $(docker ps -a -q)
+
 FILE_CERT=/etc/letsencrypt/live/gabrielzeller.co.uk/fullchain.pem
 FILE_KEY=/etc/letsencrypt/live/gabrielzeller.co.uk/privkey.pem
 

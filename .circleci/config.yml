@@ -6,13 +6,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Check docker version and run hello world docker container
-          command: |
-            docker --version
-            docker run hello-world
+        name: SSH into droplet
+        command: ssh -oStrictHostKeyChecking=no \
+          -v $DROPLET_USER@$DROPLET_IP “./deploy_project.sh”
       - run:
-          name: Check docker-compose version
-          command: docker-compose --version
+        name: Checkout repository
+        command: |
+          cd /var/www/
+          if [[ ! -d "/var/www/project-personal-portfolio" ]]; then
+            git clone git@github.com:GabrielDCelery/project-personal-portfolio.git
+          fi
+          cd project-personal-portfolio
+          git pull
       - run:
-          name: Done
-          command: echo "done"
+        name: Deploy
+        command: make prod-http
