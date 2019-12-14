@@ -6,17 +6,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: SSH into droplet
+          name: SSH into droplet and checkout repository
           command: ssh $DROPLET_USER@$DROPLET_IP
       - run:
           name: Checkout repository
           command: |
-            cd /var/www/
-            if [[ ! -d "/var/www/project-personal-portfolio" ]]; then
-              git clone git@github.com:GabrielDCelery/project-personal-portfolio.git
-            fi
-            cd project-personal-portfolio
-            git pull
-      - run:
-          name: Deploy
-          command: make prod-http
+            ssh $DROPLET_USER@$DROPLET_IP << EOF
+              cd /var/www/
+              if [[ ! -d "/var/www/project-personal-portfolio" ]]; then
+                git clone git@github.com:GabrielDCelery/project-personal-portfolio.git
+              fi
+              cd project-personal-portfolio
+              git pull
+              make prod-http
+            EOF
