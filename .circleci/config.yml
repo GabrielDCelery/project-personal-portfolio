@@ -16,3 +16,6 @@ jobs:
       - run:
           name: Done
           command: echo "done"
+      - run:
+        name: Done
+        command: echo "done"
