@@ -6,7 +6,7 @@ PROJECT_FOLDER=project-personal-portfolio
 cd $DEPLOY_FOLDER
 
 if [[ ! -d "$DEPLOY_FOLDER$PROJECT_FOLDER" ]]; then
-	git clone git@github.com:GabrielDCelery/project-personal-portfolio.git
+	git clone https://github.com/GabrielDCelery/project-personal-portfolio.git
 fi
 
 cd $PROJECT_FOLDER
