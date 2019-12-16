@@ -6,6 +6,9 @@ import AppBehaviour from './App.Behaviour';
 import AppStyles from './App.Styles';
 import AppView from './App.View';
 
+import smoothscroll from 'smoothscroll-polyfill';
+smoothscroll.polyfill();
+
 const App = AppBehaviour(AppStyles(AppView));
 
 ReactDOM.render(<App />, document.getElementById('root'));
