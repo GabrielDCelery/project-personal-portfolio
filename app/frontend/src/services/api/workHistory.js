@@ -16,7 +16,7 @@ class WorkHistory {
           {
             type: 'paragraph',
             content:
-              "My role's primary focus was working with clients, developers and designers to partially or entirely transform our client's internal procedures to automated processes starting from discovery to successful launch."
+              "My role's primary focus was working with clients, developers and designers to partially or entirely transform the clients internal procedures to automated processes from discovery to successful launch."
           }
         ],
         keyResponsibilities: [
@@ -24,13 +24,9 @@ class WorkHistory {
             type: 'list',
             content: [
               'Led discovery sessions with clients to understand their internal procedures and converted them to process flows',
-              'Designed, normalized and implemented relational database structures',
-              'Designed and implemented backend services with REST API endpoints',
-              'Coordinated with designers and implemented bespoke user interfaces',
-              'Set up project ',
-              'Researched 3rd party APIs and created Proof of concepts to demonstrate the capabilities of the Autologyx software',
+              'Designed and implemented relational database structures, backend services with REST API endpoints and coordinated with designers to build user interfaces',
+              'Researched 3rd party services and integrated them with the Autologyx system to demonstrate its capabilities',
               'Documented and coded unit and integration tests',
-              "Integrated the Autologyx platform with the client's and other 3rd party services (REST APIs, OAuth 2.0 etc...)",
               'Investigated and documented bugs for other developers with proposed solutions'
             ]
           }
@@ -63,7 +59,7 @@ class WorkHistory {
                 type: 'list',
                 content: [
                   "Led discovery and wrote design documentation for the project's technical implementation",
-                  'Coded Dashboard UI that tracks the state of the renewal and allows interaction for insurers and handlers to do the negotiation',
+                  'Coded Dashboard UI that tracks the state of the renewal and allows interaction for the parties to do the negotiation',
                   "Coded the back-end service that stored submissions made via the dashboard until the data could be synchronized with the Autologyx system and the client's assets"
                 ]
               }
@@ -127,7 +123,7 @@ class WorkHistory {
             technologies: [
               {
                 type: 'badges',
-                content: ['jQuery']
+                content: ['jQuery', 'HTML5', 'Sass', 'Webpack']
               }
             ]
           }
