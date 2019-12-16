@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Typography, Link, Button } from '@material-ui/core';
+import { Box, Chip, Typography, Link, Button } from '@material-ui/core';
 //import config from 'config';
 
 const StyledList = styled.div`
@@ -22,7 +22,7 @@ const StyledList = styled.div`
       height: 0.9em;
       width: 0.9em;
       border: ${({ styledListBorderColor }) => {
-        return `0.2em solid ${styledListBorderColor || '#5c5746'};`;
+        return `0.2em solid ${styledListBorderColor || '#6e6959'};`;
       }}
       background: ${({ styleListColor }) => {
         return `${styleListColor || '#eddbb4'};`;
@@ -36,12 +36,27 @@ const StyledList = styled.div`
   }
 `;
 
+const StyledChip = styled(Chip)`
+  &.MuiChip-root {
+    margin: 0.5em;
+    background: ${({ bgcolor }) => {
+      return `${bgcolor || '#eddbb4'};`;
+    }};
+    border: ${({ bordercolor }) => {
+      return `0.2em solid ${bordercolor || '#6e6959'};`;
+    }};
+  }
+`;
+
 const renderContent = ({
   type,
   content,
   styleListColor,
   styledListBorderColor,
-  url
+  url,
+  bgcolor,
+  bordercolor,
+  textcolor
 }) => {
   switch (type) {
     case 'paragraph':
@@ -73,13 +88,37 @@ const renderContent = ({
           </ul>
         </StyledList>
       );
+    case 'badges':
+      return (
+        <React.Fragment>
+          {content.map((value, index) => {
+            return (
+              <React.Fragment key={`list-item-${index}`}>
+                <StyledChip
+                  label={value}
+                  bgcolor={bgcolor}
+                  bordercolor={bordercolor}
+                  textcolor={textcolor}
+                />
+              </React.Fragment>
+            );
+          })}
+        </React.Fragment>
+      );
     default:
       return <React.Fragment></React.Fragment>;
   }
 };
 
 export const ComponentParagraphBody = props => {
-  const { paragraphs, styleListColor, styledListBorderColor } = props;
+  const {
+    paragraphs,
+    styleListColor,
+    styledListBorderColor,
+    bgcolor,
+    bordercolor,
+    textcolor
+  } = props;
 
   return (
     <Box p="2em">
@@ -90,7 +129,10 @@ export const ComponentParagraphBody = props => {
               type,
               content,
               styleListColor,
-              styledListBorderColor
+              styledListBorderColor,
+              bgcolor,
+              bordercolor,
+              textcolor
             })}
           </React.Fragment>
         );
