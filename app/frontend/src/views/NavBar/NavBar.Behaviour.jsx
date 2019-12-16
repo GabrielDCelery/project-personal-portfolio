@@ -24,6 +24,7 @@ export default function NavBarBehaviour(ToWrapComponent) {
     const handlers = {
       navToPage: useCallback(
         setTo => {
+          window.scroll({ top: 0, left: 0, behavior: 'smooth' });
           history.push(setTo);
           setMobileOpen(false);
         },
