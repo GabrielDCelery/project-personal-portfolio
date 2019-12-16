@@ -9,22 +9,42 @@ class WorkHistory {
           {
             type: 'paragraph',
             content:
-              'Autologyx provides process automation for complex operations in the compliance and legal sector.'
+              'Autologyx is a SaaS company (Software as a Service) that provides process automation for complex operations in the compliance and legal sector.'
           }
         ],
         workSummary: [
           {
             type: 'paragraph',
             content:
-              'My role included maintaining the company’s internal administrative web applications and public websites. Provided support to the company’s clientele in both green-and brownfield projects from tender through to completion.'
+              "My role's primary focus was working with clients, developers and designers to partially or entirely transform our client's internal procedures to automated processes starting from discovery to successful launch."
           }
         ],
         keyResponsibilities: [
           {
             type: 'list',
             content: [
-              'Created new- and extended existing modules to automate tasks and scheduled processes',
-              'Built RESTful APIs for applications collecting and processing survey data'
+              'Led discovery sessions with clients to understand their internal procedures and converted them to process flows',
+              'Designed, normalized and implemented relational database structures',
+              'Designed and implemented backend services with REST API endpoints',
+              'Coordinated with designers and implemented bespoke user interfaces',
+              'Set up project ',
+              'Researched 3rd party APIs and created Proof of concepts to demonstrate the capabilities of the Autologyx software',
+              'Documented and coded unit and integration tests',
+              "Integrated the Autologyx platform with the client's and other 3rd party services (REST APIs, OAuth 2.0 etc...)",
+              'Investigated and documented bugs for other developers with proposed solutions'
+            ]
+          }
+        ],
+        technologies: [
+          {
+            type: 'badges',
+            content: [
+              'Node.js',
+              'React',
+              'Docker Compose',
+              'Mocha and Chai',
+              'PostgreSQL',
+              'Objection.js'
             ]
           }
         ],
@@ -34,15 +54,30 @@ class WorkHistory {
             summary: [
               {
                 type: 'paragraph',
-                content: 'blah blah blah'
+                content:
+                  "One of the world's largest insurance brokerage firms wanted to automate their insurance renewal process which is one of their key operations."
               }
             ],
             tasks: [
               {
                 type: 'list',
                 content: [
-                  'Created new- and extended existing modules to automate tasks and scheduled processes',
-                  'Built RESTful APIs for applications collecting and processing survey data'
+                  "Led discovery and wrote design documentation for the project's technical implementation",
+                  'Coded Dashboard UI that tracks the state of the renewal and allows interaction for insurers and handlers to do the negotiation',
+                  "Coded the back-end service that stored submissions made via the dashboard until the data could be synchronized with the Autologyx system and the client's assets"
+                ]
+              }
+            ],
+            technologies: [
+              {
+                type: 'badges',
+                content: [
+                  'Node.js',
+                  'React',
+                  'Docker Compose',
+                  'Mocha and Chai',
+                  'PostgreSQL',
+                  'Objection.js'
                 ]
               }
             ]
@@ -52,16 +87,23 @@ class WorkHistory {
             summary: [
               {
                 type: 'paragraph',
-                content: 'blah blah blah'
+                content:
+                  'Autologyx was developing a document analysis software using machine learning which needed a front-end user interface called "Playbook" that allowed users to provide configuration of what they were looking for in a contract.'
               }
             ],
             tasks: [
               {
                 type: 'list',
                 content: [
-                  'Created new- and extended existing modules to automate tasks and scheduled processes',
-                  'Built RESTful APIs for applications collecting and processing survey data'
+                  'Worked with designer and created a front-end UI to view documents',
+                  'Coordinated with machine learning developers to implement document highlights of the analysis'
                 ]
+              }
+            ],
+            technologies: [
+              {
+                type: 'badges',
+                content: ['React', 'Node.js', 'PDFKit']
               }
             ]
           },
@@ -70,16 +112,22 @@ class WorkHistory {
             summary: [
               {
                 type: 'paragraph',
-                content: 'blah blah blah'
+                content:
+                  'Many of our clients wanted to have a way to easily configure and style an online form that they could send out to their customers so we decided to implement one.'
               }
             ],
             tasks: [
               {
                 type: 'list',
                 content: [
-                  'Created new- and extended existing modules to automate tasks and scheduled processes',
-                  'Built RESTful APIs for applications collecting and processing survey data'
+                  'Wrote an engine that read in a JSON object and converted a bare html structure to an interactive form with pagination, templated styling, conditional fields, validation and let the users inject custom content'
                 ]
+              }
+            ],
+            technologies: [
+              {
+                type: 'badges',
+                content: ['jQuery']
               }
             ]
           }
@@ -93,7 +141,7 @@ class WorkHistory {
           {
             type: 'paragraph',
             content:
-              'Autologyx provides process automation for complex operations in the compliance and legal sector.'
+              'Arkenford is a market research agency conducting surveys, providing research and analysis to help their clients making better decisions in communicating with their customers and developing their brands.'
           }
         ],
         workSummary: [
@@ -107,18 +155,52 @@ class WorkHistory {
           {
             type: 'list',
             content: [
-              'Created new- and extended existing modules to automate tasks and scheduled processes',
-              'Built RESTful APIs for applications collecting and processing survey data'
+              "Maintained the company's internally developed tools and modules used by the data analyst team",
+              'Built RESTful APIs for applications collecting and processing survey data',
+              'Created new- and extended existing modules to automate tasks and scheduled processes'
             ]
+          }
+        ],
+        technologies: [
+          {
+            type: 'badges',
+            content: ['Node.js', 'jQuery', 'MySQL', 'Sequelize']
           }
         ],
         projects: [
           {
-            title: 'LEGAL MATTER PLAYBOOK',
+            title: 'GDPR DATABASE ENCRYPTION',
             summary: [
               {
                 type: 'paragraph',
-                content: 'blah blah blah'
+                content:
+                  'In order to increase GDPR compliance the company decided to encrypt all sensitive information stored in their databases.'
+              }
+            ],
+            tasks: [
+              {
+                type: 'list',
+                content: [
+                  'Coded one-time script to create new columns in the databases with encrypted data and delete all non-encrypted data',
+                  'Deployed one-time script to encrypt all data in the databases',
+                  'Extended internal custom modules and database connectors to work with encrypted data'
+                ]
+              }
+            ],
+            technologies: [
+              {
+                type: 'badges',
+                content: ['Node.js', 'MySQL', 'Sequelize']
+              }
+            ]
+          },
+          {
+            title: 'UKIE GAMES MAP',
+            summary: [
+              {
+                type: 'paragraph',
+                content:
+                  'Our company won a contract to create a map of game developers and publishers and present them on a map with the ability to add and edit entries.'
               }
             ],
             tasks: [
@@ -128,6 +210,37 @@ class WorkHistory {
                   'Created new- and extended existing modules to automate tasks and scheduled processes',
                   'Built RESTful APIs for applications collecting and processing survey data'
                 ]
+              }
+            ],
+            technologies: [
+              {
+                type: 'badges',
+                content: ['Node.js', 'jQuery', 'MySQL', 'Sequelize']
+              }
+            ]
+          },
+          {
+            title: 'SURVEY QUOTE ALGORITHM MODULE',
+            summary: [
+              {
+                type: 'paragraph',
+                content:
+                  'Our company did conduct surveys on a regular basis and needed a custom internal module that converted an excel sheet with SQL like instructions to a programmatic input that could be read by other applications that were sending out survey invitations.'
+              }
+            ],
+            tasks: [
+              {
+                type: 'list',
+                content: [
+                  'Coordinated with the data analyst team to compile a set of features',
+                  'Coded custom module that reads in a CSV with SQL like instructions and the desired quotes and transforms it to a JSON that could be read by other applications'
+                ]
+              }
+            ],
+            technologies: [
+              {
+                type: 'badges',
+                content: ['Node.js']
               }
             ]
           }

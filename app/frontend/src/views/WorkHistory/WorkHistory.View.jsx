@@ -26,9 +26,10 @@ export default function WorkHistoryView({ getter, handler }) {
               companyName,
               keyResponsibilities,
               position,
+              projects,
+              technologies,
               workSummary,
-              workedFromTo,
-              projects
+              workedFromTo
             },
             workHistoryItemIndex
           ) => {
@@ -91,6 +92,16 @@ export default function WorkHistoryView({ getter, handler }) {
                       />
 
                       <ComponentParagraphHeading
+                        label="Primary Tech Stack"
+                        bgColor={config.styles.colors.secondary}
+                        labelColor={config.styles.colors.darkBgText}
+                      />
+                      <ComponentParagraphBody
+                        paragraphs={technologies}
+                        bgcolor={config.styles.colors.tertiary}
+                      />
+
+                      <ComponentParagraphHeading
                         label="Notable projects"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
@@ -99,7 +110,10 @@ export default function WorkHistoryView({ getter, handler }) {
                       <div style={{ padding: 0 }}></div>
 
                       {projects.map(
-                        ({ title, summary, tasks }, projectItemIndex) => {
+                        (
+                          { title, summary, tasks, technologies },
+                          projectItemIndex
+                        ) => {
                           const projectKey = `wi${workHistoryItemIndex}_pi${projectItemIndex}`;
                           return (
                             <React.Fragment key={`project-${projectKey}`}>
@@ -160,6 +174,23 @@ export default function WorkHistoryView({ getter, handler }) {
                                         config.styles.colors.lightBlue
                                       }
                                       styledListBorderColor={
+                                        config.styles.colors.lightBlueBorder
+                                      }
+                                    />
+
+                                    <ComponentParagraphHeading
+                                      label="Primary Tech Stack"
+                                      bgColor={config.styles.colors.quaternary}
+                                      labelColor={
+                                        config.styles.colors.darkBgText
+                                      }
+                                      fontSize="0.9rem"
+                                    />
+
+                                    <ComponentParagraphBody
+                                      paragraphs={technologies}
+                                      bgcolor={config.styles.colors.lightBlue}
+                                      bordercolor={
                                         config.styles.colors.lightBlueBorder
                                       }
                                     />
