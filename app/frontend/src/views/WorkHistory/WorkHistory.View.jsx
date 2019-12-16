@@ -91,7 +91,7 @@ export default function WorkHistoryView({ getter, handler }) {
                       />
 
                       <ComponentParagraphHeading
-                        label="Project samples"
+                        label="Notable projects"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
