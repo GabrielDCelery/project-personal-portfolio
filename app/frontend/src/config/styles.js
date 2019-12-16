@@ -8,7 +8,7 @@ export default {
     backgroundHighlight: '#F3F8FA',
     lightBgText: '#222',
     darkBgText: '#eee',
-    lightBlue: '#b4c7ed',
+    lightBlue: /*'#b4c7ed'*/ '#D8E9F5',
     lightBlueBorder: '#46465c',
     icons: {
       error: '#D41C36'
