@@ -107,56 +107,51 @@ export default function SkillsView({
           }}
         </SizeMe>
 
-        <AnimateHeight
-          duration={500}
-          height={getter('layout', 'hexGrid', 'height')}
+        <div
+          style={{
+            width: getter('layout', 'hexGrid', 'width'),
+            margin: '0 auto'
+          }}
         >
-          <div
-            style={{
-              width: getter('layout', 'hexGrid', 'width'),
-              margin: '0 auto'
-            }}
-          >
-            {getter('layout', 'hexGrid', 'width') ? (
-              <React.Fragment>
-                <StyledHexGrid
-                  width={getter('layout', 'hexGrid', 'width')}
-                  height={getter('layout', 'hexGrid', 'height')}
-                  viewBox="-50 -50 100 100"
+          {getter('layout', 'hexGrid', 'width') ? (
+            <React.Fragment>
+              <StyledHexGrid
+                width={getter('layout', 'hexGrid', 'width')}
+                height={getter('layout', 'hexGrid', 'height')}
+                viewBox="-50 -50 100 100"
+              >
+                <Layout
+                  size={{
+                    x: getter('layout', 'hexCell', 'width'),
+                    y: getter('layout', 'hexCell', 'height')
+                  }}
+                  flat={true}
+                  spacing={1.1}
+                  origin={{ x: 0, y: 0 }}
                 >
-                  <Layout
-                    size={{
-                      x: getter('layout', 'hexCell', 'width'),
-                      y: getter('layout', 'hexCell', 'height')
-                    }}
-                    flat={true}
-                    spacing={1.1}
-                    origin={{ x: 0, y: 0 }}
-                  >
-                    {getter('stateFilteredSkillsItemsForHexMap').map(
-                      ({ label, hexX, hexY, bgColor }, index) => {
-                        return (
-                          <React.Fragment key={`hex-${index}`}>
-                            <StyledHexagon
-                              q={hexX}
-                              r={hexY}
-                              s={0}
-                              bgColor={bgColor}
-                            >
-                              <Text>{label}</Text>
-                            </StyledHexagon>
-                          </React.Fragment>
-                        );
-                      }
-                    )}
-                  </Layout>
-                </StyledHexGrid>
-              </React.Fragment>
-            ) : (
-              <React.Fragment></React.Fragment>
-            )}
-          </div>
-        </AnimateHeight>
+                  {getter('stateFilteredSkillsItemsForHexMap').map(
+                    ({ label, hexX, hexY, bgColor }, index) => {
+                      return (
+                        <React.Fragment key={`hex-${index}`}>
+                          <StyledHexagon
+                            q={hexX}
+                            r={hexY}
+                            s={0}
+                            bgColor={bgColor}
+                          >
+                            <Text>{label}</Text>
+                          </StyledHexagon>
+                        </React.Fragment>
+                      );
+                    }
+                  )}
+                </Layout>
+              </StyledHexGrid>
+            </React.Fragment>
+          ) : (
+            <React.Fragment></React.Fragment>
+          )}
+        </div>
       </ComponentLeftAlignedContainer>
     </React.Fragment>
   );
