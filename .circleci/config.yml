@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Copy deploy script to droplet
-          command: scp ./deploy/production.http.sh $DROPLET_USER@$DROPLET_IP:/home/$DROPLET_USER
+          command: scp ./deploy/production.https.sh $DROPLET_USER@$DROPLET_IP:/home/$DROPLET_USER
       - run:
           name: Execute deploy script on droplet
           command: ssh $DROPLET_USER@$DROPLET_IP "chmod u+x /home/$DROPLET_USER/production.https.sh; /home/$DROPLET_USER/production.https.sh"
