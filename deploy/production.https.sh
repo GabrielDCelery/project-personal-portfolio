@@ -26,6 +26,8 @@ fi
 
 IS_FAKE_CERTIFICATE=$(openssl x509 -in "$FILE_CERT" -text -noout | grep -q "Fake LE Intermediate X1")
 
+echo IS_FAKE_CERTIFICATE;
+
 if [[ IS_FAKE_CERTIFICATE ]]; then
 	docker-compose \ 
   -f ./deploy/docker-compose.yml \
