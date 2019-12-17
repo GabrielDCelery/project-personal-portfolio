@@ -11,6 +11,7 @@ fi
 
 cd $PROJECT_FOLDER
 
+git checkout master
 git pull
 
 docker-compose \
