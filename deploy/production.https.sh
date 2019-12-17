@@ -24,6 +24,13 @@ if [[ ! -f "$FILE_CERT" || ! -f "$FILE_KEY" ]]; then
   up --build --exit-code-from certbot
 fi
 
+if [[ openssl x509 -in $FILE_CERT -text -noout | grep  -q "Fake LE Intermediate X1" ]]; then
+	docker-compose \ 
+  -f ./deploy/docker-compose.yml \
+  -f ./deploy/docker-compose.prod.https.renewal.yml \
+  up --build --exit-code-from certbot
+fi
+
 docker-compose \
 -f ./deploy/docker-compose.yml \
 -f ./deploy/docker-compose.prod.https.yml \
