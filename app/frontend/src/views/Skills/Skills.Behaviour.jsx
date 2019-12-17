@@ -1,28 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
-
-const numOfHexIconsInRangeMap = [1, 6, 12, 18, 24];
-
-const getSlice = ({
-  numOfHexIcons,
-  numOfIconsAlreadyTraversed,
-  sliceIamIn
-}) => {
-  const numOfIconsInSliceIamIn = numOfHexIconsInRangeMap[sliceIamIn];
-  const shouldIGoToNextSlice =
-    numOfIconsAlreadyTraversed + numOfIconsInSliceIamIn <= numOfHexIcons;
-
-  if (!shouldIGoToNextSlice) {
-    return sliceIamIn;
-  }
-
-  return getSlice({
-    numOfHexIcons,
-    numOfIconsAlreadyTraversed:
-      numOfIconsAlreadyTraversed + numOfIconsInSliceIamIn,
-    sliceIamIn: sliceIamIn + 1
-  });
-};
 
 export default function SkillsBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {

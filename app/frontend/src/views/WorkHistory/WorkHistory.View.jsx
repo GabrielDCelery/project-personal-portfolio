@@ -8,8 +8,8 @@ import {
 import {
   ComponentExpansionPanelHeading,
   ComponentLeftAlignedContainer,
-  ComponentParagraphHeading,
-  ComponentParagraphBody
+  ComponentSectionHeading,
+  ComponentSectionParagraph
 } from 'components';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import config from 'config';
@@ -67,41 +67,80 @@ export default function WorkHistoryView({ getter, handler }) {
 
                   <ExpansionPanelDetails style={{ padding: 0 }}>
                     <Box width="100%">
-                      <ComponentParagraphHeading
+                      <ComponentSectionHeading
                         label="About the company"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
-                      <ComponentParagraphBody paragraphs={aboutTheCompany} />
+                      <Box p="2em">
+                        {aboutTheCompany.map(({ type, content }, index) => {
+                          return (
+                            <ComponentSectionParagraph
+                              key={`paragraph-${index}`}
+                              type={type}
+                              content={content}
+                            />
+                          );
+                        })}
+                      </Box>
 
-                      <ComponentParagraphHeading
+                      <ComponentSectionHeading
                         label="Work summary"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
 
-                      <ComponentParagraphBody paragraphs={workSummary} />
+                      <Box p="2em">
+                        {workSummary.map(({ type, content }, index) => {
+                          return (
+                            <ComponentSectionParagraph
+                              key={`paragraph-${index}`}
+                              type={type}
+                              content={content}
+                            />
+                          );
+                        })}
+                      </Box>
 
-                      <ComponentParagraphHeading
+                      <ComponentSectionHeading
                         label="Key responsibilities"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
-                      <ComponentParagraphBody
-                        paragraphs={keyResponsibilities}
-                      />
 
-                      <ComponentParagraphHeading
+                      <Box p="2em">
+                        {keyResponsibilities.map(({ type, content }, index) => {
+                          return (
+                            <ComponentSectionParagraph
+                              key={`paragraph-${index}`}
+                              type={type}
+                              content={content}
+                              bgColor={config.styles.colors.lightYellow}
+                            />
+                          );
+                        })}
+                      </Box>
+
+                      <ComponentSectionHeading
                         label="Primary Tech Stack"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
                       />
-                      <ComponentParagraphBody
-                        paragraphs={technologies}
-                        bgcolor={config.styles.colors.tertiary}
-                      />
 
-                      <ComponentParagraphHeading
+                      <Box p="2em">
+                        {technologies.map(({ type, content }, index) => {
+                          return (
+                            <ComponentSectionParagraph
+                              key={`paragraph-${index}`}
+                              type={type}
+                              content={content}
+                              bgColor={config.styles.colors.lightYellow}
+                            />
+                          );
+                        })}
+                      </Box>
+
+                      <ComponentSectionHeading
                         label="Notable projects"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
@@ -131,7 +170,8 @@ export default function WorkHistoryView({ getter, handler }) {
                                 <ExpansionPanelSummary
                                   expandIcon={<ExpandMoreIcon />}
                                   style={{
-                                    backgroundColor: '#eddbb4',
+                                    backgroundColor:
+                                      config.styles.colors.lightYellow,
                                     padding: '0 2em'
                                   }}
                                 >
@@ -140,60 +180,99 @@ export default function WorkHistoryView({ getter, handler }) {
                                     labelColor={
                                       config.styles.colors.lightBgText
                                     }
-                                    bgColor={config.styles.colors.tertiary}
+                                    bgColor={config.styles.colors.lightYellow}
                                     fontSize="0.9rem"
                                   />
                                 </ExpansionPanelSummary>
 
                                 <ExpansionPanelDetails style={{ padding: 0 }}>
                                   <Box width="100%">
-                                    <ComponentParagraphHeading
+                                    <ComponentSectionHeading
                                       label="Summary"
-                                      bgColor={config.styles.colors.quaternary}
+                                      bgColor={
+                                        config.styles.colors.lightYellowBorder
+                                      }
                                       labelColor={
                                         config.styles.colors.darkBgText
                                       }
                                       fontSize="0.9rem"
                                     />
-                                    <ComponentParagraphBody
-                                      paragraphs={summary}
-                                    />
 
-                                    <ComponentParagraphHeading
+                                    <Box p="2em">
+                                      {summary.map(
+                                        ({ type, content }, index) => {
+                                          return (
+                                            <ComponentSectionParagraph
+                                              key={`paragraph-${index}`}
+                                              type={type}
+                                              content={content}
+                                            />
+                                          );
+                                        }
+                                      )}
+                                    </Box>
+
+                                    <ComponentSectionHeading
                                       label="Key tasks"
-                                      bgColor={config.styles.colors.quaternary}
+                                      bgColor={
+                                        config.styles.colors.lightYellowBorder
+                                      }
                                       labelColor={
                                         config.styles.colors.darkBgText
                                       }
                                       fontSize="0.9rem"
                                     />
 
-                                    <ComponentParagraphBody
-                                      paragraphs={tasks}
-                                      styleListColor={
-                                        config.styles.colors.lightBlue
-                                      }
-                                      styledListBorderColor={
-                                        config.styles.colors.lightBlueBorder
-                                      }
-                                    />
+                                    <Box p="2em">
+                                      {tasks.map(({ type, content }, index) => {
+                                        return (
+                                          <ComponentSectionParagraph
+                                            key={`paragraph-${index}`}
+                                            type={type}
+                                            content={content}
+                                            bgColor={
+                                              config.styles.colors.lightBlue
+                                            }
+                                            borderColor={
+                                              config.styles.colors
+                                                .lightBlueBorder
+                                            }
+                                          />
+                                        );
+                                      })}
+                                    </Box>
 
-                                    <ComponentParagraphHeading
+                                    <ComponentSectionHeading
                                       label="Primary Tech Stack"
-                                      bgColor={config.styles.colors.quaternary}
+                                      bgColor={
+                                        config.styles.colors.lightYellowBorder
+                                      }
                                       labelColor={
                                         config.styles.colors.darkBgText
                                       }
                                       fontSize="0.9rem"
                                     />
 
-                                    <ComponentParagraphBody
-                                      paragraphs={technologies}
-                                      bgcolor={config.styles.colors.lightBlue}
-                                      bordercolor={
-                                        config.styles.colors.lightBlueBorder
-                                      }
-                                    />
+                                    <Box p="2em">
+                                      {technologies.map(
+                                        ({ type, content }, index) => {
+                                          return (
+                                            <ComponentSectionParagraph
+                                              key={`paragraph-${index}`}
+                                              type={type}
+                                              content={content}
+                                              bgColor={
+                                                config.styles.colors.lightBlue
+                                              }
+                                              borderColor={
+                                                config.styles.colors
+                                                  .lightBlueBorder
+                                              }
+                                            />
+                                          );
+                                        }
+                                      )}
+                                    </Box>
                                   </Box>
                                 </ExpansionPanelDetails>
                               </ExpansionPanel>

@@ -104,7 +104,7 @@ export const selectorGetFilteredSkillsToShowForHexMap = createSelector(
     const [minLevel, maxLevel] = getMinMaxLevel(skillsItems);
     const levelToColorMap = getLevelToColorMap({
       maxLevel,
-      maxLevelColor: config.styles.colors.tertiary,
+      maxLevelColor: config.styles.colors.lightYellow,
       minLevel,
       minLevelColor: config.styles.colors.primary
     });
