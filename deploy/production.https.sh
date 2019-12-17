@@ -18,7 +18,7 @@ FILE_CERT=/etc/letsencrypt/live/gabrielzeller.co.uk/fullchain.pem
 FILE_KEY=/etc/letsencrypt/live/gabrielzeller.co.uk/privkey.pem
 
 if [[ ! -f "$FILE_CERT" || ! -f "$FILE_KEY" ]]; then
-	docker-compose \ 
+	docker-compose \
   -f ./deploy/docker-compose.yml \
   -f ./deploy/docker-compose.prod.https.staging.yml \
   up --build --exit-code-from certbot
@@ -29,7 +29,7 @@ IS_FAKE_CERTIFICATE=$(openssl x509 -in "$FILE_CERT" -text -noout | grep -q "Fake
 echo IS_FAKE_CERTIFICATE;
 
 if [[ IS_FAKE_CERTIFICATE ]]; then
-	docker-compose \ 
+	docker-compose \
   -f ./deploy/docker-compose.yml \
   -f ./deploy/docker-compose.prod.https.renewal.yml \
   up --build --exit-code-from certbot
