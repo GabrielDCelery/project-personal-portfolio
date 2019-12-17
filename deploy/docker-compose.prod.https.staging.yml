@@ -9,7 +9,7 @@ services:
     container_name: app_frontend_prod
     command: npm run production
   reverse_proxy:
-    container_name: app_reverse_proxy_prod_staging
+    container_name: app_reverse_proxy_prod_https_staging
     volumes:
       - ../app/reverse_proxy/nginx.prod.staging.conf:/etc/nginx/nginx.conf
       - /var/www/:/var/www/html
