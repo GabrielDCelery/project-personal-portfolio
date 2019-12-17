@@ -1,0 +1,17 @@
+version: '3'
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile.prod
+      args:
+        APP_USER: node
+    image: app_frontend_prod
+    container_name: app_frontend_prod
+    command: npm run production
+  reverse_proxy:
+    container_name: app_reverse_proxy_prod
+    volumes:
+      - ../app/reverse_proxy/nginx.prod.conf:/etc/nginx/nginx.conf
+      - /var/www/:/var/www/html
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ~/letsencrypt/lib:/var/lib/letsencrypt

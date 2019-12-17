@@ -17,7 +17,7 @@ services:
       - ~/letsencrypt/lib:/var/lib/letsencrypt
   certbot:
     image: certbot/certbot
-    container_name: app_certbot_prod
+    container_name: app_certbot_prod_renewal
     volumes:
       - /var/www/:/var/www/html
       - /etc/letsencrypt:/etc/letsencrypt
