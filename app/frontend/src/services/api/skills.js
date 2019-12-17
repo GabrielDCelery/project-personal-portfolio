@@ -10,6 +10,10 @@ class Skills {
         level: 8
       },
       {
+        label: 'Redux',
+        level: 8
+      },
+      {
         label: 'Docker Compose',
         level: 6
       },
@@ -39,7 +43,7 @@ class Skills {
       },
       {
         label: 'Angular.js',
-        level: 2
+        level: 3
       },
       {
         label: 'D3.js',
@@ -106,8 +110,24 @@ class Skills {
         level: 5
       },
       {
-        label: 'GitHub',
+        label: 'Git',
         level: 8
+      },
+      {
+        label: 'Webpack',
+        level: 5
+      },
+      {
+        label: 'REST API',
+        level: 9
+      },
+      {
+        label: 'DigitalOcean',
+        level: 6
+      },
+      {
+        label: 'TensorFlow',
+        level: 2
       }
     ];
   }
