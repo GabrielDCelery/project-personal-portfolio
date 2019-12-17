@@ -33,7 +33,7 @@ class WorkHistory {
         ],
         technologies: [
           {
-            type: 'badges',
+            type: 'badge',
             content: [
               'Node.js',
               'React',
@@ -66,7 +66,7 @@ class WorkHistory {
             ],
             technologies: [
               {
-                type: 'badges',
+                type: 'badge',
                 content: [
                   'Node.js',
                   'React',
@@ -98,7 +98,7 @@ class WorkHistory {
             ],
             technologies: [
               {
-                type: 'badges',
+                type: 'badge',
                 content: ['React', 'Node.js', 'PDFKit']
               }
             ]
@@ -122,7 +122,7 @@ class WorkHistory {
             ],
             technologies: [
               {
-                type: 'badges',
+                type: 'badge',
                 content: ['jQuery', 'HTML5', 'Sass', 'Webpack']
               }
             ]
@@ -159,7 +159,7 @@ class WorkHistory {
         ],
         technologies: [
           {
-            type: 'badges',
+            type: 'badge',
             content: ['Node.js', 'jQuery', 'MySQL', 'Sequelize']
           }
         ],
@@ -185,7 +185,7 @@ class WorkHistory {
             ],
             technologies: [
               {
-                type: 'badges',
+                type: 'badge',
                 content: ['Node.js', 'MySQL', 'Sequelize']
               }
             ]
@@ -210,7 +210,7 @@ class WorkHistory {
             ],
             technologies: [
               {
-                type: 'badges',
+                type: 'badge',
                 content: ['Node.js', 'jQuery', 'MySQL', 'Sequelize']
               }
             ]
@@ -235,7 +235,7 @@ class WorkHistory {
             ],
             technologies: [
               {
-                type: 'badges',
+                type: 'badge',
                 content: ['Node.js']
               }
             ]

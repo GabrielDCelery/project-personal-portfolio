@@ -61,7 +61,7 @@ const StyledVerticalGradientBox = styled(Box)`
   height: 100%;
   background: linear-gradient(
     180deg,
-    ${config.styles.colors.tertiary} 0%,
+    ${config.styles.colors.lightYellow} 0%,
     ${config.styles.colors.primary} 100%
   );
 `;

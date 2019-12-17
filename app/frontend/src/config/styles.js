@@ -10,6 +10,10 @@ export default {
     darkBgText: '#eee',
     lightBlue: /*'#b4c7ed'*/ '#D8E9F5',
     lightBlueBorder: '#46465c',
+    lightYellow: '#eddbb4',
+    lightYellowBorder: '#6e6959',
+    lightBg: '#e8e8e8',
+    darkBg: '#696969',
     icons: {
       error: '#D41C36'
     },

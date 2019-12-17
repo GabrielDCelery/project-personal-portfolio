@@ -5,8 +5,8 @@
               <SkillCard
                 iconSrc={mysql}
                 label="MySQL"
-                cardBgColor={config.styles.colors.tertiary}
-                iconBorderColor={config.styles.colors.quaternary}
+                cardBgColor={config.styles.colors.lightYellow}
+                iconBorderColor={config.styles.colors.lightYellowBorder}
               />
             </Grid>
 
@@ -14,8 +14,8 @@
               <SkillCard
                 iconSrc={nodejsbw}
                 label="NodeJS"
-                cardBgColor={config.styles.colors.tertiary}
-                iconBorderColor={config.styles.colors.quaternary}
+                cardBgColor={config.styles.colors.lightYellow}
+                iconBorderColor={config.styles.colors.lightYellowBorder}
               />
             </Grid>
 
@@ -23,8 +23,8 @@
               <SkillCard
                 iconSrc={react}
                 label="ReactJS"
-                cardBgColor={config.styles.colors.tertiary}
-                iconBorderColor={config.styles.colors.quaternary}
+                cardBgColor={config.styles.colors.lightYellow}
+                iconBorderColor={config.styles.colors.lightYellowBorder}
               />
             </Grid>
 
