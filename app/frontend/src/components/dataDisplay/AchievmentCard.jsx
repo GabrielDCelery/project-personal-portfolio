@@ -11,6 +11,7 @@ import {
   Link,
   Typography
 } from '@material-ui/core';
+import styled from 'styled-components';
 
 import { GitHub as GitHubIcon } from '@material-ui/icons';
 
@@ -48,6 +49,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const StyledCardHeader = styled(CardHeader)`
+  .MuiCardHeader-subheader {
+    color: #bbb;
+  }
+`;
+
 export const AchievmentCard = props => {
   const {
     bgColor,
@@ -69,7 +76,7 @@ export const AchievmentCard = props => {
 
   return (
     <Card>
-      <CardHeader
+      <StyledCardHeader
         style={{
           backgroundColor: bgcolor,
           color: labelcolor,

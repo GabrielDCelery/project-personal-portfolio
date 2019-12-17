@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { Box, Card, Divider, Grid, Icon, Typography } from '@material-ui/core';
+import {
+  Box,
+  Card,
+  Divider,
+  Grid,
+  /*Icon,*/ Typography
+} from '@material-ui/core';
 import { SizeMe } from 'react-sizeme';
 
 export const SkillCard = props => {
@@ -26,7 +32,11 @@ export const SkillCard = props => {
                       height: size.width
                     }}
                   >
-                    <img src={iconSrc} style={{ width: '100%' }} />
+                    <img
+                      src={iconSrc}
+                      style={{ width: '100%' }}
+                      alt={iconSrc}
+                    />
                   </Box>
                 );
               }}

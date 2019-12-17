@@ -7,7 +7,6 @@ import { SizeMe } from 'react-sizeme';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Color from 'color';
-import AnimateHeight from 'react-animate-height';
 
 import {
   Avatar,
@@ -87,6 +86,9 @@ export default function SkillsView({
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Atleast one commercial project within the past 2 years" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Atleast one personal project in the subject" />
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Has completed atleast one online course in the subject" />
