@@ -24,10 +24,9 @@ if [[ ! -f "$FILE_CERT" || ! -f "$FILE_KEY" ]]; then
   up --build --exit-code-from certbot
 fi
 
-INVALID_CERTIFICATE_INDICATOR_TEXT="Fake LE Intermediate X1";
-IS_CERTIFICATE_INVALID=`openssl x509 -in "$FILE_CERT" -text -noout | grep -c "$INVALID_CERTIFICATE_INDICATOR_TEXT"`
+SELF_SIGNED_CERTIFICATE_INDICATOR_TEXT="Fake LE Intermediate X1";
 
-if [[ $IS_CERTIFICATE_INVALID > 0 ]]; then
+if openssl x509 -in "$FILE_CERT" -text -noout | grep -q "$SELF_SIGNED_CERTIFICATE_INDICATOR_TEXT"; then
 	docker-compose \
   -f ./deploy/docker-compose.yml \
   -f ./deploy/docker-compose.prod.https.renewal.yml \
