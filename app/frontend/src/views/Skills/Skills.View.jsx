@@ -30,48 +30,7 @@ export default function SkillsView({
       <Box height="2em" />
       <ComponentLeftAlignedContainer maxWidth="xl">
         <Card>
-          <CardContent
-            style={{
-              backgroundColor: config.styles.colors.primary,
-              color: '#fff',
-              borderBottom: '3px solid #000'
-            }}
-          >
-            <div style={{ display: 'flex' }}>
-              <Avatar
-                aria-label="recipe"
-                style={{
-                  backgroundColor: config.styles.colors.secondary,
-                  marginRight: '1em'
-                }}
-              >
-                <SearchIcon />
-              </Avatar>
-
-              <InputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                style={{
-                  color: '#fff',
-                  backgroundColor: Color(config.styles.colors.primary)
-                    .lighten(0.2)
-                    .hex(),
-                  borderRadius: '5px',
-                  paddingLeft: '1em'
-                }}
-                value={getter('stateSkillsVisibilityFilter')}
-                onChange={event => {
-                  handler('actionSetSkillsVisibilityFilter')(
-                    event.target.value
-                  );
-                }}
-              />
-
-              <Typography component="div" style={{ flexGrow: 1 }}></Typography>
-            </div>
-          </CardContent>
-
-          <CardContent style={{ padding: 0 }}>
+          <CardContent style={{ padding: 0, borderBottom: '3px solid #000' }}>
             <Grid container spacing={3}>
               <Grid item xs={3}>
                 <StyledVerticalGradientBox />
@@ -99,6 +58,44 @@ export default function SkillsView({
                 </List>
               </Grid>
             </Grid>
+          </CardContent>
+
+          <CardContent
+            style={{
+              backgroundColor: config.styles.colors.secondary,
+              color: '#fff'
+            }}
+          >
+            <div style={{ display: 'flex' }}>
+              <Avatar
+                aria-label="recipe"
+                style={{
+                  backgroundColor: config.styles.colors.primary,
+                  marginRight: '1em'
+                }}
+              >
+                <SearchIcon />
+              </Avatar>
+
+              <InputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                style={{
+                  color: '#fff',
+                  backgroundColor: config.styles.colors.primary,
+                  borderRadius: '5px',
+                  paddingLeft: '1em'
+                }}
+                value={getter('stateSkillsVisibilityFilter')}
+                onChange={event => {
+                  handler('actionSetSkillsVisibilityFilter')(
+                    event.target.value
+                  );
+                }}
+              />
+
+              <Typography component="div" style={{ flexGrow: 1 }}></Typography>
+            </div>
           </CardContent>
         </Card>
 
