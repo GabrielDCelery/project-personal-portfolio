@@ -37,3 +37,4 @@ docker-compose \
 -f ./deploy/docker-compose.yml \
 -f ./deploy/docker-compose.prod.https.yml \
 up --build --detach
+
