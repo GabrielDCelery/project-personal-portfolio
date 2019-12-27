@@ -153,7 +153,9 @@ class WorkHistory {
             content: [
               "Maintained the company's internally developed tools and modules used by the data analyst team",
               'Built RESTful APIs for applications collecting and processing survey data',
-              'Created new- and extended existing modules to automate tasks and scheduled processes'
+              'Created new- and extended existing modules to automate tasks and scheduled processes',
+              'Researched and integrated with external libraries for data visualization',
+              'Designed relational database schemas, and worked on algorithms interacting with those databases to ensure quick response times'
             ]
           }
         ],
