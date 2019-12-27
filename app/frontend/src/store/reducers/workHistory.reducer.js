@@ -1,7 +1,8 @@
 import {
   SET_WORK_HISTORY_ITEMS,
   TOGGLE_OPEN_WORK_HISTORY_ITEM,
-  TOGGLE_OPEN_WORK_HISTORY_PROJECT_ITEM
+  TOGGLE_OPEN_WORK_HISTORY_PROJECT_ITEM,
+  CLOSE_ALL_WORK_HISTORY_ITEMS
 } from '../constants';
 
 const initialState = {
@@ -40,6 +41,12 @@ export const workHistoryReducer = (
               return openItem !== subItemToToggle;
             })
           : [...state.openSubItems, subItemToToggle]
+      };
+
+    case CLOSE_ALL_WORK_HISTORY_ITEMS:
+      return {
+        ...state,
+        openItems: []
       };
 
     default:

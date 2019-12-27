@@ -1,3 +1,4 @@
+export * from './closeAllWorkHistoryItems';
 export * from './getCompetitionItems.action';
 export * from './getSkillsItems.action';
 export * from './getWorkHistoryItems.action';

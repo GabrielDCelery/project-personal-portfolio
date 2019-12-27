@@ -4,6 +4,7 @@ import _ from 'lodash';
 export default function WorkHistoryBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
     const {
+      actionCloseAllWorkHistoryItems,
       actionGetWorkHistoryItems,
       actionToggleWorkHistoryItem,
       actionToggleWorkHistoryProjectItem,
@@ -13,6 +14,9 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
     } = props;
 
     const getters = {
+      isAnyWorkHistoryPanelOpen: useCallback(() => {
+        return stateWorkHistoryOpenItems.length > 0;
+      }, [stateWorkHistoryOpenItems]),
       isWorkHistoryPanelOpen: useCallback(
         panelId => {
           return stateWorkHistoryOpenItems.includes(panelId);
@@ -33,6 +37,9 @@ export default function WorkHistoryBehaviour(ToWrapComponent) {
     };
 
     const handlers = {
+      closeAllWorkHistoryItems: useCallback(() => {
+        actionCloseAllWorkHistoryItems();
+      }, [actionCloseAllWorkHistoryItems]),
       setExpandedWorkItemPanel: useCallback(
         panelId => {
           actionToggleWorkHistoryItem(panelId);

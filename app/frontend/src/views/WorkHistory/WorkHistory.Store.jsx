@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+  actionCloseAllWorkHistoryItems,
   actionGetWorkHistoryItems,
   actionToggleWorkHistoryItem,
   actionToggleWorkHistoryProjectItem
@@ -15,6 +16,7 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
+  actionCloseAllWorkHistoryItems,
   actionGetWorkHistoryItems,
   actionToggleWorkHistoryItem,
   actionToggleWorkHistoryProjectItem

@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   Box,
+  Button,
   ExpansionPanel,
   ExpansionPanelDetails,
-  ExpansionPanelSummary
+  ExpansionPanelSummary,
+  Typography
 } from '@material-ui/core';
 import {
   ComponentExpansionPanelHeading,
@@ -19,6 +21,18 @@ export default function WorkHistoryView({ getter, handler }) {
     <React.Fragment>
       <Box height="2em" />
       <ComponentLeftAlignedContainer maxWidth="xl">
+        {getter('isAnyWorkHistoryPanelOpen')() ? (
+          <div style={{ display: 'flex', marginBottom: '1em' }}>
+            <Typography component="div" style={{ flexGrow: 1 }}></Typography>
+            <Button
+              variant="outlined"
+              onClick={handler('closeAllWorkHistoryItems')}
+            >
+              Close all tabs
+            </Button>
+          </div>
+        ) : null}
+
         {getter('workHistoryItems').map(
           (
             {

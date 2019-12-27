@@ -28,7 +28,6 @@ const AppView = ({ location }) => {
       <div style={{ display: 'flex' }}>
         <NavBar />
         <div style={{ flexGrow: 1, position: 'relative' }}>
-          <ComponentScrolltopButton />
           <Hidden smUp>
             <Box height="5em" />
           </Hidden>
