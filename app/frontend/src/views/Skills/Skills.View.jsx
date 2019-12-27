@@ -6,7 +6,6 @@ import { Layout, Text } from 'react-hexgrid';
 import { SizeMe } from 'react-sizeme';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import Color from 'color';
 
 import {
   Avatar,
@@ -30,6 +29,22 @@ export default function SkillsView({
       <Box height="2em" />
       <ComponentLeftAlignedContainer maxWidth="xl">
         <Card>
+          <CardContent
+            style={{
+              backgroundColor: config.styles.colors.secondary,
+              color: '#fff'
+            }}
+          >
+            <div style={{ display: 'flex' }}>
+              <Typography component="div" style={{ flexGrow: 1 }}>
+                <Typography component="p" style={{ color: '#ddd' }}>
+                  SKILLS HEATMAP
+                </Typography>
+              </Typography>
+              <Typography component="div" style={{ flexGrow: 1 }}></Typography>
+            </div>
+          </CardContent>
+
           <CardContent style={{ padding: 0, borderBottom: '3px solid #000' }}>
             <Grid container spacing={3}>
               <Grid item xs={3}>

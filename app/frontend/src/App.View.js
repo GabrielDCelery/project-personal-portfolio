@@ -8,6 +8,7 @@ import {
   Skills,
   WorkHistory
 } from 'views';
+import { ComponentScrolltopButton } from 'components';
 import { Box, Hidden } from '@material-ui/core';
 import './App.css';
 import config from 'config';
@@ -26,7 +27,8 @@ const AppView = ({ location }) => {
     <React.Fragment>
       <div style={{ display: 'flex' }}>
         <NavBar />
-        <div style={{ flexGrow: 1 }}>
+        <div style={{ flexGrow: 1, position: 'relative' }}>
+          <ComponentScrolltopButton />
           <Hidden smUp>
             <Box height="5em" />
           </Hidden>
