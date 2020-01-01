@@ -18,27 +18,23 @@ export default function ResumeView() {
       <Box height="2em" />
       <ComponentLeftAlignedContainer maxWidth="xl">
         <Grid container alignItems="center">
-          <Grid item xs={4} sm={4} md={3}>
-            <Box padding="3em">
-              <DownloadDocumentIcon
-                downloadUrl={documentResumePdfUrl}
-                svgUrl={svgPdfUrl}
-                bordercolor={config.styles.colors.secondary}
-                bordercolorhover={config.styles.colors.lightYellowBorder}
-                backgroundcolorhover={config.styles.colors.lightYellow}
-              />
-            </Box>
+          <Grid item xs={6} sm={6} md={3}>
+            <DownloadDocumentIcon
+              downloadUrl={documentResumePdfUrl}
+              svgUrl={svgPdfUrl}
+              bordercolor={config.styles.colors.secondary}
+              bordercolorhover={config.styles.colors.lightYellowBorder}
+              backgroundcolorhover={config.styles.colors.lightYellow}
+            />
           </Grid>
-          <Grid item xs={4} sm={4} md={3}>
-            <Box padding="3em">
-              <DownloadDocumentIcon
-                downloadUrl={documentResumeWordUrl}
-                svgUrl={svgWordUrl}
-                bordercolor={config.styles.colors.secondary}
-                bordercolorhover={config.styles.colors.lightYellowBorder}
-                backgroundcolorhover={config.styles.colors.lightYellow}
-              />
-            </Box>
+          <Grid item xs={6} sm={6} md={3}>
+            <DownloadDocumentIcon
+              downloadUrl={documentResumeWordUrl}
+              svgUrl={svgWordUrl}
+              bordercolor={config.styles.colors.secondary}
+              bordercolorhover={config.styles.colors.lightYellowBorder}
+              backgroundcolorhover={config.styles.colors.lightYellow}
+            />
           </Grid>
         </Grid>
       </ComponentLeftAlignedContainer>

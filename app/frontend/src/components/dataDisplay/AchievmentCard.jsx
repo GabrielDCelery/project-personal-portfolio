@@ -18,8 +18,8 @@ import { GitHub as GitHubIcon } from '@material-ui/icons';
 import config from 'config';
 import _ from 'lodash';
 
-import unleashTheGeekPreviewImage from 'assets/achievments/unleash_the_geek_001.jpg';
-import halitePreviewImage from 'assets/achievments/halite3_001.jpg';
+import unleashTheGeekPreviewImage from 'assets/images/achievment_unleash_the_geek_001.jpg';
+import halitePreviewImage from 'assets/images/achievment_halite3_001.jpg';
 
 const previewImageSrcMap = {
   unleashTheGeekPreviewImage,

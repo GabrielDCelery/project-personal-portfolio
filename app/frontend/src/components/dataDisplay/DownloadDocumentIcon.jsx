@@ -46,25 +46,31 @@ export const DownloadDocumentIcon = props => {
   } = props;
 
   return (
-    <SizeMe>
-      {({ size }) => {
-        const { width } = size;
-
-        return (
-          <StyledImageContainer width={width}>
-            <Link href={downloadUrl} target="_blank" underline="none" download>
-              <StyledImageBox
-                width={width}
-                backgroundcolorhover={backgroundcolorhover}
-                bordercolor={bordercolor}
-                bordercolorhover={bordercolorhover}
+    <Box padding="15px">
+      <SizeMe>
+        {({ size }) => {
+          const { width } = size;
+          return (
+            <StyledImageContainer width={width}>
+              <Link
+                href={downloadUrl}
+                target="_blank"
+                underline="none"
+                download
               >
-                <StyldImage src={svgUrl} />
-              </StyledImageBox>
-            </Link>
-          </StyledImageContainer>
-        );
-      }}
-    </SizeMe>
+                <StyledImageBox
+                  width={width}
+                  backgroundcolorhover={backgroundcolorhover}
+                  bordercolor={bordercolor}
+                  bordercolorhover={bordercolorhover}
+                >
+                  <StyldImage src={svgUrl} />
+                </StyledImageBox>
+              </Link>
+            </StyledImageContainer>
+          );
+        }}
+      </SizeMe>
+    </Box>
   );
 };
