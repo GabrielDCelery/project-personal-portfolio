@@ -1,57 +1,44 @@
 import React from 'react';
+import { Box, Card } from '@material-ui/core';
+import styled from 'styled-components';
+import Color from 'color';
 
-import {
-  Box,
-  Card,
-  Divider,
-  Grid,
-  /*Icon,*/ Typography
-} from '@material-ui/core';
-import { SizeMe } from 'react-sizeme';
+const StyledCard = styled(Card)`
+  text-align: center;
+
+  &.MuiPaper-root {
+    margin: 0.5em;
+    color: ${({ bgcolor }) => {
+      const lightTextColor = '#fff';
+      const darkTextColor = '#000';
+
+      return Color(bgcolor).contrast(Color(lightTextColor)) <
+        Color(bgcolor).contrast(Color(darkTextColor))
+        ? Color(bgcolor)
+            .darken(0.7)
+            .hex()
+        : Color(bgcolor)
+            .lighten(0.7)
+            .hex();
+    }};
+    background-color: ${({ bgcolor }) => {
+      return `${bgcolor};`;
+    }};
+  }
+`;
+
+const StyledParagraph = styled.p`
+  text-align: center;
+`;
 
 export const SkillCard = props => {
-  const { iconSrc, label, cardBgColor, iconBorderColor } = props;
+  const { bgColor, label } = props;
 
   return (
-    <Card
-      style={{
-        backgroundColor: cardBgColor
-      }}
-    >
-      <Grid container alignItems="center">
-        <Grid item xs={4}>
-          <Box padding="1em">
-            <SizeMe>
-              {({ size }) => {
-                return (
-                  <Box
-                    style={{
-                      borderRadius: '50%',
-                      border: `3px solid ${iconBorderColor}`,
-                      width: '100%',
-                      height: size.width
-                    }}
-                  >
-                    <img
-                      src={iconSrc}
-                      style={{ width: '100%' }}
-                      alt={iconSrc}
-                    />
-                  </Box>
-                );
-              }}
-            </SizeMe>
-          </Box>
-        </Grid>
-        <Divider orientation="vertical" />
-        <Grid item xs={8}>
-          <Box padding="2em">
-            <Typography variant="h6" style={{ color: '#6e6959' }}>
-              {(label || '').toUpperCase()}
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
-    </Card>
+    <StyledCard bgcolor={bgColor}>
+      <Box padding="1em">
+        <StyledParagraph>{(label || '').toUpperCase()}</StyledParagraph>
+      </Box>
+    </StyledCard>
   );
 };

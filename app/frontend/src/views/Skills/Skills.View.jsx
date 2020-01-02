@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Grid } from '@material-ui/core';
-import { ComponentLeftAlignedContainer } from 'components';
+import { Box, Grid, Hidden } from '@material-ui/core';
+import { ComponentLeftAlignedContainer, SkillCard } from 'components';
 import config from 'config';
 import { Layout, Text } from 'react-hexgrid';
 import { SizeMe } from 'react-sizeme';
@@ -121,51 +121,82 @@ export default function SkillsView({
           }}
         </SizeMe>
 
-        <div
-          style={{
-            width: getter('layout', 'hexGrid', 'width'),
-            margin: '0 auto'
-          }}
-        >
-          {getter('layout', 'hexGrid', 'width') ? (
-            <React.Fragment>
-              <StyledHexGrid
-                width={getter('layout', 'hexGrid', 'width')}
-                height={getter('layout', 'hexGrid', 'height')}
-                viewBox="-50 -50 100 100"
-              >
-                <Layout
-                  size={{
-                    x: getter('layout', 'hexCell', 'width'),
-                    y: getter('layout', 'hexCell', 'height')
-                  }}
-                  flat={true}
-                  spacing={1.1}
-                  origin={{ x: 0, y: 0 }}
+        <Hidden lgUp>
+          <div
+            style={{
+              margin: '0 auto',
+              marginTop: '30px'
+            }}
+          >
+            {getter('filteredSkillsItemsForGridMap')().map(
+              (skillItems, rowIndex) => {
+                return (
+                  <React.Fragment key={`skills-row-${rowIndex}`}>
+                    <Grid container>
+                      {skillItems.map(({ label, bgColor }, colIndex) => {
+                        return (
+                          <React.Fragment key={`skills-col-${colIndex}`}>
+                            <Grid item xs={12} sm={4}>
+                              <SkillCard label={label} bgColor={bgColor} />
+                            </Grid>
+                          </React.Fragment>
+                        );
+                      })}
+                    </Grid>
+                  </React.Fragment>
+                );
+              }
+            )}
+          </div>
+        </Hidden>
+
+        <Hidden mdDown>
+          <div
+            style={{
+              width: getter('layout', 'hexGrid', 'width'),
+              margin: '0 auto'
+            }}
+          >
+            {getter('layout', 'hexGrid', 'width') ? (
+              <React.Fragment>
+                <StyledHexGrid
+                  width={getter('layout', 'hexGrid', 'width')}
+                  height={getter('layout', 'hexGrid', 'height')}
+                  viewBox={getter('layout', 'hexViewBox')()}
                 >
-                  {getter('stateFilteredSkillsItemsForHexMap').map(
-                    ({ label, hexX, hexY, bgColor }, index) => {
-                      return (
-                        <React.Fragment key={`hex-${index}`}>
-                          <StyledHexagon
-                            q={hexX}
-                            r={hexY}
-                            s={0}
-                            bgColor={bgColor}
-                          >
-                            <Text>{label}</Text>
-                          </StyledHexagon>
-                        </React.Fragment>
-                      );
-                    }
-                  )}
-                </Layout>
-              </StyledHexGrid>
-            </React.Fragment>
-          ) : (
-            <React.Fragment></React.Fragment>
-          )}
-        </div>
+                  <Layout
+                    size={{
+                      x: getter('layout', 'hexCell', 'width'),
+                      y: getter('layout', 'hexCell', 'height')
+                    }}
+                    flat={true}
+                    spacing={1.1}
+                    origin={{ x: 0, y: 0 }}
+                  >
+                    {getter('stateFilteredSkillsItemsForHexMap').map(
+                      ({ label, hexX, hexY, bgColor }, index) => {
+                        return (
+                          <React.Fragment key={`hex-${index}`}>
+                            <StyledHexagon
+                              q={hexX}
+                              r={hexY}
+                              s={0}
+                              bgColor={bgColor}
+                            >
+                              <Text>{label}</Text>
+                            </StyledHexagon>
+                          </React.Fragment>
+                        );
+                      }
+                    )}
+                  </Layout>
+                </StyledHexGrid>
+              </React.Fragment>
+            ) : (
+              <React.Fragment></React.Fragment>
+            )}
+          </div>
+        </Hidden>
       </ComponentLeftAlignedContainer>
     </React.Fragment>
   );

@@ -11,7 +11,7 @@ const StyledHexGrid = styled(HexGrid)`
 
 const StyledHexagon = styled(Hexagon)`
   g {
-    fill: ${({ bgColor, width }) => {
+    fill: ${({ bgColor }) => {
       return bgColor;
     }};
     /*fill-opacity: 0.9;*/
@@ -19,7 +19,7 @@ const StyledHexagon = styled(Hexagon)`
   }
 /*
   g:hover {
-    fill: ${({ bgColor, width }) => {
+    fill: ${({ bgColor }) => {
       return Color(bgColor)
         .lighten(0.3)
         .hex();
@@ -29,7 +29,7 @@ const StyledHexagon = styled(Hexagon)`
 */
   g text {
     font-size: 0.1em;
-    fill:${({ bgColor, width }) => {
+    fill:${({ bgColor }) => {
       const lightTextColor = '#fff';
       const darkTextColor = '#000';
 
@@ -47,7 +47,7 @@ const StyledHexagon = styled(Hexagon)`
   }
 
   g polygon {
-    stroke: ${({ bgColor, width }) => {
+    stroke: ${({ bgColor }) => {
       return Color(bgColor)
         .darken(0.2)
         .hex();
