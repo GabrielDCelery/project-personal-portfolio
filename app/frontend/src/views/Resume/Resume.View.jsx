@@ -22,7 +22,7 @@ export default function ResumeView() {
             <DownloadDocumentIcon
               downloadUrl={documentResumePdfUrl}
               svgUrl={svgPdfUrl}
-              bordercolor={config.styles.colors.secondary}
+              bordercolor={config.styles.colors.primary}
               bordercolorhover={config.styles.colors.lightYellowBorder}
               backgroundcolorhover={config.styles.colors.lightYellow}
             />
@@ -31,7 +31,7 @@ export default function ResumeView() {
             <DownloadDocumentIcon
               downloadUrl={documentResumeWordUrl}
               svgUrl={svgWordUrl}
-              bordercolor={config.styles.colors.secondary}
+              bordercolor={config.styles.colors.primary}
               bordercolorhover={config.styles.colors.lightYellowBorder}
               backgroundcolorhover={config.styles.colors.lightYellow}
             />
