@@ -73,6 +73,7 @@ const StyledListItemText = styled(ListItemText)`
   transition: all 0.4s ease-in-out;
 
   .MuiTypography-root {
+    font-size: 1em;
     font-weight: bold;
   }
 `;
