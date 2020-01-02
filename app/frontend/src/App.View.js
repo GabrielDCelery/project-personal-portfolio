@@ -8,7 +8,7 @@ import {
   Skills,
   WorkHistory
 } from 'views';
-import { ComponentScrolltopButton } from 'components';
+
 import { Box, Hidden } from '@material-ui/core';
 import './App.css';
 import config from 'config';
