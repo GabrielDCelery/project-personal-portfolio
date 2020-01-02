@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   Box,
-  Button,
   ExpansionPanel,
   ExpansionPanelDetails,
-  ExpansionPanelSummary,
-  Typography
+  ExpansionPanelSummary
 } from '@material-ui/core';
 import {
   ComponentExpansionPanelHeading,
