@@ -8,6 +8,6 @@ const StyledFab = styled(Fab)`
   right: 0;
 `;
 
-export const ComponentScrolltopButton = props => {
+export const ComponentScrolltopButton = () => {
   return <StyledFab>s</StyledFab>;
 };
