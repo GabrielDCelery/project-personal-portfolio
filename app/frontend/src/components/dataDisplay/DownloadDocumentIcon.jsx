@@ -17,7 +17,7 @@ const StyledImageBox = styled(Box)`
     return `${(width || 0) / 5}px;`;
   }};
   border: ${({ bordercolor, width }) => {
-    return `solid ${(width || 0) / 25}px ${bordercolor};`;
+    return `solid ${(width || 0) / 30}px ${bordercolor};`;
   }};
   height: 100%;
   transition: border-color 0.5s, background-color 0.5s;
