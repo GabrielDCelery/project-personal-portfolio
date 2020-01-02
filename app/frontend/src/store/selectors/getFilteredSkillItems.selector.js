@@ -6,46 +6,6 @@ import Color from 'color';
 const getSkillsItems = state => state.skills.items;
 const getVisibilityFilter = state => state.skills.visibilityFilter;
 
-const hexGridSpiralCoordinates = [
-  [0, 0],
-  [-1, 0],
-  [0, -1],
-  [1, -1],
-  [1, 0],
-  [0, 1],
-  [-1, 1],
-  [-2, 1],
-  [-2, 0],
-  [-1, -1],
-  [0, -2],
-  [1, -2],
-  [2, -2],
-  [2, -1],
-  [2, 0],
-  [1, 1],
-  [0, 2],
-  [-1, 2],
-  [-2, 2],
-  [-3, 2],
-  [-3, 1],
-  [-3, 0],
-  [-2, -1],
-  [-1, -2],
-  [0, -3],
-  [1, -3],
-  [2, -3],
-  [3, -3],
-  [3, -2],
-  [3, -1],
-  [3, 0],
-  [2, 1],
-  [1, 2],
-  [0, 3],
-  [-1, 3],
-  [-2, 3],
-  [-3, 3]
-];
-
 const getMinMaxLevel = _.over([
   skillsItems => {
     const { level } = _.minBy(skillsItems, skillsItem => {
@@ -94,7 +54,7 @@ const getLevelToColorMap = ({
   return levelToColorMap;
 };
 
-export const selectorGetFilteredSkillsToShowForHexMap = createSelector(
+export const selectorGetFilteredSkillItems = createSelector(
   [getSkillsItems, getVisibilityFilter],
   (skillsItems, visibilityFilter) => {
     if (skillsItems.length === 0) {
@@ -117,14 +77,11 @@ export const selectorGetFilteredSkillsToShowForHexMap = createSelector(
           .value();
       })
       .orderBy(['level'], ['desc'])
-      .map((skillsItem, index) => {
-        const [hexX, hexY] = hexGridSpiralCoordinates[index];
+      .map(skillsItem => {
         const { label, level } = skillsItem;
 
         return {
           label,
-          hexX,
-          hexY,
           bgColor: levelToColorMap[level]
         };
       })

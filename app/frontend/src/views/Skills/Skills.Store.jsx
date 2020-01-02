@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import {
   actionGetSkillsItems,
   actionSetSkillsVisibilityFilter,
-  selectorGetFilteredSkillsToShowForHexMap
+  selectorGetFilteredSkillItems
 } from 'store';
 
 const mapStateToProps = state => {
   return {
     stateSkillsItems: state.skills.items,
     stateSkillsVisibilityFilter: state.skills.visibilityFilter,
-    stateFilteredSkillsItemsForHexMap: selectorGetFilteredSkillsToShowForHexMap(
-      state
-    )
+    stateFilteredSkillItems: selectorGetFilteredSkillItems(state)
   };
 };
 

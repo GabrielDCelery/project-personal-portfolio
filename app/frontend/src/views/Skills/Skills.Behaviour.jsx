@@ -1,6 +1,46 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import _ from 'lodash';
 
+const hexGridSpiralCoordinates = [
+  [0, 0],
+  [-1, 0],
+  [0, -1],
+  [1, -1],
+  [1, 0],
+  [0, 1],
+  [-1, 1],
+  [-2, 1],
+  [-2, 0],
+  [-1, -1],
+  [0, -2],
+  [1, -2],
+  [2, -2],
+  [2, -1],
+  [2, 0],
+  [1, 1],
+  [0, 2],
+  [-1, 2],
+  [-2, 2],
+  [-3, 2],
+  [-3, 1],
+  [-3, 0],
+  [-2, -1],
+  [-1, -2],
+  [0, -3],
+  [1, -3],
+  [2, -3],
+  [3, -3],
+  [3, -2],
+  [3, -1],
+  [3, 0],
+  [2, 1],
+  [1, 2],
+  [0, 3],
+  [-1, 3],
+  [-2, 3],
+  [-3, 3]
+];
+
 const getHexRingOffset = totalNumOfHexTiles => {
   if (totalNumOfHexTiles === 0 || totalNumOfHexTiles === 1) {
     return '-10';
@@ -22,13 +62,13 @@ export default function SkillsBehaviour(ToWrapComponent) {
     const {
       actionGetSkillsItems,
       actionSetSkillsVisibilityFilter,
-      stateFilteredSkillsItemsForHexMap,
+      stateFilteredSkillItems,
       stateSkillsVisibilityFilter
     } = props;
 
     const [hexGridWidth, setHexGridWidth] = useState(0);
     const getters = {
-      stateFilteredSkillsItemsForHexMap,
+      stateFilteredSkillItems,
       stateSkillsVisibilityFilter,
       layout: {
         hexGrid: {
@@ -41,15 +81,15 @@ export default function SkillsBehaviour(ToWrapComponent) {
         },
         hexViewBox: useCallback(() => {
           return `-50 ${getHexRingOffset(
-            stateFilteredSkillsItemsForHexMap.length
+            stateFilteredSkillItems.length
           )} 100 100`;
-        }, [stateFilteredSkillsItemsForHexMap])
+        }, [stateFilteredSkillItems])
       },
       filteredSkillsItemsForGridMap: useCallback(() => {
         const gridMap = [];
         let rowItems = [];
 
-        stateFilteredSkillsItemsForHexMap.map((item, index) => {
+        stateFilteredSkillItems.map((item, index) => {
           rowItems.push(item);
 
           if (index !== 0 && index % 3 === 2) {
@@ -59,7 +99,7 @@ export default function SkillsBehaviour(ToWrapComponent) {
             return null;
           }
 
-          if (index === stateFilteredSkillsItemsForHexMap.length - 1) {
+          if (index === stateFilteredSkillItems.length - 1) {
             gridMap.push(rowItems.slice(0));
             rowItems = [];
 
@@ -70,7 +110,8 @@ export default function SkillsBehaviour(ToWrapComponent) {
         });
 
         return gridMap;
-      }, [stateFilteredSkillsItemsForHexMap])
+      }, [stateFilteredSkillItems]),
+      hexGridSpiralCoordinates
     };
 
     const getter = (...paths) => {

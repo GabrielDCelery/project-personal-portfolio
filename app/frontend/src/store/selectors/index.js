@@ -1,1 +1,1 @@
-export * from './getFilteredSkillsToShowForHexMap.selector';
+export * from './getFilteredSkillItems.selector';

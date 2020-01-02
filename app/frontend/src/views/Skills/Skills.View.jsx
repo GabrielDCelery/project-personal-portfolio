@@ -173,8 +173,11 @@ export default function SkillsView({
                     spacing={1.1}
                     origin={{ x: 0, y: 0 }}
                   >
-                    {getter('stateFilteredSkillsItemsForHexMap').map(
-                      ({ label, hexX, hexY, bgColor }, index) => {
+                    {getter('stateFilteredSkillItems').map(
+                      ({ label, bgColor }, index) => {
+                        const [hexX, hexY] = getter('hexGridSpiralCoordinates')[
+                          index
+                        ];
                         return (
                           <React.Fragment key={`hex-${index}`}>
                             <StyledHexagon
