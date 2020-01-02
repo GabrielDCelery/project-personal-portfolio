@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Grid } from '@material-ui/core';
-
 import { ComponentLeftAlignedContainer, AchievmentCard } from 'components';
 
 export default function AchievmentsView({ getter /*, handler*/ }) {

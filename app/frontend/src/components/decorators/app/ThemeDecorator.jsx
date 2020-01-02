@@ -15,9 +15,11 @@ const theme = createMuiTheme({
 });
 
 export const ThemeDecorator = ToWrapComponent => {
-  return props => (
+  const WrapperComponent = props => (
     <ThemeProvider theme={theme}>
       <ToWrapComponent {...props} />
     </ThemeProvider>
   );
-}
+
+  return WrapperComponent;
+};
