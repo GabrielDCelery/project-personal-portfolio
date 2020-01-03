@@ -45,7 +45,7 @@ const StyledCardHeader = styled(CardHeader)`
   }
 `;
 
-export const AchievmentCard = props => {
+export const CompetitionsCard = props => {
   const {
     bgColor,
     codeUrl,

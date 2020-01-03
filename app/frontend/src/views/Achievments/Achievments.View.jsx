@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Grid } from '@material-ui/core';
-import { ComponentLeftAlignedContainer, AchievmentCard } from 'components';
+import { CompetitionsCard, UILeftAlignedContainer } from 'components';
 import { SizeMe } from 'react-sizeme';
 
 import achievment_halite_3_320 from 'assets/images/achievment_halite_3_320.jpg';
@@ -52,7 +52,7 @@ export default function AchievmentsView({ getter /*, handler*/ }) {
   return (
     <React.Fragment>
       <Box height="2em" />
-      <ComponentLeftAlignedContainer maxWidth="xl">
+      <UILeftAlignedContainer maxWidth="xl">
         <Grid container spacing={4}>
           {getter('items').map(
             (
@@ -76,7 +76,7 @@ export default function AchievmentsView({ getter /*, handler*/ }) {
                         const { width } = size;
 
                         return (
-                          <AchievmentCard
+                          <CompetitionsCard
                             title={name}
                             subTitle={type}
                             description={description}
@@ -98,7 +98,7 @@ export default function AchievmentsView({ getter /*, handler*/ }) {
             }
           )}
         </Grid>
-      </ComponentLeftAlignedContainer>
+      </UILeftAlignedContainer>
 
       <Box height="4em" />
     </React.Fragment>

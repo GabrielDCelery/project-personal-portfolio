@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Grid, Hidden } from '@material-ui/core';
-import { ComponentLeftAlignedContainer, SkillCard } from 'components';
+import { UILeftAlignedContainer, SkillsCard } from 'components';
 import config from 'config';
 import { Layout, Text } from 'react-hexgrid';
 import { SizeMe } from 'react-sizeme';
@@ -27,7 +27,7 @@ export default function SkillsView({
   return (
     <React.Fragment>
       <Box height="2em" />
-      <ComponentLeftAlignedContainer maxWidth="xl">
+      <UILeftAlignedContainer maxWidth="xl">
         <Card>
           <CardContent
             style={{
@@ -137,7 +137,7 @@ export default function SkillsView({
                         return (
                           <React.Fragment key={`skills-col-${colIndex}`}>
                             <Grid item xs={12} sm={4}>
-                              <SkillCard label={label} bgColor={bgColor} />
+                              <SkillsCard label={label} bgColor={bgColor} />
                             </Grid>
                           </React.Fragment>
                         );
@@ -200,7 +200,7 @@ export default function SkillsView({
             )}
           </div>
         </Hidden>
-      </ComponentLeftAlignedContainer>
+      </UILeftAlignedContainer>
     </React.Fragment>
   );
 }

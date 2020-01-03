@@ -6,10 +6,10 @@ import {
   ExpansionPanelSummary
 } from '@material-ui/core';
 import {
-  ComponentExpansionPanelHeading,
-  ComponentLeftAlignedContainer,
-  ComponentSectionHeading,
-  ComponentSectionParagraph
+  WorkHistoryExpansionPanelHeading,
+  UILeftAlignedContainer,
+  WorkHistorySectionHeading,
+  WorkHistorySectionParagraph
 } from 'components';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import config from 'config';
@@ -18,7 +18,7 @@ export default function WorkHistoryView({ getter, handler }) {
   return (
     <React.Fragment>
       <Box height="2em" />
-      <ComponentLeftAlignedContainer maxWidth="xl">
+      <UILeftAlignedContainer maxWidth="xl">
         {getter('workHistoryItems').map(
           (
             {
@@ -55,7 +55,7 @@ export default function WorkHistoryView({ getter, handler }) {
                       borderBottom: '3px solid #000'
                     }}
                   >
-                    <ComponentExpansionPanelHeading
+                    <WorkHistoryExpansionPanelHeading
                       labelFirst={companyName}
                       labelSecond={position}
                       labelThird={workedFromTo}
@@ -67,7 +67,7 @@ export default function WorkHistoryView({ getter, handler }) {
 
                   <ExpansionPanelDetails style={{ padding: 0 }}>
                     <Box width="100%">
-                      <ComponentSectionHeading
+                      <WorkHistorySectionHeading
                         label="About the company"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
@@ -75,7 +75,7 @@ export default function WorkHistoryView({ getter, handler }) {
                       <Box p="2em">
                         {aboutTheCompany.map(({ type, content }, index) => {
                           return (
-                            <ComponentSectionParagraph
+                            <WorkHistorySectionParagraph
                               key={`paragraph-${index}`}
                               type={type}
                               content={content}
@@ -84,7 +84,7 @@ export default function WorkHistoryView({ getter, handler }) {
                         })}
                       </Box>
 
-                      <ComponentSectionHeading
+                      <WorkHistorySectionHeading
                         label="Work summary"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
@@ -93,7 +93,7 @@ export default function WorkHistoryView({ getter, handler }) {
                       <Box p="2em">
                         {workSummary.map(({ type, content }, index) => {
                           return (
-                            <ComponentSectionParagraph
+                            <WorkHistorySectionParagraph
                               key={`paragraph-${index}`}
                               type={type}
                               content={content}
@@ -102,7 +102,7 @@ export default function WorkHistoryView({ getter, handler }) {
                         })}
                       </Box>
 
-                      <ComponentSectionHeading
+                      <WorkHistorySectionHeading
                         label="Key responsibilities"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
@@ -111,7 +111,7 @@ export default function WorkHistoryView({ getter, handler }) {
                       <Box p="2em">
                         {keyResponsibilities.map(({ type, content }, index) => {
                           return (
-                            <ComponentSectionParagraph
+                            <WorkHistorySectionParagraph
                               key={`paragraph-${index}`}
                               type={type}
                               content={content}
@@ -121,7 +121,7 @@ export default function WorkHistoryView({ getter, handler }) {
                         })}
                       </Box>
 
-                      <ComponentSectionHeading
+                      <WorkHistorySectionHeading
                         label="Primary Tech Stack"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
@@ -130,7 +130,7 @@ export default function WorkHistoryView({ getter, handler }) {
                       <Box p="2em">
                         {technologies.map(({ type, content }, index) => {
                           return (
-                            <ComponentSectionParagraph
+                            <WorkHistorySectionParagraph
                               key={`paragraph-${index}`}
                               type={type}
                               content={content}
@@ -140,7 +140,7 @@ export default function WorkHistoryView({ getter, handler }) {
                         })}
                       </Box>
 
-                      <ComponentSectionHeading
+                      <WorkHistorySectionHeading
                         label="Notable projects"
                         bgColor={config.styles.colors.secondary}
                         labelColor={config.styles.colors.darkBgText}
@@ -175,7 +175,7 @@ export default function WorkHistoryView({ getter, handler }) {
                                     padding: '0 2em'
                                   }}
                                 >
-                                  <ComponentExpansionPanelHeading
+                                  <WorkHistoryExpansionPanelHeading
                                     labelFirst={title}
                                     labelColor={
                                       config.styles.colors.lightBgText
@@ -187,7 +187,7 @@ export default function WorkHistoryView({ getter, handler }) {
 
                                 <ExpansionPanelDetails style={{ padding: 0 }}>
                                   <Box width="100%">
-                                    <ComponentSectionHeading
+                                    <WorkHistorySectionHeading
                                       label="Summary"
                                       bgColor={
                                         config.styles.colors.lightYellowBorder
@@ -202,7 +202,7 @@ export default function WorkHistoryView({ getter, handler }) {
                                       {summary.map(
                                         ({ type, content }, index) => {
                                           return (
-                                            <ComponentSectionParagraph
+                                            <WorkHistorySectionParagraph
                                               key={`paragraph-${index}`}
                                               type={type}
                                               content={content}
@@ -212,7 +212,7 @@ export default function WorkHistoryView({ getter, handler }) {
                                       )}
                                     </Box>
 
-                                    <ComponentSectionHeading
+                                    <WorkHistorySectionHeading
                                       label="Key tasks"
                                       bgColor={
                                         config.styles.colors.lightYellowBorder
@@ -226,7 +226,7 @@ export default function WorkHistoryView({ getter, handler }) {
                                     <Box p="2em">
                                       {tasks.map(({ type, content }, index) => {
                                         return (
-                                          <ComponentSectionParagraph
+                                          <WorkHistorySectionParagraph
                                             key={`paragraph-${index}`}
                                             type={type}
                                             content={content}
@@ -242,7 +242,7 @@ export default function WorkHistoryView({ getter, handler }) {
                                       })}
                                     </Box>
 
-                                    <ComponentSectionHeading
+                                    <WorkHistorySectionHeading
                                       label="Primary Tech Stack"
                                       bgColor={
                                         config.styles.colors.lightYellowBorder
@@ -257,7 +257,7 @@ export default function WorkHistoryView({ getter, handler }) {
                                       {technologies.map(
                                         ({ type, content }, index) => {
                                           return (
-                                            <ComponentSectionParagraph
+                                            <WorkHistorySectionParagraph
                                               key={`paragraph-${index}`}
                                               type={type}
                                               content={content}
@@ -287,7 +287,7 @@ export default function WorkHistoryView({ getter, handler }) {
             );
           }
         )}
-      </ComponentLeftAlignedContainer>
+      </UILeftAlignedContainer>
       <Box height="4em" />
     </React.Fragment>
   );

@@ -33,7 +33,7 @@ const renderLabels = ({ labelFirst, labelSecond, labelThird, style }) => {
   );
 };
 
-export const ComponentExpansionPanelHeading = props => {
+export const WorkHistoryExpansionPanelHeading = props => {
   const {
     labelFirst,
     labelSecond,

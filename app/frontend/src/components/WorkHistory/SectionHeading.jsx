@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import config from 'config';
 
-export const ComponentSectionHeading = props => {
+export const WorkHistorySectionHeading = props => {
   const { label, bgColor, labelColor, fontSize } = props;
 
   const style = {};

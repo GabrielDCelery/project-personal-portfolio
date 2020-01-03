@@ -31,7 +31,7 @@ const StyledParagraph = styled.p`
   text-align: center;
 `;
 
-export const SkillCard = props => {
+export const SkillsCard = props => {
   const { bgColor, label } = props;
 
   return (

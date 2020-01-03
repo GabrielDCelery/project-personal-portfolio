@@ -88,7 +88,7 @@ const renderContent = ({ type, content, bgColor, borderColor, textColor }) => {
   }
 };
 
-export const ComponentSectionParagraph = props => {
+export const WorkHistorySectionParagraph = props => {
   const { type, content, bgColor, borderColor, textColor } = props;
 
   return (

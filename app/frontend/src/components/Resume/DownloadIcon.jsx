@@ -36,7 +36,7 @@ const StyldImage = styled.img`
   height: 50%;
 `;
 
-export const DownloadDocumentIcon = props => {
+export const ResumeDownloadIcon = props => {
   const {
     backgroundcolorhover,
     bordercolor,

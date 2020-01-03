@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  ComponentLeftAlignedContainer,
-  DownloadDocumentIcon
-} from 'components';
+import { UILeftAlignedContainer, ResumeDownloadIcon } from 'components';
 import { Box, Grid } from '@material-ui/core';
 import config from 'config';
 
@@ -16,10 +13,10 @@ export default function ResumeView() {
   return (
     <React.Fragment>
       <Box height="2em" />
-      <ComponentLeftAlignedContainer maxWidth="xl">
+      <UILeftAlignedContainer maxWidth="xl">
         <Grid container alignItems="center">
           <Grid item xs={6} sm={6} md={3}>
-            <DownloadDocumentIcon
+            <ResumeDownloadIcon
               downloadUrl={documentResumePdfUrl}
               svgUrl={svgPdfUrl}
               bordercolor={config.styles.colors.primary}
@@ -28,7 +25,7 @@ export default function ResumeView() {
             />
           </Grid>
           <Grid item xs={6} sm={6} md={3}>
-            <DownloadDocumentIcon
+            <ResumeDownloadIcon
               downloadUrl={documentResumeWordUrl}
               svgUrl={svgWordUrl}
               bordercolor={config.styles.colors.primary}
@@ -37,7 +34,7 @@ export default function ResumeView() {
             />
           </Grid>
         </Grid>
-      </ComponentLeftAlignedContainer>
+      </UILeftAlignedContainer>
     </React.Fragment>
   );
 }

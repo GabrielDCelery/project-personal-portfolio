@@ -8,7 +8,7 @@ export const StyledContainer = styled(Container)`
   }
 `;
 
-export const ComponentLeftAlignedContainer = props => {
+export const UILeftAlignedContainer = props => {
   const { children } = props;
   return <StyledContainer>{children}</StyledContainer>;
 };
