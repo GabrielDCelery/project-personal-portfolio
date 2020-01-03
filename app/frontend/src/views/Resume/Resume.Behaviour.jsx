@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 
 export default function ResumeBehaviour(ToWrapComponent) {
-  let WrapperComponent = props => {
+  let WrapperComponent = () => {
     const getters = {};
 
     const getter = (...paths) => {
