@@ -1,7 +1,8 @@
 import React from 'react';
-import { UILeftAlignedContainer, ResumeDownloadIcon } from 'components';
 import { Box, Grid } from '@material-ui/core';
 import config from 'config';
+import UILeftAlignedContainer from 'components/UI/LeftAlignedContainer';
+import ResumeDownloadIcon from 'components/Resume/DownloadIcon';
 
 import documentResumePdfUrl from 'assets/documents/cv-gaborzeller.pdf';
 import documentResumeWordUrl from 'assets/documents/cv-gaborzeller.docx';

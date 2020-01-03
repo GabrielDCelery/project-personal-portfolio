@@ -116,3 +116,5 @@ export const CompetitionsCard = props => {
     </Card>
   );
 };
+
+export default CompetitionsCard;

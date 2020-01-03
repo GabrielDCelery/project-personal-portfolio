@@ -124,3 +124,5 @@ export const ContactCard = props => {
     </Card>
   );
 };
+
+export default ContactCard;

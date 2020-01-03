@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Grid } from '@material-ui/core';
-import { CompetitionsCard, UILeftAlignedContainer } from 'components';
 import { SizeMe } from 'react-sizeme';
+import UILeftAlignedContainer from 'components/UI/LeftAlignedContainer';
+import CompetitionsCard from 'components/Competitions/Card';
 
 import achievment_halite_3_320 from 'assets/images/achievment_halite_3_320.jpg';
 import achievment_halite_3_640 from 'assets/images/achievment_halite_3_640.jpg';

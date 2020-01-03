@@ -5,14 +5,12 @@ import {
   ExpansionPanelDetails,
   ExpansionPanelSummary
 } from '@material-ui/core';
-import {
-  WorkHistoryExpansionPanelHeading,
-  UILeftAlignedContainer,
-  WorkHistorySectionHeading,
-  WorkHistorySectionParagraph
-} from 'components';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import config from 'config';
+import UILeftAlignedContainer from 'components/UI/LeftAlignedContainer';
+import WorkHistoryExpansionPanelHeading from 'components/WorkHistory/ExpansionPanelHeading';
+import WorkHistorySectionHeading from 'components/WorkHistory/SectionHeading';
+import WorkHistorySectionParagraph from 'components/WorkHistory/SectionParagraph';
 
 export default function WorkHistoryView({ getter, handler }) {
   return (

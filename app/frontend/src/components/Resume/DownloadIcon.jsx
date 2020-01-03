@@ -74,3 +74,5 @@ export const ResumeDownloadIcon = props => {
     </Box>
   );
 };
+
+export default ResumeDownloadIcon;

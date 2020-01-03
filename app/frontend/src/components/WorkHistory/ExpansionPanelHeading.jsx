@@ -89,3 +89,5 @@ export const WorkHistoryExpansionPanelHeading = props => {
     </React.Fragment>
   );
 };
+
+export default WorkHistoryExpansionPanelHeading;

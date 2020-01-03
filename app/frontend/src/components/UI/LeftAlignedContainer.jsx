@@ -12,3 +12,5 @@ export const UILeftAlignedContainer = props => {
   const { children } = props;
   return <StyledContainer>{children}</StyledContainer>;
 };
+
+export default UILeftAlignedContainer;

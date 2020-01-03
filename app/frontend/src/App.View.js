@@ -1,13 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import {
-  Achievments,
-  Contact,
-  NavBar,
-  Resume,
-  Skills,
-  WorkHistory
-} from 'views';
+import { Achievments, Contact, Nav, Resume, Skills, WorkHistory } from 'views';
 
 import { Box, Hidden } from '@material-ui/core';
 import './App.css';
@@ -26,7 +19,7 @@ const AppView = ({ location }) => {
   return (
     <React.Fragment>
       <div style={{ display: 'flex' }}>
-        <NavBar />
+        <Nav />
         <div style={{ flexGrow: 1, position: 'relative' }}>
           <Hidden smUp>
             <Box height="5em" />

@@ -42,3 +42,5 @@ export const SkillsCard = props => {
     </StyledCard>
   );
 };
+
+export default SkillsCard;

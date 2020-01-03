@@ -103,3 +103,5 @@ export const WorkHistorySectionParagraph = props => {
     </React.Fragment>
   );
 };
+
+export default WorkHistorySectionParagraph;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Grid } from '@material-ui/core';
-import { UILeftAlignedContainer, ContactCard } from 'components';
+import UILeftAlignedContainer from 'components/UI/LeftAlignedContainer';
+import ContactCard from 'components/Contact/Card';
 
 export default function ContactView(/*{  getter, handler }*/) {
   return (

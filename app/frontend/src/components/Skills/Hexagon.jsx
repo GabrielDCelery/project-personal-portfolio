@@ -1,15 +1,8 @@
-import React from 'react';
-import { Box } from '@material-ui/core';
-import config from 'config';
-import { HexGrid, Hexagon } from 'react-hexgrid';
+import { Hexagon } from 'react-hexgrid';
 import styled from 'styled-components';
 import Color from 'color';
 
-const StyledHexGrid = styled(HexGrid)`
-  position: relative;
-`;
-
-const StyledHexagon = styled(Hexagon)`
+export const SkillsHexagon = styled(Hexagon)`
   g {
     fill: ${({ bgColor }) => {
       return bgColor;
@@ -57,24 +50,4 @@ const StyledHexagon = styled(Hexagon)`
   }
 `;
 
-const StyledVerticalGradientBox = styled(Box)`
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    ${config.styles.colors.lightYellow} 0%,
-    ${config.styles.colors.primary} 100%
-  );
-`;
-
-export default function SkillsStyles(ToWrapComponent) {
-  let WrapperComponent = props => {
-    return (
-      <ToWrapComponent
-        {...props}
-        {...{ StyledHexGrid, StyledHexagon, StyledVerticalGradientBox }}
-      />
-    );
-  };
-
-  return WrapperComponent;
-}
+export default SkillsHexagon;

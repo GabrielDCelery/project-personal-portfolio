@@ -26,3 +26,5 @@ export const WorkHistorySectionHeading = props => {
     </Box>
   );
 };
+
+export default WorkHistorySectionHeading;

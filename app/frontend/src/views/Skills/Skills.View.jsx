@@ -1,11 +1,15 @@
 import React from 'react';
 import { Box, Grid, Hidden } from '@material-ui/core';
-import { UILeftAlignedContainer, SkillsCard } from 'components';
 import config from 'config';
 import { Layout, Text } from 'react-hexgrid';
 import { SizeMe } from 'react-sizeme';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import UILeftAlignedContainer from 'components/UI/LeftAlignedContainer';
+import SkillsCard from 'components/Skills/Card';
+import SkillsHexGrid from 'components/Skills/HexGrid';
+import SkillsHexagon from 'components/Skills/Hexagon';
+import SkillsVerticalGradientBox from 'components/Skills/VerticalGradientBox';
 
 import {
   Avatar,
@@ -17,13 +21,7 @@ import {
   ListItemText
 } from '@material-ui/core';
 
-export default function SkillsView({
-  StyledHexGrid,
-  StyledHexagon,
-  StyledVerticalGradientBox,
-  getter,
-  handler
-}) {
+export default function SkillsView({ getter, handler }) {
   return (
     <React.Fragment>
       <Box height="2em" />
@@ -48,7 +46,7 @@ export default function SkillsView({
           <CardContent style={{ padding: 0, borderBottom: '3px solid #000' }}>
             <Grid container spacing={3}>
               <Grid item xs={3}>
-                <StyledVerticalGradientBox />
+                <SkillsVerticalGradientBox />
               </Grid>
               <Grid item xs={9}>
                 <List dense={true}>
@@ -159,7 +157,7 @@ export default function SkillsView({
           >
             {getter('layout', 'hexGrid', 'width') ? (
               <React.Fragment>
-                <StyledHexGrid
+                <SkillsHexGrid
                   width={getter('layout', 'hexGrid', 'width')}
                   height={getter('layout', 'hexGrid', 'height')}
                   viewBox={getter('layout', 'hexViewBox')()}
@@ -180,20 +178,20 @@ export default function SkillsView({
                         ];
                         return (
                           <React.Fragment key={`hex-${index}`}>
-                            <StyledHexagon
+                            <SkillsHexagon
                               q={hexX}
                               r={hexY}
                               s={0}
                               bgColor={bgColor}
                             >
                               <Text>{label}</Text>
-                            </StyledHexagon>
+                            </SkillsHexagon>
                           </React.Fragment>
                         );
                       }
                     )}
                   </Layout>
-                </StyledHexGrid>
+                </SkillsHexGrid>
               </React.Fragment>
             ) : (
               <React.Fragment></React.Fragment>

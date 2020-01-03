@@ -9,6 +9,14 @@ import {
   Menu as MenuIcon,
   Work as WorkIcon
 } from '@material-ui/icons';
+import NavAppBar from 'components/Nav/AppBar';
+import NavDrawer from 'components/Nav/Drawer';
+import NavDrawerContainer from 'components/Nav/DrawerContainer';
+import NavListItemGutter from 'components/Nav/ListItemGutter';
+import NavListItem from 'components/Nav/ListItem';
+import NavListItemIcon from 'components/Nav/ListItemIcon';
+import NavListItemText from 'components/Nav/ListItemText';
+import NavIconButton from 'components/Nav/IconButton';
 
 import config from 'config';
 
@@ -22,10 +30,9 @@ const NavBarIcons = {
 };
 
 const renderDrawrContent = ({
-  StyledListItem,
-  StyledListItemGutter,
-  StyledListItemIcon,
-  StyledListItemText,
+  NavListItem,
+  NavListItemIcon,
+  NavListItemText,
   getter,
   handler
 }) => {
@@ -36,18 +43,18 @@ const renderDrawrContent = ({
 
         return (
           <React.Fragment key={`navbar-item-${index}`}>
-            <StyledListItem
+            <NavListItem
               button
               className={`${getter('isActivePage')(path) ? 'active' : ''}`}
               onClick={() => handler('navToPage')(path)}
             >
-              <StyledListItemGutter />
-              <StyledListItemIcon>
+              <NavListItemGutter />
+              <NavListItemIcon>
                 <Icon fontSize="large" />
-              </StyledListItemIcon>
-              <StyledListItemText primary={label} />
-              <StyledListItemGutter />
-            </StyledListItem>
+              </NavListItemIcon>
+              <NavListItemText primary={label} />
+              <NavListItemGutter />
+            </NavListItem>
           </React.Fragment>
         );
       })}
@@ -55,25 +62,14 @@ const renderDrawrContent = ({
   );
 };
 
-export default function NavBarView({
-  StyledAppBar,
-  StyledDrawer,
-  StyledDrawerContainer,
-  StyledIconButton,
-  StyledListItem,
-  StyledListItemGutter,
-  StyledListItemIcon,
-  StyledListItemText,
-  getter,
-  handler
-}) {
+export default function NavBarView({ getter, handler }) {
   return (
     <React.Fragment>
       <CssBaseline />
       <Hidden smUp>
-        <StyledAppBar position="fixed" color="secondary">
+        <NavAppBar position="fixed" color="secondary">
           <Toolbar>
-            <StyledIconButton
+            <NavIconButton
               color="inherit"
               aria-label="Open drawer"
               edge="start"
@@ -82,13 +78,13 @@ export default function NavBarView({
               }}
             >
               <MenuIcon />
-            </StyledIconButton>
+            </NavIconButton>
           </Toolbar>
-        </StyledAppBar>
+        </NavAppBar>
       </Hidden>
-      <StyledDrawerContainer>
+      <NavDrawerContainer>
         <Hidden smUp>
-          <StyledDrawer
+          <NavDrawer
             variant="temporary"
             anchor="left"
             open={getter('isMobileOpen')}
@@ -100,29 +96,29 @@ export default function NavBarView({
             }}
           >
             {renderDrawrContent({
-              StyledListItemGutter,
-              StyledListItem,
-              StyledListItemIcon,
-              StyledListItemText,
+              NavListItemGutter,
+              NavListItem,
+              NavListItemIcon,
+              NavListItemText,
               getter,
               handler
             })}
-          </StyledDrawer>
+          </NavDrawer>
         </Hidden>
 
         <Hidden xsDown>
-          <StyledDrawer variant="permanent" anchor="left">
+          <NavDrawer variant="permanent" anchor="left">
             {renderDrawrContent({
-              StyledListItemGutter,
-              StyledListItem,
-              StyledListItemIcon,
-              StyledListItemText,
+              NavListItemGutter,
+              NavListItem,
+              NavListItemIcon,
+              NavListItemText,
               getter,
               handler
             })}
-          </StyledDrawer>
+          </NavDrawer>
         </Hidden>
-      </StyledDrawerContainer>
+      </NavDrawerContainer>
     </React.Fragment>
   );
 }
