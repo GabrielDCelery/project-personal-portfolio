@@ -74,8 +74,11 @@ export default function SkillsBehaviour(ToWrapComponent) {
       stateSkillsVisibilityFilter
     } = props;
 
+    const [isHeatmapHelperOpen, setIsHeatmapHelperOpen] = useState(true);
     const [hexGridWidth, setHexGridWidth] = useState(0);
+
     const getters = {
+      isHeatmapHelperOpen,
       stateFilteredSkillItems,
       stateSkillsVisibilityFilter,
       layout: {
@@ -132,7 +135,10 @@ export default function SkillsBehaviour(ToWrapComponent) {
         hexGrid: {
           setWidth: setHexGridWidth
         }
-      }
+      },
+      toggleIsHeatmapHelperOpen: useCallback(() => {
+        setIsHeatmapHelperOpen(!isHeatmapHelperOpen);
+      }, [isHeatmapHelperOpen, setIsHeatmapHelperOpen])
     };
 
     const handler = (...paths) => {

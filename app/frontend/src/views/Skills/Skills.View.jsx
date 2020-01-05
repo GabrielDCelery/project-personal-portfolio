@@ -15,11 +15,15 @@ import {
   Avatar,
   Card,
   CardContent,
-  Typography,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  Typography
 } from '@material-ui/core';
+import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
 
 export default function SkillsView({ getter, handler }) {
   return (
@@ -27,50 +31,59 @@ export default function SkillsView({ getter, handler }) {
       <Box height="2em" />
       <UILeftAlignedContainer maxWidth="xl">
         <Card>
-          <CardContent
-            style={{
-              backgroundColor: config.styles.colors.secondary,
-              color: '#fff'
-            }}
-          >
-            <div style={{ display: 'flex' }}>
-              <Typography component="div" style={{ flexGrow: 1 }}>
-                <Typography component="p" style={{ color: '#ddd' }}>
-                  SKILLS HEATMAP
-                </Typography>
-              </Typography>
-              <Typography component="div" style={{ flexGrow: 1 }}></Typography>
-            </div>
-          </CardContent>
-
           <CardContent style={{ padding: 0, borderBottom: '3px solid #000' }}>
-            <Grid container spacing={3}>
-              <Grid item xs={3}>
-                <SkillsVerticalGradientBox />
-              </Grid>
-              <Grid item xs={9}>
-                <List dense={true}>
-                  <ListItem>
-                    <ListItemText primary="Have been using it on a daily basis or several commercial projects for the past 2 years" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="Several commercial projects for atleast the past 2 years" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="Atleast one commercial project within the past 2 years" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="Atleast one personal project in the subject" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="Has completed atleast one online course in the subject" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="Played around with it, hasn't used it in a commercial project" />
-                  </ListItem>
-                </List>
-              </Grid>
-            </Grid>
+            <ExpansionPanel
+              expanded={getter('isHeatmapHelperOpen')}
+              onChange={() => {
+                handler('toggleIsHeatmapHelperOpen')();
+              }}
+            >
+              <ExpansionPanelSummary
+                expandIcon={
+                  <ExpandMoreIcon
+                    style={{ color: config.styles.colors.darkBgText }}
+                  />
+                }
+                style={{
+                  backgroundColor: config.styles.colors.secondary,
+                  padding: '0 2em',
+                  borderBottom: '3px solid #000'
+                }}
+              >
+                <Box color={config.styles.colors.darkBgText}>
+                  SKILLS HEATMAP
+                </Box>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails style={{ padding: 0 }}>
+                <Grid container spacing={3}>
+                  <Grid item xs={3}>
+                    <SkillsVerticalGradientBox />
+                  </Grid>
+                  <Grid item xs={9}>
+                    <List dense={true}>
+                      <ListItem>
+                        <ListItemText primary="Have been using it on a daily basis or several commercial projects for the past 2 years" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemText primary="Several commercial projects for atleast the past 2 years" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemText primary="Atleast one commercial project within the past 2 years" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemText primary="Atleast one personal project in the subject" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemText primary="Has completed atleast one online course in the subject" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemText primary="Played around with it, hasn't used it in a commercial project" />
+                      </ListItem>
+                    </List>
+                  </Grid>
+                </Grid>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
           </CardContent>
 
           <CardContent
