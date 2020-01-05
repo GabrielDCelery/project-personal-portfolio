@@ -15,13 +15,14 @@ export default function MainView() {
               <UIFlexboxCenterPositioner>
                 <Box>
                   <Box
-                    fontSize="h3.fontSize"
+                    fontSize="h4.fontSize"
                     color={config.styles.colors.primary}
                   >
                     GABRIEL ZELLER
                   </Box>
                   <Box
                     fontSize="h5.fontSize"
+                    padding="1em"
                     color={config.styles.colors.secondary}
                   >
                     Full Stack Developer
