@@ -9,48 +9,41 @@ export default function MainView() {
     <React.Fragment>
       <Box height="2em" />
       <UILeftAlignedContainer maxWidth="xl">
-        <Box textAlign="center">
-          <Hidden mdUp>
-            <Box height="30vh">
-              <UIFlexboxCenterPositioner>
-                <Box>
-                  <Box
-                    fontSize="h4.fontSize"
-                    color={config.styles.colors.primary}
-                  >
-                    GABRIEL ZELLER
-                  </Box>
-                  <Box
-                    fontSize="h5.fontSize"
-                    padding="1em"
-                    color={config.styles.colors.secondary}
-                  >
-                    Full Stack Developer
-                  </Box>
+        <Box textAlign="center" height="70vh">
+          <UIFlexboxCenterPositioner>
+            <Box>
+              <Hidden mdUp>
+                <Box
+                  fontSize="h4.fontSize"
+                  color={config.styles.colors.primary}
+                >
+                  GABRIEL ZELLER
                 </Box>
-              </UIFlexboxCenterPositioner>
-            </Box>
-          </Hidden>
-          <Hidden smDown>
-            <Box height="70vh">
-              <UIFlexboxCenterPositioner>
-                <Box>
-                  <Box
-                    fontSize="h1.fontSize"
-                    color={config.styles.colors.primary}
-                  >
-                    GABRIEL ZELLER
-                  </Box>
-                  <Box
-                    fontSize="h2.fontSize"
-                    color={config.styles.colors.secondary}
-                  >
-                    Full Stack Developer
-                  </Box>
+                <Box height="1em" />
+                <Box
+                  fontSize="h5.fontSize"
+                  color={config.styles.colors.secondary}
+                >
+                  Full Stack Developer
                 </Box>
-              </UIFlexboxCenterPositioner>
+              </Hidden>
+              <Hidden smDown>
+                <Box
+                  fontSize="h2.fontSize"
+                  color={config.styles.colors.primary}
+                >
+                  GABRIEL ZELLER
+                </Box>
+                <Box height="1em" />
+                <Box
+                  fontSize="h3.fontSize"
+                  color={config.styles.colors.secondary}
+                >
+                  Full Stack Developer
+                </Box>
+              </Hidden>
             </Box>
-          </Hidden>
+          </UIFlexboxCenterPositioner>
         </Box>
       </UILeftAlignedContainer>
     </React.Fragment>
