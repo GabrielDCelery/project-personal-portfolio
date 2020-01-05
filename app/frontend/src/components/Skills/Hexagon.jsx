@@ -45,7 +45,7 @@ export const SkillsHexagon = styled(Hexagon)`
         .darken(0.2)
         .hex();
     }};
-    stroke-width: 0.2;
+    stroke-width: 0.4;
     //transition: fill-opacity 0.3s;
   }
 `;
