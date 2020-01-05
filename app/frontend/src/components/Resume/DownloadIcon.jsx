@@ -4,8 +4,12 @@ import { SizeMe } from 'react-sizeme';
 import styled from 'styled-components';
 
 const StyledImageContainer = styled(Box)`
+  background-color: #fff;
   height: ${({ width }) => {
     return `${width || 0}px;`;
+  }};
+  border-radius: ${({ width }) => {
+    return `${(width || 0) / 5}px;`;
   }};
 `;
 
