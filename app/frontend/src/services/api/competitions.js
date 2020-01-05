@@ -16,7 +16,7 @@ class Competitions {
         name: 'UNLEASH THE GEEK',
         type: 'Artificial Intelligence Challenge',
         reportUrl:
-          'https://www.codingame.com/challengereport/2267122999d7bcac925c923b59faa97cf2624883',
+          'https://www.codingame.com/leaderboards/challenge/unleash-the-geek-amadeus/global',
         codeUrl:
           'https://github.com/GabrielDCelery/competition-codingame-unleash-the-geek',
         description:
