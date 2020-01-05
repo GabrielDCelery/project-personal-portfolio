@@ -18,8 +18,6 @@ import NavListItemIcon from 'components/Nav/ListItemIcon';
 import NavListItemText from 'components/Nav/ListItemText';
 import NavIconButton from 'components/Nav/IconButton';
 
-import config from 'config';
-
 const NavBarIcons = {
   BuildIcon,
   EmailIcon,
@@ -38,7 +36,7 @@ const renderDrawrContent = ({
 }) => {
   return (
     <React.Fragment>
-      {config.routes.map(({ path, icon, label }, index) => {
+      {getter('navBarItems').map(({ path, icon, label }, index) => {
         const Icon = NavBarIcons[icon];
 
         return (

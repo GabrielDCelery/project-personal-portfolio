@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { WithRouterDecorator } from 'components';
 import _ from 'lodash';
+import config from 'config';
 
 export default function NavBarBehaviour(ToWrapComponent) {
   let WrapperComponent = props => {
@@ -8,6 +9,9 @@ export default function NavBarBehaviour(ToWrapComponent) {
     const [isMobileOpen, setMobileOpen] = useState(false);
 
     const getters = {
+      navBarItems: _.filter(config.routes, ({ showInNavBar }) => {
+        return showInNavBar === true;
+      }),
       isActivePage: useCallback(
         pathName => {
           return pathName === location.pathname;
