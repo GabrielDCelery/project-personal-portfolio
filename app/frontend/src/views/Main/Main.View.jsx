@@ -10,7 +10,7 @@ export default function MainView() {
       <Box height="2em" />
       <UILeftAlignedContainer maxWidth="xl">
         <Box textAlign="center">
-          <Hidden mdUp>
+          <Hidden smUp>
             <Box height="30vh">
               <UIFlexboxCenterPositioner>
                 <Box>
@@ -31,7 +31,7 @@ export default function MainView() {
               </UIFlexboxCenterPositioner>
             </Box>
           </Hidden>
-          <Hidden smDown>
+          <Hidden xsDown>
             <Box height="70vh">
               <UIFlexboxCenterPositioner>
                 <Box>
