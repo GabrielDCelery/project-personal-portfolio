@@ -46,11 +46,19 @@ const getHexRingOffset = totalNumOfHexTiles => {
     return '-10';
   }
 
-  if (1 < totalNumOfHexTiles && totalNumOfHexTiles <= 9) {
+  if (totalNumOfHexTiles === 2) {
+    return '-16.6';
+  }
+
+  if (2 < totalNumOfHexTiles && totalNumOfHexTiles <= 9) {
     return '-23.3';
   }
 
-  if (9 < totalNumOfHexTiles && totalNumOfHexTiles <= 23) {
+  if (totalNumOfHexTiles === 10) {
+    return '-30';
+  }
+
+  if (10 < totalNumOfHexTiles && totalNumOfHexTiles <= 23) {
     return '-36.7';
   }
 
