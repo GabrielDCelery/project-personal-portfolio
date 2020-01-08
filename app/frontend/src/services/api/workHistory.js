@@ -16,7 +16,7 @@ class WorkHistory {
           {
             type: 'paragraph',
             content:
-              "My role's primary focus was working with clients, developers and designers to partially or entirely transform the clients internal procedures to automated processes from discovery to successful launch."
+              "My role's primary focus was working with the developers and customer services team to partially or entirely transform the clientele’s internal procedures to automated processes from discovery to successful launch."
           }
         ],
         keyResponsibilities: [
