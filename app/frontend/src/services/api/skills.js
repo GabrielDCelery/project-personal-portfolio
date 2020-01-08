@@ -7,11 +7,11 @@ class Skills {
       },
       {
         label: 'React',
-        level: 8
+        level: 7
       },
       {
         label: 'Redux',
-        level: 8
+        level: 7
       },
       {
         label: 'Docker Compose',
@@ -39,7 +39,7 @@ class Skills {
       },
       {
         label: 'Sequelize',
-        level: 7
+        level: 6
       },
       {
         label: 'Angular.js',
@@ -67,7 +67,7 @@ class Skills {
       },
       {
         label: 'CSS',
-        level: 8
+        level: 9
       },
       {
         label: 'Sass',
@@ -111,7 +111,7 @@ class Skills {
       },
       {
         label: 'Git',
-        level: 8
+        level: 9
       },
       {
         label: 'Webpack',
